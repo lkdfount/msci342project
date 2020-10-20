@@ -9,20 +9,33 @@ next steps:
 
 <html>
 <head>
-  <title>Welcome page</title>
+  <title>TRAVVY - Landing Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="src/images/plane.png">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
+
 <body>
-  <div id="app">
-    <p v-bind:style="logoStyle">{{ name }}</p>
-    <center v-bind:style="welcomeStyle">{{ welcome }}</center>
-    <center v-bind:style="titleStyle">{{ name }}</center>
-    <center v-bind:style="descStyle">{{ message }}</center>
-    <br>
-    <img src= "https://lh3.googleusercontent.com/proxy/CKropvJWHCLWTAIedTlYxK9ejjuNCHqPXVZuScdk2wkihknlc8Cva3GKa1G-PshOVjjJB6Vc2v49s8GAz87H_Lblo2liHoQ" alt= "airplane" style="width:400px;height:200px;" class="center"/>
-    <br>
-    <button v-on:click="reverseMessage">Enter!</button>
+  <div>
+     <h1 class="display-3 text-white">TRAVVY</h1>
+
   </div>
+
+  <div id="app" style="text-align: center;"> 
+    <h1 v-bind:style="welcomeStyle">{{ welcome }}</h1>
+    <p v-bind:style="titleStyle">{{ name }}</p>
+    <p v-bind:style="descStyle">{{ message }}</p>
+    <br>
+    <img src="src/images/plane.png" alt="airplane" />
+    <br>
+    <br>
+    <center><button v-on:click="reverseMessage">Enter Site!</button></center>
+  </div>
+
+
 
   <script>
     var vm = new Vue({
