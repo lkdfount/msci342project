@@ -1,4 +1,4 @@
-# travvy
+# Travvy Frontend
 
 ## Project setup
 ```

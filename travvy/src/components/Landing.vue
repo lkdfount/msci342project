@@ -1,16 +1,14 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h1>testing 1334</h1>
-    <h1>testing emily sucks</h1>
-
-    <p> testing 123 </p>
+  <div class="Landing">
+    <img src="../images/background-image.jpg"/>
+    <h1>Travvy</h1>
+    <router-link to="/Home" tag="button">Home</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Landing',
   props: {
     msg: String
   }
