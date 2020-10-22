@@ -2,7 +2,16 @@
   <div id="app">
     <img alt="Vue logo" src="./images/background-image.jpg">
     <HelloWorld msg="Travvy"/>
+    <div>
+    
+      <button>
+        Enter Site!
+      </button>
+    </div>
+
   </div>
+
+
 </template>
 
 <script>
