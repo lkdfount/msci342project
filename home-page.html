@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>TRAVVY - Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="src/images/TRAVVY_icon.png">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+
+<body>
+  <div>
+     <h1 class="display-3 text-white">TRAVVY</h1>
+     <h2 class="display-3 text-white">Home Page</h2>
+  </div>
+ 
+  <div id="app" style="text-align: left;"> 
+
+    <center><img src="src/images/TRAVVY_icon.png" alt="logo"/></center>
+    <center><button v-on:click='reverseMessage'>{{ profileButton }}</button></center>
+    <center><p v-bind:style="travelInformationStyle">{{ travelInformation }} <input v-model="blankSearch" v-bind:style="travelInformationStyle">{{ dates }} <input v-model="blankSearch2" v-bind:style="travelInformationStyle"> {{ numTravellers }} <input v-model="blankSearch3" v-bind:style="travelInformationStyle"></p>
+
+    <button v-on:click="reverseMessage">{{ searchButton }}</button></center>
+
+    <p v-bind:style="travelInformationStyle"> {{ uploadDocs }}</p>
+    <p v-bind:style="travelInformationStyle">{{ dropFiles }}<button v-on:click="reverseMessage">Select Files</button> </p>
+
+    <p v-bind:style="travelInformationStyle">{{ nextDestination }}</p>
+    <button v-on:click="reverseMessage">Tokyo</button>   <button v-on:click="reverseMessage">New York</button>   <button v-on:click="reverseMessage">Berlin</button>   <button v-on:click="reverseMessage">Toronto</button>
+  </div>
+
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        searchButton: 'Search',
+        profileButton: 'Profile',
+        travelInformation: 'Where are you going?',
+        blankSearch1: ' ',
+        blankSearch2: ' ',
+        blankSearch3: ' ',
+        dates: ' Departure/ Return Dates:',
+        numTravellers: 'Numbers of Travellers:',
+        uploadDocs: 'Upload Travel Documents: ',
+        dropFiles: 'Drop files here or ',
+        nextDestination: 'Find your next travel destination: ',
+        logoStyle: {
+          color: 'blue',
+          fontSize: '26px'
+        },
+        welcomeStyle: {
+          color: 'black',
+          fontSize: '26px'
+        },
+        titleStyle: {
+          color: 'blue',
+          fontSize: '36px'
+        },
+        descStyle: {
+          color: 'black',
+          fontSize: '16px'
+        },
+        travelInformationStyle: {
+          color: 'black',
+          fontSize: '20px'
+        }
+      },
+      methods: {
+        reverseMessage: function () {
+          this.message = this.message.split('').reverse().join('')
+      }
+    }
+    })
+</script>
+
+
+</body>
+</html>
