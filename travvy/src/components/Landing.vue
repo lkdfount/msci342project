@@ -1,8 +1,10 @@
 <template>
   <div class="Landing">
     <img src="../images/background-image.jpg"/>
-    <h1>Travvy</h1>
-    <router-link to="/Home" tag="button">Home</router-link>
+    <h1>TRAVVY</h1>
+    <p>The most personalized travel companion ready to show you the world!</p>
+    <br>
+    <router-link to="/Home" tag="button" class="button">Enter Site!</router-link>
   </div>
 </template>
 
@@ -17,6 +19,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+
+}
 h3 {
   margin: 40px 0 0;
 }
