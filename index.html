@@ -14,13 +14,14 @@ next steps:
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="src/images/plane.png">
+  <link rel="stylesheet" href="src/css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 
 <body>
   <div>
-     <h1 class="display-3 text-white">TRAVVY</h1>
+     <h1>TRAVVY</h1>
 
   </div>
 
@@ -32,7 +33,7 @@ next steps:
     <img src="src/images/plane.png" alt="airplane" />
     <br>
     <br>
-    <center><button v-on:click="reverseMessage">Enter Site!</button></center>
+    <center><button class="button button-green" v-on:click="reverseMessage">Enter Site!</button></center>
   </div>
 
 
@@ -68,5 +69,11 @@ next steps:
     }
     })
   </script>
+
+  <script src="../src/vendors/jquery/dist/jquery.min.js"></script>
+  <script src="../src/vendors/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../src/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
