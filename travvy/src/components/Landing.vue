@@ -1,10 +1,15 @@
-<template>
+
+<template>  
   <div class="Landing">
-    <img src="../images/background-image.jpg"/>
     <h1>TRAVVY</h1>
     <p>The most personalized travel companion ready to show you the world!</p>
+    <img src="../images/map.jpg" alt="Picture of Map"/>
+    <br>
     <br>
     <router-link to="/Home" tag="button" class="button">Enter Site!</router-link>
+    <br>
+    <br>
+
   </div>
 </template>
 
@@ -31,6 +36,8 @@ export default {
   border-radius: 12px;
 
 }
+
+
 h3 {
   margin: 40px 0 0;
 }
@@ -44,5 +51,12 @@ li {
 }
 a {
   color: #42b983;
+}
+
+img {
+  max-width: 40%;
+  max-height: 40%;
+
+  height: auto;
 }
 </style>
