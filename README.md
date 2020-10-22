@@ -6,6 +6,7 @@ This project is to create a website that will give users up-to-date travel infor
 
 # Instructions
 The code for the front end is in /travvy
+
 To run the code:
 1. clone the folder
 2. go into the /travvy folder in terminal or command line
