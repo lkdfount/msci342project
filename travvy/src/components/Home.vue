@@ -9,8 +9,6 @@
     <br>
     <br>
     <br>
-    <!-- We are not sure if the "<label>{{ whatever }}</label>" is needed --> 
-    <label>{{ destination }}</label>
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in --> 
@@ -18,12 +16,10 @@
       <option value="Toronto">Toronto</option>
       <option value="New York City">New York City</option>
     </select>
-    <label>{{ dates }}</label>
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure and Return Dates:</label>
     <!-- user selects dates they are travelling in --> 
       <input type="text" class="dates"> 
-    <label>{{ travellers }}</label>
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers</label>
     <!-- user selects number of travellers in their party -->

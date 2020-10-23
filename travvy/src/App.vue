@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
+    <!-- Have the logo appear on each page --> 
+    <!-- Have the logo act as a button to take users back to the landing page --> 
       <router-link to="/">
         <img src="./images/JPEGLogo.jpg" alt="Logo" style="width:500px;height:200px;"/>
       </router-link>
