@@ -6,6 +6,7 @@
     <img src="../images/map.jpg" alt="Picture of Map"/>
     <br>
     <br>
+    <!-- Button to go to the home page --> 
     <router-link to="/Home" tag="button" class="button">Enter Site!</router-link>
     <br>
     <br>
