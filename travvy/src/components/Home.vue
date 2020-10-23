@@ -59,6 +59,7 @@
 <!-- this script hosts components and assigns each prop from the template above a specific type of value --> 
 <!-- methods are referenced above in template, and explains the behaviour of an object --> 
  <script>
+ import AttractionsService from '../services/AttractionsService.js'
  export default {
    name: 'Home',
    props: {
@@ -76,27 +77,30 @@
      rioDeJaneiro: String
    },
    
-  //  data(){
-  //   //  return{
-  //   //    destination: ''
-  //   //  }
-  //  },
+   data(){
+     return{
+       city: ''
+     }
+   },
    
   //  watch: {
   //    destination(value){
   //      console.log('Location has changed', value )
   //    }
   //  },
+  
+  methods: {
+    async attrationInfo() {
+      const response = AttractionsService.recommend({
+        city: this.city
+      })
+      console.log(response.data)
+        },
 
-   methods: {
-          attrationInfo() {
-            console.log('search button was clicked',this.city)
-          },
-
-           reverseMessage: function () {
-             this.message = this.message.split('').reverse().join('')
-         }
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
   }
+}
 }
 
  </script>

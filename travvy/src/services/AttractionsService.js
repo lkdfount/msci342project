@@ -1,8 +1,8 @@
 import Api from '@/services/Api'
 
 export default {
-    AttractionName(info) {
-        return Api().post('AttractionName', info)
+    recommend(info) {
+        return Api().post('recommend', info)
     }
 
 }
