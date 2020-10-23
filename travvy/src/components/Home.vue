@@ -1,7 +1,12 @@
+<!-- the purpose of this webpage it to allow users to input their trip information to search for attractions based on data and profile --> 
+<!-- template allows for HTML syntax to be used to connect to data from vue -->
+<!-- template outlines the web page and calls on instance data from the script -->
 <template>
   <div class="Home">
     <h1>{{ msg }}</h1>
+    <!-- data binding Travvy title, corresponding data object below -->
     <h1 class="travvy" style="float:left">TRAVVY Home Page</h1><br>
+    <!-- home page title, design specified below in style -->
     <br>
     <br>
     <br>
@@ -12,36 +17,50 @@
         <center><img src="src/images/TRAVVY_logo.png" alt="logo"/></center>
         <br>
         <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile"> <br>
+        <!-- Profile button that will lead to the users profile page --> 
         <label>{{ destination }}</label>
+        <!-- data binding destination, corresponding data object below -->
         <label for="Destination">Select a Destination:</label>
+        <!-- select destinations to find attractions in --> 
         <select id="Destination" name="Destination" class="destination">
           <option value="Toronto">Toronto</option>
           <option value="New York City">New York City</option>
         </select>
         <label>{{ dates }}</label>
+        <!-- data binding dates, corresponding data object below -->
         <label for="Dates">     Select Departure and Return Dates:</label>
+        <!-- user selects dates they are travelling in --> 
           <input type="text" class="dates"> 
         <label>{{ travellers }}</label>
+        <!-- data binding travellers, corresponding data object below -->
         <label for="Travellers">     Number of Travellers</label>
+        <!-- user selects number of travellers in their party -->
           <input type="text" class="travellers">
         <br>  
         <br>       
         
         <center><button v-on:click="reverseMessage" class="search">Search</button></center>
+        <!-- the search will use the parameters from above to search through the database and return results --> 
     
         <p>{{ uploadDocs }}</p>
+        <!-- data binding documents, corresponding data object below -->
         <p>Upload Travel Documents Below:</p>
         <p>{{ uploadFiles}}</p>
+        <!-- data binding upload files message, corresponding data object below -->
         <p>Drop files here or <button class="selectFiles">Select Files</button> </p>
+        <!-- allows users to upload travel documents from computer --> 
     
         <p> {{ nextDestination }}</p>
+        <!-- data binding destination suggestions corresponding data object below -->
         <p>Find your next travel destination</p>
         <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
+        <!-- gives users the options to explore attractions at other destinations --> 
    </div>
-  
-   
+
  </template>
 
+<!-- this script hosts components and assigns each prop from the template above a specific type of value --> 
+<!-- methods are referenced above in template, and explains the behaviour of an object --> 
  <script>
  export default {
    name: 'Home',
@@ -59,17 +78,18 @@
      rome: String,
      rioDeJaneiro: String
    },
+   
    methods: {
            reverseMessage: function () {
              this.message = this.message.split('').reverse().join('')
          }
-    
   }
 }
 
  </script>
  
  <!-- Add "scoped" attribute to limit CSS to this component only -->
+ <!-- scoped defines how different classes should appear on the webpage --> 
  <style scoped>
 .travvy{
   background-color: #B8D1FF;
@@ -154,3 +174,4 @@
    color: #42b983;
  }
  </style>
+
