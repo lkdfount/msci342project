@@ -1,8 +1,8 @@
 
 <template>  
   <div class="Landing">
-    <h1>TRAVVY</h1>
-    <p>The most personalized travel companion ready to show you the world!</p>
+    <br>
+    <br>
     <img src="../images/map.jpg" alt="Picture of Map"/>
     <br>
     <br>

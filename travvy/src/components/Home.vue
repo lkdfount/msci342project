@@ -3,58 +3,55 @@
 <!-- template outlines the web page and calls on instance data from the script -->
 <template>
   <div class="Home">
-    <h1>{{ msg }}</h1>
-    <!-- data binding Travvy title, corresponding data object below -->
-    <h1 class="travvy" style="float:left">TRAVVY Home Page</h1><br>
-    <!-- home page title, design specified below in style -->
+    <!-- Profile button that will lead to the users profile page --> 
+    <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile"> 
     <br>
     <br>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-        <center><img src="src/images/TRAVVY_logo.png" alt="logo"/></center>
-        <br>
-        <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile"> <br>
-        <!-- Profile button that will lead to the users profile page --> 
-        <label>{{ destination }}</label>
-        <!-- data binding destination, corresponding data object below -->
-        <label for="Destination">Select a Destination:</label>
-        <!-- select destinations to find attractions in --> 
-        <select id="Destination" name="Destination" class="destination">
-          <option value="Toronto">Toronto</option>
-          <option value="New York City">New York City</option>
-        </select>
-        <label>{{ dates }}</label>
-        <!-- data binding dates, corresponding data object below -->
-        <label for="Dates">     Select Departure and Return Dates:</label>
-        <!-- user selects dates they are travelling in --> 
-          <input type="text" class="dates"> 
-        <label>{{ travellers }}</label>
-        <!-- data binding travellers, corresponding data object below -->
-        <label for="Travellers">     Number of Travellers</label>
-        <!-- user selects number of travellers in their party -->
-          <input type="text" class="travellers">
-        <br>  
-        <br>       
+    <!-- We are not sure if the "<label>{{ whatever }}</label>" is needed --> 
+    <label>{{ destination }}</label>
+    <!-- data binding destination, corresponding data object below -->
+    <label for="Destination">Select a Destination:</label>
+    <!-- select destinations to find attractions in --> 
+    <select id="Destination" name="Destination" class="destination">
+      <option value="Toronto">Toronto</option>
+      <option value="New York City">New York City</option>
+    </select>
+    <label>{{ dates }}</label>
+    <!-- data binding dates, corresponding data object below -->
+    <label for="Dates">     Select Departure and Return Dates:</label>
+    <!-- user selects dates they are travelling in --> 
+      <input type="text" class="dates"> 
+    <label>{{ travellers }}</label>
+    <!-- data binding travellers, corresponding data object below -->
+    <label for="Travellers">     Number of Travellers</label>
+    <!-- user selects number of travellers in their party -->
+    <input type="text" class="travellers">
+    <br>  
+    <br>       
         
-        <center><button v-on:click="reverseMessage" class="search">Search</button></center>
-        <!-- the search will use the parameters from above to search through the database and return results --> 
+    <center><button v-on:click="reverseMessage" class="search">Search</button></center>
+    <!-- the search will use the parameters from above to search through the database and return results --> 
+    <br><br>
     
-        <p>{{ uploadDocs }}</p>
-        <!-- data binding documents, corresponding data object below -->
-        <p>Upload Travel Documents Below:</p>
-        <p>{{ uploadFiles}}</p>
-        <!-- data binding upload files message, corresponding data object below -->
-        <p>Drop files here or <button class="selectFiles">Select Files</button> </p>
-        <!-- allows users to upload travel documents from computer --> 
+    <p>{{ uploadDocs }}</p>
+    <!-- data binding documents, corresponding data object below -->
+    <b>Upload Travel Documents Below:</b>
+    <br>  
+    <p>{{ uploadFiles}}</p>
+    <!-- data binding upload files message, corresponding data object below -->
+    <p>Drop files here or <button class="selectFiles">Select Files</button> </p>
+    <!-- allows users to upload travel documents from computer --> 
     
-        <p> {{ nextDestination }}</p>
-        <!-- data binding destination suggestions corresponding data object below -->
-        <p>Find your next travel destination</p>
-        <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
-        <!-- gives users the options to explore attractions at other destinations --> 
+    <br><br>
+    <p> {{ nextDestination }}</p>
+    <!-- data binding destination suggestions corresponding data object below -->
+    <b>Find your next travel destination</b>
+    <br>  
+    <br> 
+    <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
+    <!-- gives users the options to explore attractions at other destinations --> 
    </div>
 
  </template>

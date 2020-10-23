@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Landing Page</router-link>
+      <router-link to="/">
+        <img src="./images/JPEGLogo.jpg" alt="Logo" style="width:500px;height:200px;"/>
+      </router-link>
     </div>
     <router-view/>
   </div>
