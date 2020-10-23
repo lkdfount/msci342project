@@ -22,10 +22,12 @@
         <!-- data binding destination, corresponding data object below -->
         <label for="Destination">Select a Destination:</label>
         <!-- select destinations to find attractions in --> 
-        <select id="Destination" name="Destination" class="destination">
+        <select v-model="destination" id="Destination" name="Destination" class="destination">
           <option value="Toronto">Toronto</option>
           <option value="New York City">New York City</option>
         </select>
+        
+
         <label>{{ dates }}</label>
         <!-- data binding dates, corresponding data object below -->
         <label for="Dates">     Select Departure and Return Dates:</label>
@@ -39,7 +41,7 @@
         <br>  
         <br>       
         
-        <center><button v-on:click="reverseMessage" class="search">Search</button></center>
+        <center><button @click="attrationInfo" class="search">Search</button></center>
         <!-- the search will use the parameters from above to search through the database and return results --> 
     
         <p>{{ uploadDocs }}</p>
@@ -79,7 +81,23 @@
      rioDeJaneiro: String
    },
    
+   data(){
+    //  return{
+    //    destination: ''
+    //  }
+   },
+   
+  //  watch: {
+  //    destination(value){
+  //      console.log('Location has changed', value )
+  //    }
+  //  },
+
    methods: {
+          attrationInfo() {
+            console.log('search button was clicked')
+          },
+
            reverseMessage: function () {
              this.message = this.message.split('').reverse().join('')
          }
