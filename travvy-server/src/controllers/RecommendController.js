@@ -18,12 +18,3 @@ module.exports = {
   }
 }
 
-// const tagJoinJobTags = await Tag.findAll({
-//     include:{
-//         model: JobTag,
-//         as: 'jobTags',
-//         where: {
-//             tagId: tagIds
-//         }
-//     }
-// });

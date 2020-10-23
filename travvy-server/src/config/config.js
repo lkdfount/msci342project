@@ -1,6 +1,6 @@
 
 module.exports = {
-  port: 8081,
+  port: 3306,
   db: {
     database: process.env.DB_NAME || 'MSCI342_Travvy',
     user: process.env.DB_USER || 'root',
