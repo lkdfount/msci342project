@@ -1,9 +1,29 @@
 const { Attractions } = require('../models')
 
 module.exports = {
-  recommend (req, res) {
-    res.send({
-      message: `The location you are interested in is ${req.body.city}`
-    })
+  async recommend (req, res) {
+    try {
+      const attractions = await Attractions.findAll({
+        model: Attractions,
+        where: {
+          city: req.body.city
+        }
+      })
+      res.send(attractions.toJSON())
+    } catch (err) {
+      res.status(400).send({
+        error: 'err'
+      })
+    }
   }
 }
+
+// const tagJoinJobTags = await Tag.findAll({
+//     include:{
+//         model: JobTag,
+//         as: 'jobTags',
+//         where: {
+//             tagId: tagIds
+//         }
+//     }
+// });
