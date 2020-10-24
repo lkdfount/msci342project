@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Attractions Details for {{}} </h1>
+      <h1>Attraction Details for {{}} </h1>
   </div>
 </template>
 
