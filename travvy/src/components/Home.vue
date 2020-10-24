@@ -13,15 +13,20 @@
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in --> 
     <select v-model="city" id="Destination" name="Destination" class="destination">
-      <option value="Toronto">Toronto</option>
-      <option value="New York City">New York City</option>
+      <option value="Toronto">Toronto, Canada</option>
+      <option value="Paris">Paris, France</option>
+      <option value="London">London, England</option>
+      <option value="New York City">New York City, United States</option>
+      <option value="Rio de Janeiro">Rio de Janeiro, Brazil</option>
+      <option value="Rome">Rome, Italy</option>
+
     </select>
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure and Return Dates:</label>
     <!-- user selects dates they are travelling in --> 
       <input type="text" class="dates"> 
     <!-- data binding travellers, corresponding data object below -->
-    <label for="Travellers">     Number of Travellers</label>
+    <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
     <input type="text" class="travellers">
     <br>  
@@ -149,21 +154,29 @@
   font-size: 16px;
   border-radius: 12px;
    }
+
+.search:hover {
+  background-color: #fdb163;
+}
 .selectFiles{
-  background-color: #C7EEA9;
+  background-color: #f40338;
   border: none;
-  color: black;
+  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 12px;
 }
+
+.selectFiles:hover {
+  background-color: #ed7485;
+}
 .nextDestination{
-  background-color: #B8D1FF;
+  background-color: #5745e4;
   border: none;
-  color: black;
+  color: white;
   padding: 32px 32px;
   text-align: center;
   text-decoration: none;
@@ -172,6 +185,9 @@
   border-radius: 12px;
 }
 
+.nextDestination:hover {
+  background-color: #9290df;
+}
  h3 {
    margin: 40px 0 0;
  }
