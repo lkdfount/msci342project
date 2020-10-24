@@ -36,7 +36,7 @@
     <br>  
     <br>       
         
-    <center><button v-on:click="attrationInfo" class="search"><span>Search </span></button></center>
+    <center><router-link to="/AttractionsList" tag="button" class="button"><span>Search</span></router-link></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
