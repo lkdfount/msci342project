@@ -89,12 +89,13 @@
      }
    },
    
-
   methods: {
+    // This sends a request, when the search button, is clicked to recommend to retrieve recommended attractions based on location and reroutes to the attractions list page 
     async navigateTo(route) {
   
       try {
         const response = await AttractionsService.recommend({"city": this.city})
+        // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         this.$router.push(route)
       } catch (error) {

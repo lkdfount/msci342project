@@ -1,4 +1,4 @@
-console.log('hello')
+// Sets up the necessary imports for the functionality (i.e. express)
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -13,6 +13,7 @@ app.use(cors())
 
 require('./routes')(app)
 
+// Setup sequelize server 
 sequelize.sync().then(() => {
   app.listen(process.env.PORT || 8081)
   console.log(`Server sarted on port ${config.port}`)

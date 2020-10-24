@@ -5,6 +5,7 @@
 
       <!-- include the toronto heading, an image, and some info about Toronto -->
       <br><br><br>
+      <!-- Generates location heading based on first recommended attraction -->
       <h1>{{$store.state.recommendedAttractions[0].city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
       <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
       <br>
@@ -25,7 +26,7 @@
       <!-- let the user go back to the home page and change the info they gave -->
       <router-link to="/Home" tag="button" class="button"><span>Change Preferences</span></router-link>
       <br><br>
-      
+      <!-- generates dynamic buttons based on the recommended attractions -->
       <div class="btn-group" v-for="value in $store.state.recommendedAttractions" v-bind:key="value.id" >
   
           <button v-on:click="navigateTo({name:'AttractionDetails'})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>
@@ -48,8 +49,6 @@
 
 <script>
  export default {
-//     data() {
-//     }
 
   methods: {
     async navigateTo(route) {

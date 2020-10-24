@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import {sync} from 'vuex-router-sync'
 import store from './store/store.js'
-
+// Initializes the vue app
 Vue.config.productionTip = false
 
 sync(store,router)

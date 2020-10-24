@@ -4,6 +4,7 @@ const Sequelize = require('sequelize')
 const config = require('../config/config')
 const db = {}
 
+// Initializes the new sequelize instance for querying 
 const sequelize = new Sequelize(
   config.db.database,
   config.db.user,
@@ -14,6 +15,7 @@ const sequelize = new Sequelize(
   }
 )
 
+// This sequelizes every file in the model's path other than index.js
 fs
   .readdirSync(__dirname)
   .filter((file) =>
@@ -22,7 +24,8 @@ fs
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model
-  })
+  }) 
+  // Ensures that the database is connected
 sequelize
   .authenticate()
   .then(() => {
