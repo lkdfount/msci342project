@@ -22,9 +22,13 @@
 
     </select>
     <!-- data binding dates, corresponding data object below -->
-    <label for="Dates">     Select Departure and Return Dates:</label>
+    <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in --> 
       <input type="text" class="dates"> 
+    <label for="Dates">     Select Return Date:</label>
+      <input type="text" class="dates"> 
+
+
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
