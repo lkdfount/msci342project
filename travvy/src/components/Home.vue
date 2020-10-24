@@ -32,7 +32,7 @@
     <br>  
     <br>       
         
-    <center><button v-on:click="attrationInfo" class="search">Search</button></center>
+    <center><button v-on:click="attrationInfo" class="search"><span>Search </span></button></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -48,9 +48,8 @@
     <br><br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
-    <b>Find your next travel destination</b>
-    <br>  
-    <br> 
+    <h1>Find your next travel destination</h1>
+    
     <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
     <!-- gives users the options to explore attractions at other destinations --> 
    </div>
@@ -143,20 +142,48 @@
   background-color: #C7EEA9;
   border-radius: 12px;
 }
-.search{
+
+.search {
+  display: inline-block;
+  border-radius: 4px;
   background-color: #FF5F00;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  color: #FFFFFF;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-   }
+  font-size: 22px;
+  padding: 12px 22px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
 
-.search:hover {
-  background-color: #fdb163;
+.search span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search:hover span {
+  padding-right: 25px;
+}
+
+.search:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
 }
 .selectFiles{
   background-color: #f40338;
@@ -182,7 +209,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 24px;
 }
 
 .nextDestination:hover {
