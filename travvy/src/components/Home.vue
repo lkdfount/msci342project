@@ -12,7 +12,7 @@
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in --> 
-    <select id="Destination" name="Destination" class="destination">
+    <select v-model="city" id="Destination" name="Destination" class="destination">
       <option value="Toronto">Toronto</option>
       <option value="New York City">New York City</option>
     </select>
@@ -27,7 +27,7 @@
     <br>  
     <br>       
         
-    <center><button v-on:click="reverseMessage" class="search">Search</button></center>
+    <center><button v-on:click="attrationInfo" class="search">Search</button></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -55,6 +55,7 @@
 <!-- this script hosts components and assigns each prop from the template above a specific type of value --> 
 <!-- methods are referenced above in template, and explains the behaviour of an object --> 
  <script>
+ import AttractionsService from '../services/AttractionsService.js'
  export default {
    name: 'Home',
    props: {
@@ -72,11 +73,30 @@
      rioDeJaneiro: String
    },
    
-   methods: {
-           reverseMessage: function () {
-             this.message = this.message.split('').reverse().join('')
-         }
+   data(){
+     return{
+       city: ''
+     }
+   },
+   
+  //  watch: {
+  //    destination(value){
+  //      console.log('Location has changed', value )
+  //    }
+  //  },
+  
+  methods: {
+    async attrationInfo() {
+      const response = AttractionsService.recommend({
+        city: this.city
+      })
+      console.log(response.data)
+        },
+
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
   }
+}
 }
 
  </script>
