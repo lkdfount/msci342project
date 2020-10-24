@@ -37,6 +37,7 @@
     <br>       
     <center><button v-on:click="navigateTo({name:'AttractionList'})" class="search"><span>Search </span></button></center>
 
+        
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
