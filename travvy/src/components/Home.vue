@@ -35,8 +35,9 @@
     <input type="text" class="travellers">
     <br>  
     <br>       
+    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+
         
-    <center><router-link to="/AttractionsList" tag="button" class="button"><span>Search</span></router-link></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -83,22 +84,22 @@
    
    data(){
      return{
-       city: ''
+       city: '',
+       error:null 
      }
    },
    
-  //  watch: {
-  //    destination(value){
-  //      console.log('Location has changed', value )
-  //    }
-  //  },
-  
+
   methods: {
-    async attrationInfo() {
-      const response = AttractionsService.recommend({
-        city: this.city
-      })
-      console.log(response.data)
+    async navigateTo(route) {
+  
+      try {
+        const response = await AttractionsService.recommend({"city": this.city})
+        this.$store.dispatch('setRecommendedAttractions', response.data)
+        this.$router.push(route)
+      } catch (error) {
+         console.log(error)
+      }
         },
 
     reverseMessage: function () {
