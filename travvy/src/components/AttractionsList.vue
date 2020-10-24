@@ -5,7 +5,7 @@
 
       <!-- include the toronto heading, an image, and some info about Toronto -->
       <br><br><br>
-      <h1>Toronto, Canada</h1>
+      <h1>{{$store.state.recommendedAttractions[0].city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
       <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
       <br>
       <h3>Description</h3>
@@ -25,12 +25,12 @@
       <!-- let the user go back to the home page and change the info they gave -->
       <router-link to="/Home" tag="button" class="button"><span>Change Preferences</span></router-link>
       <br><br>
-      <div class="btn-group">
-        <router-link to="/AttractionDetails" tag="button" class="button"><span>CN Tower</span></router-link>
-        <router-link to="/AttractionDetails" tag="button" class="button"><span>Ripleys</span></router-link>
-        <router-link to="/AttractionDetails" tag="button" class="button"><span>Royal Ontario Museum</span></router-link>
+      
+      <div class="btn-group" v-for="value in $store.state.recommendedAttractions" v-bind:key="value.id" >
+  
+          <button v-on:click="navigateTo({name:'AttractionDetails'})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>
       </div>
-
+ 
       <!-- give some information collected from other travellers who have been to Toronto -->
       <!-- in later sprints, they will be pulled from the database -->
       <h1>Traveller Tips</h1>
@@ -47,7 +47,16 @@
 </template>
 
 <script>
-  
+ export default {
+//     data() {
+//     }
+
+  methods: {
+    async navigateTo(route) {
+        this.$router.push(route)
+    }
+}
+ }
 </script>
 
 <style>
