@@ -13,21 +13,30 @@
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in --> 
     <select v-model="city" id="Destination" name="Destination" class="destination">
-      <option value="Toronto">Toronto</option>
-      <option value="New York City">New York City</option>
+      <option value="Toronto">Toronto, Canada</option>
+      <option value="Paris">Paris, France</option>
+      <option value="London">London, England</option>
+      <option value="New York City">New York City, United States</option>
+      <option value="Rio de Janeiro">Rio de Janeiro, Brazil</option>
+      <option value="Rome">Rome, Italy</option>
+
     </select>
     <!-- data binding dates, corresponding data object below -->
-    <label for="Dates">     Select Departure and Return Dates:</label>
+    <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in --> 
-      <input type="text" class="dates"> 
+      <input type="Date" class="dates"> 
+    <label for="Dates">     Select Return Date:</label>
+      <input type="Date" class="dates"> 
+
+
     <!-- data binding travellers, corresponding data object below -->
-    <label for="Travellers">     Number of Travellers</label>
+    <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
     <input type="text" class="travellers">
     <br>  
     <br>       
         
-    <center><button v-on:click="attractionInfo" class="search">Search</button></center>
+    <center><button v-on:click="attractionInfo" class="search"><span>Search </span></button></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -43,9 +52,8 @@
     <br><br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
-    <b>Find your next travel destination</b>
-    <br>  
-    <br> 
+    <h1>Find your next travel destination</h1>
+    
     <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
     <!-- gives users the options to explore attractions at other destinations --> 
    </div>
@@ -141,40 +149,77 @@
   background-color: #C7EEA9;
   border-radius: 12px;
 }
-.search{
+
+.search {
+  display: inline-block;
+  border-radius: 4px;
   background-color: #FF5F00;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px;
+  padding: 12px 22px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.search span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.search span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.search:hover span {
+  padding-right: 25px;
+}
+
+.search:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.selectFiles{
+  background-color: #f40338;
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-   }
-.selectFiles{
-  background-color: #C7EEA9;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 12px;
 }
+
+.selectFiles:hover {
+  background-color: #ed7485;
+}
 .nextDestination{
-  background-color: #B8D1FF;
+  background-color: #5745e4;
   border: none;
-  color: black;
+  color: white;
   padding: 32px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 24px;
 }
 
+.nextDestination:hover {
+  background-color: #9290df;
+}
  h3 {
    margin: 40px 0 0;
  }

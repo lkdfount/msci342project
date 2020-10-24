@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
 import Landing from '../components/Landing.vue'
 import AttractionsList from '../components/AttractionsList.vue'
+import AttractionDetails from '../components/AttractionDetails.vue'
+
 
 Vue.use(VueRouter)
 
@@ -21,7 +23,13 @@ const routes = [
     path: '/AttractionsList',
     name: 'AttractionsList',
     component: AttractionsList
+  },
+  {
+    path: '/AttractionDetails',
+    name: 'AttractionDetails',
+    component: AttractionDetails
   }
+
   //{
   //  path: '/Home',
   //  name: 'Home',
