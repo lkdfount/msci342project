@@ -1,8 +1,8 @@
 import Api from '@/services/Api'
 
 export default {
-    recommend(info) {
-        return Api().post('recommend', info)
+    recommend(city) {
+        return Api().get('recommend', {"city": city})
     }
 
 }

@@ -1,20 +1,15 @@
-const { Attractions } = require('../models')
+// const Sequelize = require('sequelize')
+// const Sequelize = require('sequelize')
+
+const Attractions = require('../models').Attractions
 
 module.exports = {
-  async recommend (req, res) {
-    try {
-      const attractions = await Attractions.findAll({
-        model: Attractions,
-        where: {
-          city: req.body.city
-        }
-      })
-      res.send(attractions.toJSON())
-    } catch (err) {
-      res.status(400).send({
-        error: 'err'
-      })
-    }
+  async recommend (city) {
+    const attractions = await Attractions.findAll({
+      where: { city: city },
+      logging: console.log
+    })
+
+    return attractions
   }
 }
-

@@ -8,7 +8,10 @@ const sequelize = new Sequelize(
   config.db.database,
   config.db.user,
   config.db.password,
-  config.db.options
+  config.db.options,
+  {
+    timestamps: false
+  }
 )
 
 fs
@@ -20,7 +23,14 @@ fs
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model
   })
-
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.')
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err)
+  })
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 

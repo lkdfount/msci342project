@@ -27,7 +27,7 @@
     <br>  
     <br>       
         
-    <center><button v-on:click="attrationInfo" class="search">Search</button></center>
+    <center><button v-on:click="attractionInfo" class="search">Search</button></center>
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -75,7 +75,8 @@
    
    data(){
      return{
-       city: ''
+       city: '',
+       error:null 
      }
    },
    
@@ -86,11 +87,13 @@
   //  },
   
   methods: {
-    async attrationInfo() {
-      const response = AttractionsService.recommend({
-        city: this.city
-      })
-      console.log(response.data)
+    async attractionInfo() {
+      try {
+        const response = await AttractionsService.recommend(this.city)
+        console.log(response)
+      } catch (error) {
+         this.error = error.response.data.error
+      }
         },
 
     reverseMessage: function () {
