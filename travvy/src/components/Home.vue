@@ -35,8 +35,8 @@
     <input type="text" class="travellers">
     <br>  
     <br>       
-        
-    <center><button v-on:click="attractionInfo" class="search"><span>Search </span></button></center>
+    <center><button v-on:click="navigateTo({name:'AttractionList'})" class="search"><span>Search </span></button></center>
+
     <!-- the search will use the parameters from above to search through the database and return results --> 
     <br><br>
     
@@ -95,12 +95,14 @@
   //  },
   
   methods: {
-    async attractionInfo() {
+    async navigateTo() {
+      //this.$router.push(route)
       try {
-        const response = await AttractionsService.recommend(this.city)
-        console.log(response)
+        console.log(this.city)
+        console.log({city: this.city})
+        console.log(await AttractionsService.recommend({"city": this.city}))
       } catch (error) {
-         this.error = error.response.data.error
+         console.log(error)
       }
         },
 
