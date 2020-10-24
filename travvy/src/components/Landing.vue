@@ -5,7 +5,7 @@
     <br>
     <br>
     <!-- Button to go to the home page --> 
-    <router-link to="/Home" tag="button" class="button">Enter Site!</router-link>
+    <router-link to="/Home" tag="button" class="button"><span>Enter Site!</span></router-link>
     <br>
     <br>
 
@@ -23,6 +23,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -33,12 +34,31 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
-
 }
 
-.button:hover {
-  background-color: #90EE90  ; /* Light Green */
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
 
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 
