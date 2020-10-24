@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const config = require('../config/config')
 const db = {}
 
-// Initializes the new sequelize instance for querying 
+// Initializes the new sequelize instance for querying
 const sequelize = new Sequelize(
   config.db.database,
   config.db.user,
@@ -24,7 +24,7 @@ fs
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model
-  }) 
+  })
   // Ensures that the database is connected
 sequelize
   .authenticate()
