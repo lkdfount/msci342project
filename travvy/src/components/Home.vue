@@ -183,8 +183,6 @@
   right: 0;
 }
 
-
-}
 .selectFiles{
   background-color: #f40338;
   border: none;
