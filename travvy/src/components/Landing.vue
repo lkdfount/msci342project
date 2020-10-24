@@ -1,8 +1,6 @@
 
 <template>  
   <div class="Landing">
-    <br>
-    <br>
     <img src="../images/map.jpg" alt="Picture of Map"/>
     <br>
     <br>
