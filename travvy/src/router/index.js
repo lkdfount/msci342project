@@ -5,7 +5,7 @@ import Landing from '../components/Landing.vue'
 import AttractionsList from '../components/AttractionsList.vue'
 import AttractionDetails from '../components/AttractionDetails.vue'
 
-
+// Initializes routes for frontend pages
 Vue.use(VueRouter)
 
 const routes = [
