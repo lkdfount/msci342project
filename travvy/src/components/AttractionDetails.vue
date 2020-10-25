@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- Button to go to go back to the AttractionsList page --> 
+    <!-- Button to go to go back to the AttractionsList page -->
     <router-link to="/AttractionList" tag="button" class="back"><span>Back</span></router-link>
 
     <h1>{{$store.state.recommendedAttractions[0].attraction_name}} </h1>

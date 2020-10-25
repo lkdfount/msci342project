@@ -1,16 +1,15 @@
 
 // Imports locations model from Locaotions.js
-const Locations = require('../models').Location
+const Location = require('../models').Location
 
 // This is the logic for queriying database for locations information for all cities
 module.exports = {
-  async details (city) {
-    const attractions = await Locations.findAll({
-      where: { city: city },
+  async getlocation() {
+    const location = await Location.findAll({
       logging: console.log
     })
 
-    return locations
+    return location
   }
 
 }
