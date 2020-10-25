@@ -12,16 +12,25 @@
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in -->
-    <select v-model="city"  id="Destination" name="Destination" class="destination">
-      <option value= "test">test,test</option>
-        displayLocations()
-    <!---
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <div id="selector">
+      <select v-model="selected">
+        <option v-for="(item,key) in cities" :value="key">
+          {{item}}
+        </option>
+      </select>
+      <br>
+      <br>
+      <span>Selected:{{selected}}</span>
+      </div>-->
+
+    <select v-model="city" id="Destination" name="Destination" class="destination">
       <option value="Toronto">Toronto, Canada</option>
       <option value="Paris">Paris, France</option>
       <option value="London">London, England</option>
       <option value="New York City">New York City, United States</option>
       <option value="Rio de Janeiro">Rio de Janeiro, Brazil</option>
-      <option value="Rome">Rome, Italy</option>-->
+      <option value="Rome">Rome, Italy</option>
 
     </select>
     <!-- data binding dates, corresponding data object below -->
@@ -110,16 +119,31 @@
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
   },
+  
+  //This method gets all the locations (id,city,country) from the Location table
     async displayLocations() {
-
-  const response = await LocationsService.getlocation()
-  console.log(response)
+      const response = await LocationsService.getlocation()
+      console.log(response)
   }
 
-
 }
 
 }
+
+// var selector = new Vue({
+//   el: '#selector',
+//   data: {
+//     selected: '',
+//     cities:{
+//     "1": "Toronto, Canada",
+//     "2": "Paris, France",
+//     "3": "London, England",
+//     "4": "New York City, United States",
+//     "5": "Rio de Janeiro, Brazil",
+//     "6": "Rome, Italy"
+//     }
+//   }
+// })
 
 
  </script>
