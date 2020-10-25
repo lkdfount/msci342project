@@ -54,7 +54,7 @@
     async navigateTo(route) {
         this.$router.push(route)
     }
-}
+  }
  }
 </script>
 
