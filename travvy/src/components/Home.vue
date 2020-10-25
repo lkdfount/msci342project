@@ -106,8 +106,12 @@
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
   }
+
+
 }
+
 }
+
 
  </script>
  

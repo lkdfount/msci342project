@@ -3,24 +3,31 @@
     <!-- Button to go to go back to the AttractionsList page --> 
     <router-link to="/AttractionList" tag="button" class="back"><span>Back</span></router-link>
 
-    <h1>CN Tower </h1>
+    <h1>{{$store.state.recommendedAttractions[0].attraction_name}} </h1>
     <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
     <br>
     <h1>Description</h1>
     <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
-    <h3>Address:</h3>
-    <h3>Email:</h3>
-    <h3>Phone Number:</h3>
-    <h3>Ticket Pricing:</h3>
-    <h3>Maximum Group Size:</h3>
-    <h3>Are masks required:</h3>
-    <h3>COVID-19 Safety Measures:</h3>
+    <h2>Address: <span>{{$store.state.recommendedAttractions[0].street_address}}</span> </h2>
+    <h3>Email: {{$store.state.recommendedAttractions[0].email_address}}</h3>
+    <h3>Phone Number: {{$store.state.recommendedAttractions[0].phone_number}}</h3>
+    <h3>Ticket Pricing: {{$store.state.recommendedAttractions[0].ticket_price}}</h3>
+    <h3>Maximum Group Size: {{$store.state.recommendedAttractions[0].max_number_guest}}</h3>
+    <h3>Are masks required: {{$store.state.recommendedAttractions[0].mask_required}}</h3>
+    <h3>COVID-19 Safety Measures: {{$store.state.recommendedAttractions[0].covid_safety_measures}}</h3>
     <br>
   </div>
 </template>
 
 <script>
+  export default {
 
+    methods: {
+      async navigateTo(route) {
+          this.$router.push(route)
+      }
+    }
+  }
 </script>
 
 <style>
@@ -88,6 +95,10 @@
 .back:hover span:after {
   opacity: 1;
   left: 0;
+}
+.span {
+    font-size: 15px;
+
 }
 
 </style>
