@@ -3,8 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
-const { sequelize } = require('./models')
-const config = require('./config/config')
+const { sequelize } = require('./src/models')
+const config = require('./src/config/config')
 
 const app = express()
 app.use(morgan('combined'))
@@ -16,10 +16,10 @@ require('./routes')(app)
 //Handle production 
 if(process.env.NODE_ENV == 'production'){
   //Static folder
-  app.use(express.static('../public/'))
+  app.use(express.static(__dirname + '/public/'))
 
   //Handle single page 
-  app.get(/..*/,(req, res) => res.sendFile('../public/index.html'))
+  app.get(/.*/,(req, res) => res.sendFile(__dirname +'/public/index.html'))
 }
 
 // Setup sequelize server

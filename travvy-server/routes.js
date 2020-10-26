@@ -1,5 +1,5 @@
-const RecommendController = require('./controllers/RecommendController.js')
-const CitySelectController = require('./controllers/CitySelectController.js')
+const RecommendController = require('./src/controllers/RecommendController.js')
+const CitySelectController = require('./src/controllers/CitySelectController.js')
 // Sets up endpoints for API
 module.exports = (app) => {
   app.get('/recommend', (req, res) => {
