@@ -19,7 +19,7 @@ if(process.env.NODE_ENV == 'production'){
   app.use(express.static('../public'))
 
   //Handle single page 
-  app.get(/.*/,(req, res) => res.sendFile(__dirname + '/public/index.html'))
+  app.get(/.*/,(req, res) => res.sendFile('../public/index.html'))
 }
 
 // Setup sequelize server
