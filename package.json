@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js src/app.js --exec \"npm run lint && node\"",
+    "start": "node travvy-server/app.js",
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js travvy-server/app.js --exec \"npm run lint && node\"",
     "lint": "./node_modules/.bin/eslint --fix **/*.js"
   },
   "keywords": [],
@@ -17,12 +18,12 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.6",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
+    "nodemon": "^2.0.6",
     "eslint": "^7.12.0",
     "eslint-config-standard": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
