@@ -1,17 +1,29 @@
-<!-- the purpose of this webpage it to allow users to input their trip information to search for attractions based on data and profile --> 
+<!-- the purpose of this webpage it to allow users to input their trip information to search for attractions based on data and profile -->
 <!-- template allows for HTML syntax to be used to connect to data from vue -->
 <!-- template outlines the web page and calls on instance data from the script -->
 <template>
   <div class="Home">
-    <!-- Profile button that will lead to the users profile page --> 
-    <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile"> 
+    <!-- Profile button that will lead to the users profile page -->
+    <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile">
     <br>
     <br>
     <br>
     <br>
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
-    <!-- select destinations to find attractions in --> 
+    <!-- select destinations to find attractions in -->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <div id="selector">
+      <select v-model="selected">
+        <option v-for="(item,key) in cities" :value="key">
+          {{item}}
+        </option>
+      </select>
+      <br>
+      <br>
+      <span>Selected:{{selected}}</span>
+      </div>-->
+
     <select v-model="city" id="Destination" name="Destination" class="destination">
       <option value="Toronto">Toronto, Canada</option>
       <option value="Paris">Paris, France</option>
@@ -23,48 +35,49 @@
     </select>
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
-    <!-- user selects dates they are travelling in --> 
-      <input type="Date" class="dates"> 
+    <!-- user selects dates they are travelling in -->
+      <input type="Date" class="dates">
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" class="dates"> 
+      <input type="Date" class="dates">
 
 
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
     <input type="text" class="travellers">
-    <br>  
-    <br>       
+    <br>
+    <br>
     <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
 
-        
-    <!-- the search will use the parameters from above to search through the database and return results --> 
+
+    <!-- the search will use the parameters from above to search through the database and return results -->
     <br><br>
-    
+
     <p>{{ uploadDocs }}</p>
     <!-- data binding documents, corresponding data object below -->
     <b>Upload Travel Documents Below:</b>
-    <br>  
+    <br>
     <p>{{ uploadFiles}}</p>
     <!-- data binding upload files message, corresponding data object below -->
     <p>Drop files here or <button class="selectFiles">Select Files</button> </p>
-    <!-- allows users to upload travel documents from computer --> 
-    
+    <!-- allows users to upload travel documents from computer -->
+
     <br><br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
     <h1>Find your next travel destination</h1>
-    
+
     <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
-    <!-- gives users the options to explore attractions at other destinations --> 
+    <!-- gives users the options to explore attractions at other destinations -->
    </div>
 
  </template>
 
-<!-- this script hosts components and assigns each prop from the template above a specific type of value --> 
-<!-- methods are referenced above in template, and explains the behaviour of an object --> 
+<!-- this script hosts components and assigns each prop from the template above a specific type of value -->
+<!-- methods are referenced above in template, and explains the behaviour of an object -->
  <script>
  import AttractionsService from '../services/AttractionsService.js'
+ import LocationsService from '../services/LocationsService.js'
  export default {
    name: 'Home',
    props: {
@@ -81,18 +94,18 @@
      rome: String,
      rioDeJaneiro: String
    },
-   
+
    data(){
      return{
        city: '',
-       error:null 
+       error:null
      }
    },
-   
+
   methods: {
-    // This sends a request, when the search button, is clicked to recommend to retrieve recommended attractions based on location and reroutes to the attractions list page 
+    // This sends a request, when the search button, is clicked to recommend to retrieve recommended attractions based on location and reroutes to the attractions list page
     async navigateTo(route) {
-  
+
       try {
         const response = await AttractionsService.recommend({"city": this.city})
         // Saves response from recommend to the global variable in the store
@@ -105,18 +118,38 @@
 
     reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
+  },
+  
+  //This method gets all the locations (id,city,country) from the Location table
+    async displayLocations() {
+      const response = await LocationsService.getlocation()
+      console.log(response)
   }
 
-
 }
 
 }
+
+// var selector = new Vue({
+//   el: '#selector',
+//   data: {
+//     selected: '',
+//     cities:{
+//     "1": "Toronto, Canada",
+//     "2": "Paris, France",
+//     "3": "London, England",
+//     "4": "New York City, United States",
+//     "5": "Rio de Janeiro, Brazil",
+//     "6": "Rome, Italy"
+//     }
+//   }
+// })
 
 
  </script>
- 
+
  <!-- Add "scoped" attribute to limit CSS to this component only -->
- <!-- scoped defines how different classes should appear on the webpage --> 
+ <!-- scoped defines how different classes should appear on the webpage -->
  <style scoped>
 .travvy{
   background-color: #B8D1FF;
@@ -238,4 +271,3 @@
    color: #42b983;
  }
  </style>
-
