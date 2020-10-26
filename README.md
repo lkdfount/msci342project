@@ -5,7 +5,7 @@ Group 9, MSCI 342 project GitHub
 This project is to create a website that will give users up-to-date travel information, including attraction information and COVID-19 safety info.
 
 # Instructions
-Website: https://jolly-leavitt-541e45.netlify.app/
+Website: https://dry-oasis-49158.herokuapp.com/
 
 The code for the front end is in /travvy, back end is /travvy-server
 
