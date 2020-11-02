@@ -5,6 +5,7 @@ import Landing from '../components/Landing.vue'
 import AttractionsList from '../components/AttractionsList.vue'
 import AttractionDetails from '../components/AttractionDetails.vue'
 import SignUp from '../components/SignUp.vue'
+import LogIn from '../components/LogIn.vue'
 import UserForm from '../components/UserForm.vue'
 
 // Initializes routes for frontend pages
@@ -35,6 +36,11 @@ const routes = [
     path: '/SignUp',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/LogIn',
+    name: 'LogIn',
+    component: LogIn
   },
   {
     path: '/UserForm',
