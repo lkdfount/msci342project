@@ -9,7 +9,7 @@
     <br>
     <br>
     <!-- Button to go to the sign up page --> 
-    <router-link to="/Home" tag="button" class="button"><span>Sign Up</span></router-link>
+    <router-link to="/SignUp" tag="button" class="button"><span>Sign Up</span></router-link>
     <br>
     <br>
     <!-- Button to go to the home page --> 
