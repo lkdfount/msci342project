@@ -4,7 +4,7 @@
     <img src="../images/map.jpg" alt="Picture of Map"/>
     <br>
     <br>
-        <!-- Button to go to the log inpage --> 
+    <!-- Button to go to the log inpage --> 
     <router-link to="/Home" tag="button" class="button"><span>Log In</span></router-link>
     <br>
     <br>
@@ -13,7 +13,7 @@
     <br>
     <br>
     <!-- Button to go to the home page --> 
-    <router-link to="/Home" tag="button" class="button"><span>Enter Site!</span></router-link>
+    <router-link to="/Home" tag="button" class="button"><span>Enter Site</span></router-link>
     <br>
     <br>
 
