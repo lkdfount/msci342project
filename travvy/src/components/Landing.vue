@@ -5,7 +5,7 @@
     <br>
     <br>
     <!-- Button to go to the log inpage --> 
-    <router-link to="/Home" tag="button" class="button"><span>Log In</span></router-link>
+    <router-link to="/LogIn" tag="button" class="button"><span>Log In</span></router-link>
     <br>
     <br>
     <!-- Button to go to the sign up page --> 
