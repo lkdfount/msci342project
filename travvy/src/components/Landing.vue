@@ -4,8 +4,16 @@
     <img src="../images/map.jpg" alt="Picture of Map"/>
     <br>
     <br>
+    <!-- Button to go to the log inpage --> 
+    <router-link to="/LogIn" tag="button" class="button"><span>Log In</span></router-link>
+    <br>
+    <br>
+    <!-- Button to go to the sign up page --> 
+    <router-link to="/SignUp" tag="button" class="button"><span>Sign Up</span></router-link>
+    <br>
+    <br>
     <!-- Button to go to the home page --> 
-    <router-link to="/Home" tag="button" class="button"><span>Enter Site!</span></router-link>
+    <router-link to="/Home" tag="button" class="button"><span>Enter Site</span></router-link>
     <br>
     <br>
 

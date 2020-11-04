@@ -20,8 +20,18 @@ export default new Vuex.Store({
         setRecommendedAttractions({commit}, recommendedAttractions){
             commit('setRecommendedAttractions', recommendedAttractions)
         }
-    }
-
+    },
+    // this will be used to store user information async registerUser({commit}, registrationInfo){
+       // try{
+        //    let response = await ExtensionScriptApis().post('users', registrationInfo);
+         //   let user = response.data.data.attributes;
+          //  commit('SET_CURRENT_USER', user);
+          //  return user;
+       // } catch{
+        //    return {error: "There was an error. Try again."}
+     //   }
+   // }  
+        
 
 }
 
