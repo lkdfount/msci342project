@@ -3,14 +3,20 @@
         <h2>Sign Up for TRAVVY</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
-            <label>Full Name:</label>
+            <label>Full Name: </label>
             <input type="text" v-bind="UserForm"/> 
-            <label>Email:</label>
-            <input type="text" v-bind="UserForm"/> 
-            <label>Password:</label>
+            <br>
+            <br>
+            <label>Email: </label>
+            <input type="text" v-bind="UserForm"/>
+            <br>
+            <br> 
+            <label>Password: </label>
             <input type="password" v-bind="UserForm"/> 
 
         </form>
+        <br>
+        <br>
         <!-- declares the component of user form --> 
         <component :is="UserForm"/>
         <!-- will submit the form to register the user --> 
