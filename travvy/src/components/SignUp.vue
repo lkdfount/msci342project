@@ -8,7 +8,8 @@
             <label>Email:</label>
             <input type="text" v-bind="UserForm"/> 
             <label>Password:</label>
-            <input type="text" v-bind="UserForm"/> 
+            <input type="password" v-bind="UserForm"/> 
+
         </form>
         <!-- declares the component of user form --> 
         <component :is="UserForm"/>
@@ -20,14 +21,20 @@
 <script>
 
     import UserForm from '@/components/UserForm.vue';
-
     export default {
         name: "SignUp",
         components: {
             UserForm
         },
+        data() {
+          return{
+            type: 'password',
+            buttonText: 'Show Password'
+          }
+        },
         methods: {
             // this menthod will register the user with the info provided above
+  
             async registerUser(registrationInfo){
                 let user = ('registerUser', registrationInfo);
                 if(user.error){
@@ -35,11 +42,12 @@
                 } else {
                     alert('Welcome to TRAVVY ' + user.name);
                 }
-
             }
         },
      
     }
+
+
 </script>
 
 <style>
