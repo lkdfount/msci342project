@@ -44,7 +44,7 @@
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
-    <input type="text" class="travellers">
+    <input type="text" id="groupSize" class="travellers" v-model="groupSize">
     <br>
     <br>
     <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
@@ -98,6 +98,7 @@
    data(){
      return{
        city: '',
+       groupSize: '',
        error:null
      }
    },
@@ -107,7 +108,7 @@
     async navigateTo(route) {
 
       try {
-        const response = await AttractionsService.recommend({"city": this.city})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         this.$router.push(route)
