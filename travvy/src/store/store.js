@@ -8,8 +8,7 @@ export default new Vuex.Store({
     state: {
         // Creates the recommended attractions and city variable where an array of recommended attractions will be stored
         recommendedAttractions: null, 
-        city: null, 
-        country: null
+        city: null
     },
     mutations: {
         // If user selects new locations, recommended attractions change
@@ -18,9 +17,6 @@ export default new Vuex.Store({
         }, 
         setCity(state,city){
             state.city = city
-        }, 
-        setCountry(state,country){
-            state.country = country
         }
     }, 
     actions: {
@@ -30,9 +26,6 @@ export default new Vuex.Store({
         },
         setCity({commit}, city){
             commit('setCity', city)
-        }, 
-        setCountry({commit}, country){
-            commit('setCountry', country)
         }
     },
     // this will be used to store user information async registerUser({commit}, registrationInfo){
