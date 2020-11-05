@@ -108,6 +108,8 @@
     async navigateTo(route) {
 
       try {
+        //saves users city in the store
+        this.$store.dispatch('setCity', this.city)
         const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
