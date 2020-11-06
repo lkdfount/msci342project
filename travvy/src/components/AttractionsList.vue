@@ -6,7 +6,7 @@
       <!-- include the toronto heading, an image, and some info about Toronto -->
       <br><br><br>
       <!-- Generates location heading based on first recommended attraction -->
-      <h1>{{$store.state.city}}</h1>
+      <h1>{{$store.state.city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
       <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
       <br>
       <h3>Description</h3>
@@ -28,8 +28,10 @@
       <br><br>
       <!-- generates dynamic buttons based on the recommended attractions -->
       <div v-if="$store.state.recommendedAttractions.length > 0">
-      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" v-bind:key="value.id" >
-          <button v-on:click="navigateTo({name:'AttractionDetails'})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>
+      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" :key="value.id" >
+          <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
+          <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
+          <router-link :to="{name:'AttractionDetails', params: {id: 0} }" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>
       </div>
       </div>
       <div v-else>
@@ -56,10 +58,22 @@
 
 
  export default {
+  name: 'AttractionsList',
+  data() {
+    return {
+      value: {
+        id: 0,
+      }
+    }
+  },
   methods: {
     async navigateTo(route) {
         this.$router.push(route)
       }
+    //sendValueId() {
+      //<!--  this.$root.$emit(value.id) -->
+  //  }    
+
     }
   }
    

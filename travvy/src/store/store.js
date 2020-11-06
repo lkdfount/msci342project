@@ -17,6 +17,9 @@ export default new Vuex.Store({
         }, 
         setCity(state,city){
             state.city = city
+        },
+        setSe(state,selectedAttraction){
+            state.selectedAttraction = selectedAttraction
         }
     }, 
     actions: {
@@ -26,6 +29,9 @@ export default new Vuex.Store({
         },
         setCity({commit}, city){
             commit('setCity', city)
+        },
+        setSelectedAttraction({commit}, selectedAttraction){
+            commit('setSelectedAttraction', selectedAttraction)
         }
     },
     // this will be used to store user information async registerUser({commit}, registrationInfo){
