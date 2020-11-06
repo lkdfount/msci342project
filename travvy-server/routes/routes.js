@@ -31,7 +31,7 @@ module.exports = (app) => {
     })
  
  app.post('/signup', (req, res) => {
-  AuthenticationController.signup(req.query.email, req.query.name,req.query.password)
+  AuthenticationController.signup(req.body.params.email, req.body.params.name,req.body.params.password)
     .then(users => res.status(201).send(users))
     .catch(error => res.status(400).send(error))
 })
