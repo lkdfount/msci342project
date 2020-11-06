@@ -5,9 +5,15 @@ const UsersController = require('../src/controllers/UsersController.js')
 // Sets up endpoints for API
 module.exports = (app) => {
   app.get('/recommend', (req, res) => {
-    console.log(req.query)
-    console.log(parseInt(req.query.groupSize))
-    RecommendController.recommend(req.query.city,parseInt(req.query.groupSize))
+    groupSize = parseInt(req.query.groupSize)
+    startDate = new Date(req.query.startDate)
+    startDate = startDate.setFullYear(0)
+    endDate = new Date(req.query.endDate)
+    endtDate = endDate.setFullYear(0)
+    console.log(endDate)
+    console.log(typeof endDate)
+
+    RecommendController.recommend(req.query.city,groupSize,startDate,endDate)
       .then(attraction => res.status(200).send(attraction))
       .catch(error => res.status(500).send(error))
   }),
