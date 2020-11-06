@@ -27,7 +27,7 @@
 
 <script>
 
-    import Authentication from '@/services/Authentication'
+    import AuthenticationService from '../services/AuthenticationService.js'
 
     export default {
         data(){
@@ -40,19 +40,23 @@
         }, 
         methods:{
             async signup(){
-            
                 console.log(this.name)
-                const response = await Authentication.signup({
+                console.log(this.email)
+                console.log(this.password)
+                
+                try {
+                const response = await AuthenticationService.signup({
                     "email": this.email,
                     "name": this.name,
                     "password": this.password,
-                    "error": null
                 })
-               console.log(response.data);
+                console.log(response.data);
+                } catch (error) {
+                    console.log(error)
+                }
             }
         }
     }
-     
 
 
 
