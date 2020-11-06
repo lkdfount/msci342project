@@ -12,7 +12,7 @@ module.exports = {
         model: Attractions,
         as: 'Attractions',
         where: {city: city,
-                max_number_guest: {[Op.gt]: groupSize}
+                max_number_guest: {[Op.gte]: groupSize}
                 }
     })
 

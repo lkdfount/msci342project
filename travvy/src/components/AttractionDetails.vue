@@ -20,13 +20,15 @@
 </template>
 
 <script>
-  export default {
 
-    methods: {
+
+export default {
+  methods: {
       async navigateTo(route) {
           this.$router.push(route)
       }
     }
+
   }
 </script>
 
