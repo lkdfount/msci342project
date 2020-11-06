@@ -15,9 +15,13 @@ module.exports = {
         Preferred_Activity_Type: null
         
     })
+    .then(function(users){
+        console.log(users);
+        done()
+    }).catch(done);
+    }}
 
-    return users
-  }
+    // return users
+  
 
-}
 

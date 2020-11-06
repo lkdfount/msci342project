@@ -25,7 +25,7 @@ fs
     
     const model = require(path.join(__dirname,file))(sequelize, Sequelize.DataTypes)
         //require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
-    db[model] = model
+    db[model.name] = model
   })
   // Ensures that the database is connected
 sequelize
