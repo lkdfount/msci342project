@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 export default {
-  // It makes get request to recommend attractions based on city
+  // It makes post request to add the user information to the database
     signup(email,name, password){
         return axios.post('/signup', {params:email,name,password})  
         .then(function (response) {

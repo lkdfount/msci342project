@@ -2,7 +2,9 @@
 
 const Users = require('../models').Users
 
-// This is the logic for queriying database for attraction information for the desired city
+// This is the logic for adding users to the database
+// The format is set to match the Users table on MySQL
+// The null values will be replaced with information that the user will provide during onboarding
 module.exports = {
   async signup (email,name, password) {
     const user = await Users.create({
