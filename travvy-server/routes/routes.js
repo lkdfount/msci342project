@@ -7,11 +7,10 @@ module.exports = (app) => {
   app.get('/recommend', (req, res) => {
     groupSize = parseInt(req.query.groupSize)
     startDate = new Date(req.query.startDate)
-    startDate = startDate.setFullYear(0)
+    //These commented out values is legacy code in case it will be needed to be used again
+    //startDate = nonfilteredStartDate.setFullYear(0)
     endDate = new Date(req.query.endDate)
-    endtDate = endDate.setFullYear(0)
-    console.log(endDate)
-    console.log(typeof endDate)
+    //endDate = endDate.setFullYear(endDate.getFullYear()-nonfilteredStartDate.getFullYear() > 0 ? 0 : 1)
 
     RecommendController.recommend(req.query.city,groupSize,startDate,endDate)
       .then(attraction => res.status(200).send(attraction))
