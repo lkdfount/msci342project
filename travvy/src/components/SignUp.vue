@@ -12,10 +12,10 @@
             <br>
             <br> 
             <label>Password: </label>
-            <input type="password"  v-model="password" placeholder="password"/> 
+            <input type="text"  v-model="password" placeholder="password"/> 
 
         </form>
-        <div class="error" v-html="error" />
+        <div v-html="error" />
         <br>
         <br>
         <!-- declares the component of user form --> 
@@ -32,46 +32,26 @@
     export default {
         data(){
             return {
-                name: '',
                 email: '',
+                name: '',
                 password: '',
                 error: null
             }
         }, 
         methods:{
             async signup(){
+            
                 console.log(this.name)
                 const response = await Authentication.signup({
-                    name: this.name,
-                    email: this.email,
-                    password: this.password
+                    "email": this.email,
+                    "name": this.name,
+                    "password": this.password,
+                    "error": null
                 })
-                console.log(response.data);
+               console.log(response.data);
             }
         }
     }
-       // name: "SignUp",
-       // components: {
-          //  UserForm
-       // },
-       
-       // methods: {
-            // this menthod will register the user with the info provided above
- 
-         //   async registerUser(registrationInfo){
-            //    UserForm.push(this.user)
-            //    this.user.name = '',
-            //    this.user.email = '',
-            //    this.user.password = '',
-            
-           //     let user = ('registerUser', registrationInfo);
-           //     if(user.error){
-           //         alert(user.error)
-            //    } else {
-            //        alert('Welcome to TRAVVY ' + user.name);
-             //   }
-            //}
-       // },
      
 
 
