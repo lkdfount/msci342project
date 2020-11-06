@@ -1,9 +1,9 @@
 // Sequelize model for table that is called "users"
 module.exports = (sequelize, DataTypes) => {
-    User = sequelize.define('User', {
+    Users = sequelize.define('Users', {
       Email: {
         type: DataTypes.TEXT,
-        field: 'email',
+        field: 'Email',
         primaryKey: true
       },
       Name: DataTypes.TEXT,
@@ -18,6 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     }
     )
   
-    return User
+    return Users
   }
   

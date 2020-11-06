@@ -4,8 +4,8 @@ const Users = require('../models').Users
 
 // This is the logic for queriying database for attraction information for the desired city
 module.exports = {
-  async signup(name,email,password) {
-    const users = await Users.create({
+  async signup (email,name, password) {
+    const user = await Users.create({
         Email: email, 
         Name: name,
         Password: password,
@@ -15,13 +15,8 @@ module.exports = {
         Preferred_Activity_Type: null
         
     })
-    .then(function(users){
-        console.log(users);
-        done()
-    }).catch(done);
-    }}
-
-    // return users
-  
+    return user
+}
+}
 
 
