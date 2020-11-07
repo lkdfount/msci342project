@@ -6,16 +6,16 @@
       <!-- include the toronto heading, an image, and some info about Toronto -->
       <br><br><br>
       <!-- Generates location heading based on first recommended attraction -->
-      <h1>{{$store.state.city}}</h1>
+      <h1>{{$store.state.city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
       <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
       <br>
       <h3>Description</h3>
-      <p>Toronto is the largest city in Canada, is the capital of Ontario, and is home to attractions such as the CN tower.</p>
+      <p>{{$store.state.recommendedAttractions[0].city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}, {{$store.state.recommendedAttractions[1].attraction_name}}, and {{$store.state.recommendedAttractions[2].attraction_name}}.</p>
       <h3>COVID-19</h3>
       <p>Active cases: 2684</p>
       <p>Trend: Numbers increasing</p>
       <h3>Safety Guidelines</h3>
-      <p>Toronto is in phase 2</p>
+      <p>{{$store.state.recommendedAttractions[0].city}} is in phase 2</p>
       <p>Max gathering of people indoors: 10</p>
       <p>Masks: required</p>
       <br>
@@ -28,8 +28,10 @@
       <br><br>
       <!-- generates dynamic buttons based on the recommended attractions -->
       <div v-if="$store.state.recommendedAttractions.length > 0">
-      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" v-bind:key="value.id" >
-          <button v-on:click="navigateTo({name:'AttractionDetails'})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>
+      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" :key="value.id" >
+          <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
+          <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
+          <router-link :to="{name:'AttractionDetails', params: {id: 0} }" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>
       </div>
       </div>
       <div v-else>
@@ -41,9 +43,9 @@
       <!-- in later sprints, they will be pulled from the database -->
       <h1>Traveller Tips</h1>
       <h3>Matt, 25 from Montreal</h3>
-      <p>Toronto felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>
+      <p>{{$store.state.recommendedAttractions[0].city}} felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>
       <h3>Lisa, 28 from Winnepeg</h3>
-      <p>I stayed along Harbourfront, I'd totally recommend it. Great view and less people.</p>
+      <p>I spent time at {{$store.state.recommendedAttractions[0].attraction_name}}, I'd totally recommend it. Great view and less people.</p>
 
       <!-- include a map of Toronto, later this will be made responsive with the Google Maps APU -->
       <h1>Map</h1>
@@ -53,13 +55,29 @@
 </template>
 
 <script>
+
+
  export default {
+  name: 'AttractionsList',
+  data() {
+    return {
+      value: {
+        id: 0,
+      }
+    }
+  },
   methods: {
     async navigateTo(route) {
         this.$router.push(route)
+      }
+    //sendValueId() {
+      //<!--  this.$root.$emit(value.id) -->
+  //  }    
+
     }
   }
- }
+   
+
 </script>
 
 <style>

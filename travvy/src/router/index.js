@@ -27,9 +27,11 @@ const routes = [
     component: AttractionsList
   },
   {
-    path: '/AttractionDetails',
+    path: '/AttractionDetails/:id',
     name: 'AttractionDetails',
-    component: AttractionDetails
+    component: AttractionDetails,
+    props: true,
+
   },
   {
     path: '/SignUp',

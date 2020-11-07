@@ -11,9 +11,10 @@ module.exports = {
         model: Attractions,
         as: 'Attractions',
         where: {city: city,
-                max_number_guest: {[Op.gt]: groupSize}, 
-                opening_date:{[Op.lt]:startDate}, 
-                closing_date:{[Op.gt]: endDate} 
+
+                max_number_guest: {[Op.gte]: groupSize}, 
+                opening_date:{[Op.lte]:startDate}, 
+                closing_date:{[Op.gte]: endDate} 
                 }
     })
 
