@@ -1,6 +1,5 @@
 const RecommendController = require('../src/controllers/RecommendController.js')
 const CitySelectController = require('../src/controllers/CitySelectController.js')
-const UsersController = require('../src/controllers/UsersController.js')
 const AuthenticationController = require('../src/controllers/AuthenticationController.js')
 
 
@@ -24,11 +23,7 @@ module.exports = (app) => {
       .then(locations => res.status(200).send(locations))
       .catch(error => res.status(500).send(error))
     })
-  app.get('/getuser', (req, res) => {
-    UsersController.getuser()
-      .then(users => res.status(200).send(users))
-      .catch(error => res.status(500).send(error))
-    })
+
  
  app.post('/signup', (req, res) => {
   console.log(req)
