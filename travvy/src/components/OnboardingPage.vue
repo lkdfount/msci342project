@@ -1,27 +1,49 @@
 <template>  
   <div class="Onboarding">
+     <div class="container">
+    <!-- Onboarding fields that the user must fill in in order to get personalized recommendations --> 
     <h2>Welcome to Travvy, we'd love to learn more about you!</h2>
     <p>Please fill in the following information in order to get a custom travel experience.</p>
+    <label>Please select the sex you identify with: </label>
+    <br>
+    <br>
+    <div class="custom-select">
+    <select>
+        <option></option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Prefer not to say</option>
+    </select>
+    <br>
+    <br>
+    <label>Please input your age: </label>
+    <input type="text" > 
+    <br>
+    </div>
     <br>
     <label>Please select the type of activity you enjoy most: </label>
-    <input type="text" v-model="activity" placeholder="activity"/> 
     <br>
     <br>
-    <label>Where would your dream vacation be?: </label>
-    <input type="text" v-model="activity"/> 
+    <button v-on:click="reverseMessage" class="nextActivity">Family</button>   <button v-on:click="reverseMessage" class="nextActivity">Historical</button>   <button v-on:click="reverseMessage" class="nextActivity">Active</button>  <button v-on:click="reverseMessage" class="nextActivity">Nature</button>  <button v-on:click="reverseMessage" class="nextActivity"> Entertainment</button> <button v-on:click="reverseMessage" class="nextActivity">Food</button> 
     <br>
     <br>
-    <label>Please select the sex you identify with: </label>
-    <select type="text" v-model="Sex"/> 
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="Prefer not to say">Prefer not to say</option>
+    <label>What is your dream vacation spot?: </label>
+    <input type="text"> 
+    <br>
+    <br>
+    <label>Please input your budget: </label>
+    <input type="text">
+    <br>
+    <br>
+    <label>Please include your Instagram handle!: </label>
+    <input type="text"> 
     <br>
     <br>
     <!-- Button to go to the Home page --> 
     <router-link to="/Home" tag="button" class="button"><span>Get Started!</span></router-link> 
     <br>
-
+    
+    </div>
   </div>
 </template>
 
@@ -38,7 +60,7 @@ export default {
 <style scoped>
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #FF5F00; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -90,10 +112,43 @@ a {
   color: #42b983;
 }
 
-img {
-  max-width: 40%;
-  max-height: 40%;
+.nextActivity{
+  background-color: #89C4A0;
+  border: none;
+  color: white;
+  padding: 20px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 24px;
+}
 
-  height: auto;
+.nextActivity:hover {
+  background-color: #C7EEA9;
+}
+
+.container {
+  /* Add shadows to create the "card" effect */
+  background-color: #F0E4D8;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 0 400px;
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 22px 10px;
+}
+
+.container {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 5px rounded corners */
 }
 </style>
