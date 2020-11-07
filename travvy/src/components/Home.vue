@@ -36,9 +36,9 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" class="dates">
+      <input type="Date" min="2020-11-09" class="dates">
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" class="dates">
+      <input type="Date" max="2022-12-31" class="dates">
 
 
     <!-- data binding travellers, corresponding data object below -->
