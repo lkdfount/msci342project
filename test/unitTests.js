@@ -9,7 +9,6 @@ const endDate = new Date("2021-01-05")
 describe('Reccommend Attractions Test', function() {
  it('should return 4', async function() {
        const response = await RecommendController.recommend(city,groupSize,startDate,endDate)
-       console.log(response.length)
        assert.equal(response.length,4);
         })
 
