@@ -36,15 +36,16 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" min="2020-11-09" class="dates">
+
+      <input type="Date" min="2020-11-09" class="dates" v-model="startDate">
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" max="2022-12-31" class="dates">
+      <input type="Date" max="2022-12-31" class="dates" v-model="endDate">
 
 
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
-    <input type="text" class="travellers">
+    <input type="text" id="groupSize" class="travellers" v-model="groupSize">
     <br>
     <br>
     <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
@@ -98,6 +99,9 @@
    data(){
      return{
        city: '',
+       groupSize: '',
+       startDate: '',
+       endDate: '',
        error:null
      }
    },
@@ -107,7 +111,9 @@
     async navigateTo(route) {
 
       try {
-        const response = await AttractionsService.recommend({"city": this.city})
+        //saves users city in the store
+        this.$store.dispatch('setCity', this.city)
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         this.$router.push(route)

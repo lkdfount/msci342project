@@ -2,9 +2,11 @@
   "name": "travvy-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js src/app.js --exec \"npm run lint && node\"",
+    "start": "node travvy-server/app.js",
+    "test": "mocha",
+    "dev": "node ./node_modules/nodemon/bin/nodemon.js travvy-server/app.js --exec \"npm run lint && node\"",
     "lint": "./node_modules/.bin/eslint --fix **/*.js"
   },
   "keywords": [],
@@ -17,7 +19,6 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "nodemon": "^2.0.6",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
@@ -29,6 +30,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.2",
-    "eslint-plugin-vue": "^7.1.0"
+    "eslint-plugin-vue": "^7.1.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6"
   }
 }
