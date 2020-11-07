@@ -27,3 +27,11 @@ sequelize.sync().then(() => {
   app.listen(process.env.PORT || 5000)
   console.log(`Server sarted on port ${config.port}`)
 })
+// Send user signup information to database
+app.post('/signup',(req,res) =>{
+  res.send({
+    message: 'Successfully registered'
+  })
+})
+
+
