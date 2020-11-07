@@ -22,7 +22,9 @@ fs
     file !== 'index.js'
   )
   .forEach((file) => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
+    
+    const model = require(path.join(__dirname,file))(sequelize, Sequelize.DataTypes)
+        //require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
     db[model.name] = model
   })
   // Ensures that the database is connected
