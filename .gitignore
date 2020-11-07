@@ -2,6 +2,7 @@ travvy-server/node_modules/
 travvy/node_modules/
 .DS_Store
 travvy/package-lock.json
-travvy/package-lock.json
+travvy-server/package-lock.json
+package-lock.json
 node_modules/
 travvy-server/public/
