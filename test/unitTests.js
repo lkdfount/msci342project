@@ -11,6 +11,5 @@ describe('Reccommend Attractions Test', function() {
        const response = await RecommendController.recommend(city,groupSize,startDate,endDate)
        assert.equal(response.length,4);
         })
-
     });
 
