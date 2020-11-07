@@ -5,8 +5,7 @@ const { Op } = require("sequelize");
 
 // This is the logic for queriying database for attraction information for the desired city
 module.exports = {
-  async recommend (city, groupSize, startDate, endDate) {
-    
+  async recommend (city, groupSize, startDate, endDate) {   
     const attractions = await Attractions.findAll({
       // include:{
         model: Attractions,
