@@ -59,8 +59,13 @@
     <br>
     <p>{{ uploadFiles}}</p>
     <!-- data binding upload files message, corresponding data object below -->
-    <p>Drop files here or <button class="selectFiles">Select Files</button> </p>
+    
     <!-- allows users to upload travel documents from computer -->
+  <div>
+    <p>Drop files here or  <select-file v-model="file"></select-file> </p>
+    <p v-if="file">{{file.name}}</p>
+  </div>
+
 
     <br><br>
     <p> {{ nextDestination }}</p>
@@ -76,10 +81,14 @@
 <!-- this script hosts components and assigns each prop from the template above a specific type of value -->
 <!-- methods are referenced above in template, and explains the behaviour of an object -->
  <script>
+ import SelectFile from './SelectFile.vue'
  import AttractionsService from '../services/AttractionsService.js'
  import LocationsService from '../services/LocationsService.js'
  export default {
    name: 'Home',
+   components: {
+    SelectFile
+   },
    props: {
      msg: String,
      travvy: String,
@@ -101,7 +110,9 @@
        groupSize: '',
        startDate: '',
        endDate: '',
-       error:null
+       error:null,
+       file: null
+
      }
    },
 
