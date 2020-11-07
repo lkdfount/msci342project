@@ -1,6 +1,8 @@
 const RecommendController = require('../src/controllers/RecommendController.js')
 const CitySelectController = require('../src/controllers/CitySelectController.js')
-const UsersController = require('../src/controllers/UsersController.js')
+const AuthenticationController = require('../src/controllers/AuthenticationController.js')
+
+
 
 // Sets up endpoints for API
 module.exports = (app) => {
@@ -21,9 +23,14 @@ module.exports = (app) => {
       .then(locations => res.status(200).send(locations))
       .catch(error => res.status(500).send(error))
     })
-  app.get('/getuser', (req, res) => {
-    UsersController.getuser()
-      .then(users => res.status(200).send(users))
-      .catch(error => res.status(500).send(error))
-    })
+
+ 
+ app.post('/signup', (req, res) => {
+  console.log(req)
+  console.log(req.body.params.email)
+  AuthenticationController.signup(req.body.params.email, req.body.params.name,req.body.params.password)
+    .then(users => res.status(201).send(users))
+    .catch(error => res.status(400).send(error))
+})
+
 }
