@@ -193,11 +193,12 @@
 .destination{
   background-color: #C7EEA9;
   border-radius: 12px;
-  width: 150px;
+  width: 200px;
   height: 25px;
 }
 .input {
   height:40px;
+  width: 200px;
   font-size:14pt;
   padding: 2px 2px;
 
@@ -206,13 +207,13 @@
 .dates{
   background-color: #C7EEA9;
   border-radius: 12px;
-  width: 150px;
+  width: 200px;
   height: 25px;
 }
 .travellers{
   background-color: #C7EEA9;
   border-radius: 12px;
-  width: 150px;
+  width: 200px;
   height: 18px;
 }
 

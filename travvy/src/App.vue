@@ -9,9 +9,9 @@
       </router-link>
     </div>
     <router-view/>
-    <dev class="footer">
+    <div class="footer">
       <p> © 2020 TRAVVY, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
-    </dev>
+    </div>
   </div>
 
 </template>

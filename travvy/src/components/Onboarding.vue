@@ -17,10 +17,19 @@
         <option>Prefer not to disclose</option>
     </select>
     </div>
+
+    <br>
+    <br>
+    <label>email?: </label>
+    <input type="text" class="info" v-model="email">
+    <br>
+    <br>
+    <label>gender?: </label>
+    <input type="text" class="info" v-model="gender">
     <br>
     <br>
     <label>Please input your age: </label>
-    <input type="text" class="info" > 
+    <input type="text" class="info" v-model="age" > 
     <br>
     <br>
     <label>Please select the type of activity you enjoy most: </label>
@@ -29,8 +38,15 @@
     <button class="nextActivity">Family</button>   <button class="nextActivity">Historical</button>   <button class="nextActivity">Active</button>  <button class="nextActivity">Nature</button>  <button class="nextActivity"> Entertainment</button> <button class="nextActivity">Food</button> 
     <br>
     <br>
+    <br>
+    <br>
+    <label>preferred_activity_type?: </label>
+    <input type="text" class="info" v-model="preferred_activity_type">
+    <br>
+    <br>
+    <br>
     <label>What is your dream vacation spot?: </label>
-    <input type="text" class="info"> 
+    <input type="text" class="info" > 
     <br>
     <br>
     <label>Please input your budget: </label>
@@ -38,11 +54,13 @@
     <br>
     <br>
     <label>Please include your Instagram handle: </label>
-    <input type="text" class="info"> 
+    <input type="text" class="info" v-model="instagram_username"> 
     <br>
     <br>
     <!-- Button to go to the Home page --> 
-    <router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> 
+    <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
+    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Get Started!</span></button>
+
     <br>
 
     </div>
@@ -60,24 +78,50 @@ export default {
     msg: String
   }, 
   
+  data() {
+    return {
+                email: '',
+                age: '',
+                gender: '',
+                instagram_username: '',
+                preferred_activity_type: '',
+                error: null,
+            }
+
+  },
   methods:{
-    async onboarding123(){
-      console.log(this.name)
+    async onboarding(){
       console.log(this.email)
-      console.log(this.password)
-                
+      console.log(this.age)
+      console.log(this.gender)
+      console.log(this.instagram_username)
+      console.log(this.preferred_activity_type)
+
       try {
-        const response = await AuthenticationService.signup({
+        const response = await AuthenticationService.onboarding({
           "email": this.email,
-          "name": this.name,
-          "password": this.password,
+          "age": this.age,
+          "gender": this.gender,
+          "instagram_username": this.instagram_username,
+          "preferred_activity_type": this.preferred_activity_type,
+
           })
         console.log(response);
       } catch (error) {
         console.log(error)
         }
-    }
-            
+    },
+
+      async navigateTo(route) {
+
+            try {
+              this.$router.push(route)
+            } catch (error) {
+               console.log(error)
+            }
+            }
+   
+
   }
   
 
