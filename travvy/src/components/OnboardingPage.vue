@@ -7,24 +7,24 @@
     <label>Please select the sex you identify with: </label>
     <br>
     <br>
-    <div class="custom-select">
+    <div class="box">
     <select>
         <option></option>
         <option>Male</option>
         <option>Female</option>
         <option>Prefer not to say</option>
     </select>
+    </div>
     <br>
     <br>
     <label>Please input your age: </label>
     <input type="text" > 
     <br>
-    </div>
     <br>
     <label>Please select the type of activity you enjoy most: </label>
     <br>
     <br>
-    <button v-on:click="reverseMessage" class="nextActivity">Family</button>   <button v-on:click="reverseMessage" class="nextActivity">Historical</button>   <button v-on:click="reverseMessage" class="nextActivity">Active</button>  <button v-on:click="reverseMessage" class="nextActivity">Nature</button>  <button v-on:click="reverseMessage" class="nextActivity"> Entertainment</button> <button v-on:click="reverseMessage" class="nextActivity">Food</button> 
+    <button class="nextActivity">Family</button>   <button class="nextActivity">Historical</button>   <button class="nextActivity">Active</button>  <button class="nextActivity">Nature</button>  <button class="nextActivity"> Entertainment</button> <button class="nextActivity">Food</button> 
     <br>
     <br>
     <label>What is your dream vacation spot?: </label>
@@ -69,6 +69,7 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2)
 }
 
 .button span {
@@ -116,12 +117,13 @@ a {
   background-color: #89C4A0;
   border: none;
   color: white;
-  padding: 20px 35px;
+  padding: 15px 40px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   border-radius: 24px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2)
 }
 
 .nextActivity:hover {
@@ -149,6 +151,30 @@ a {
 .container {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 15px; /* 5px rounded corners */
+  border-radius: 15px; /* 15px rounded corners */
 }
+
+.box {
+position: absolute;
+padding: 0px 445px;
+
+}
+
+.box select {
+background-color: #89C4A0;
+color: white;
+padding: 4px;
+width: 200px;
+height: 26px;
+border: none;
+font-size: 14px;
+box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+outline: none;
+}
+
+.box:before{
+    content: 'f063';
+}
+
+
 </style>
