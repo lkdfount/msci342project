@@ -40,7 +40,7 @@
     <br>
     <br>
     <!-- Button to go to the Home page --> 
-    <router-link to="/Home" tag="button" class="button"><span>Get Started!</span></router-link> 
+    <router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> 
     <br>
     
     </div>
@@ -48,11 +48,37 @@
 </template>
 
 <script>
+
+import AuthenticationService from '../services/AuthenticationService.js'
+
 export default {
   name: 'Onboarding',
   props: {
     msg: String
+  }, 
+  
+  methods:{
+    async signup(){
+      console.log(this.name)
+      console.log(this.email)
+      console.log(this.password)
+                
+      try {
+        const response = await AuthenticationService.signup({
+          "email": this.email,
+          "name": this.name,
+          "password": this.password,
+          })
+        console.log(response);
+      } catch (error) {
+        console.log(error)
+        }
+    }
+            
   }
+  
+
+
 }
 </script>
 
