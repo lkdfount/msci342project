@@ -5,11 +5,12 @@
     <!-- Have the logo act as a button to take users back to the landing page --> 
       <router-link to="/">
         <img src="./images/JPEGLogo.jpg" alt="Logo" class="navbarimage"/>
+
       </router-link>
     </div>
     <router-view/>
-  </div>
 
+  </div>
 
 </template>
 
@@ -100,4 +101,47 @@
  a {
    color: #42b983;
  }
+
+ .container {
+  /* Add shadows to create the "card" effect */
+  background-color: #F0E4D8;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 0 400px;
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 22px 10px;
+}
+
+.container {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 15px rounded corners */
+}
+
+.box {
+position: absolute;
+padding: 0px 445px;
+
+}
+
+.box select {
+background-color: #89C4A0;
+color: white;
+padding: 4px;
+width: 200px;
+height: 26px;
+border: none;
+font-size: 14px;
+box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+outline: none;
+border-radius: 10px; 
+}
 </style>
