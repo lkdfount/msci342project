@@ -11,13 +11,10 @@
           <br>
           <label>Password: </label>
           <input type="password" v-bind="UserForm"/> 
-          <br>
-          <input type="checkbox" @click="showPassword">Show Password
         </form>
         <br>
         <br>
         <button class="search"><span>Log In</span></button>
-        
     </div>
 </template>
 

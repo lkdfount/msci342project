@@ -4,19 +4,15 @@
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
             <label>Full Name: </label>
-            <input type="text" v-model="name" placeholder="Full Name" id="name"/> 
+            <input type="text" v-model="name" placeholder="name"/> 
             <br>
             <br>
             <label>Email: </label>
-            <input type="text" v-model="email" placeholder="Email" id="email"/>
+            <input type="text" v-model="email" placeholder="email"/>
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”type”  v-model="password1" placeholder="Password" id="password" />
-            <br>
-            <input type="checkbox" @click="showPassword">Show Password
-           
-            <!--<button @click=”showPassword”>btnText</button>-->
+            <input type="text"  v-model="password" placeholder="password"/> 
 
         </form>
         <div v-html="error" />
@@ -25,9 +21,7 @@
         <!-- declares the component of user form --> 
       
         <!-- will submit the form to register the user --> 
-        <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
-        <router-link @click='signup' :to="{name:'Home', params: {} }" tag="button" class="button"><span>Register</span></router-link>
-
+        <button class="search" @click='signup' >Register</button>
     </div>
 </template>
 
@@ -41,7 +35,7 @@
                 email: '',
                 name: '',
                 password: '',
-                error: null,
+                error: null
             }
         }, 
         methods:{
@@ -61,53 +55,12 @@
                     console.log(error)
                 }
             }
-            
-     }
- }
-
+        }
+    }
 
 
 
 </script>
 <style scoped>
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #FF5F00;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 22px;
-  padding: 12px 22px;
-  width: 150px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
 
 </style>

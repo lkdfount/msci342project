@@ -7,29 +7,7 @@
       <br><br><br>
       <!-- Generates location heading based on first recommended attraction -->
       <h1>{{$store.state.city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
-
-      <!-- the images of each city will dynamically display based on the chosen destination -->
-      <div v-if="$store.state.recommendedAttractions[0].city == 'Toronto'">
-        <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
-      </div>
-      <div v-else-if="$store.state.recommendedAttractions[0].city == 'Paris'">
-        <img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/>
-      </div>
-      <div v-else-if="$store.state.recommendedAttractions[0].city == 'London'">
-        <img src="../images/london.jpg" alt="Picture of London" class ="cityimage" />
-      </div>
-      <div v-else-if="$store.state.recommendedAttractions[0].city == 'New York City'">
-        <img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/>
-      </div>
-      <div v-else-if="$store.state.recommendedAttractions[0].city == 'Rio de Janeiro'">
-        <img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
-      </div>
-      <div v-else-if="$store.state.recommendedAttractions[0].city == 'Rome'">
-        <img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/>
-      </div>
-      <div v-else="">
-      </div>
-
+      <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
       <br>
       <h3>Description</h3>
       <p>{{$store.state.recommendedAttractions[0].city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}, {{$store.state.recommendedAttractions[1].attraction_name}}, and {{$store.state.recommendedAttractions[2].attraction_name}}.</p>
@@ -171,12 +149,6 @@
 .responsive {
   width: 100%;
   height: auto;
-}
-
-.cityimage {
-  max-height: 500px;
-  height: 70%;
-  width: auto;
 }
 
 #app {
