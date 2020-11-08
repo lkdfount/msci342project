@@ -3,6 +3,7 @@
 <!-- template outlines the web page and calls on instance data from the script -->
 <template>
   <div class="Home">
+    <div class="container">
     <!-- Profile button that will lead to the users profile page -->
     <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile">
     <br>
@@ -70,12 +71,12 @@
     <br><br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
-    <h1>Find your next travel destination</h1>
+    <h2>Find your next travel destination</h2>
 
     <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
     <!-- gives users the options to explore attractions at other destinations -->
    </div>
-
+ </div>
  </template>
 
 <!-- this script hosts components and assigns each prop from the template above a specific type of value -->
@@ -192,14 +193,20 @@
 .destination{
   background-color: #C7EEA9;
   border-radius: 12px;
+  width: 150px;
+  height: 25px;
 }
 .dates{
   background-color: #C7EEA9;
   border-radius: 12px;
+  width: 150px;
+  height: 25px;
 }
 .travellers{
   background-color: #C7EEA9;
   border-radius: 12px;
+  width: 150px;
+  height: 18px;
 }
 
 .search {

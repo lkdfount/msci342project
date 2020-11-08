@@ -8,7 +8,9 @@
       </router-link>
     </div>
     <router-view/>
-
+    <dev class="footer">
+      <p> © 2020 TRAVVY, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
+    </dev>
   </div>
 
 </template>
@@ -100,7 +102,7 @@
   /* Add shadows to create the "card" effect */
   background-color: #F0E4D8;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin: 0 400px;
+  margin: 0 300px;
   transition: 0.3s;
 }
 
@@ -137,5 +139,17 @@ font-size: 14px;
 box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 outline: none;
 border-radius: 10px; 
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #FEC195;
+  color: Black;
+  font-size: 12px;
+  text-align: center;
 }
 </style>
