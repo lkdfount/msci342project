@@ -6,7 +6,7 @@ import AttractionsList from '../components/AttractionsList.vue'
 import AttractionDetails from '../components/AttractionDetails.vue'
 import SignUp from '../components/SignUp.vue'
 import LogIn from '../components/LogIn.vue'
-import OnboardingPage from '../components/OnboardingPage.vue'
+import Onboarding from '../components/Onboarding.vue'
 
 // Initializes routes for frontend pages
 Vue.use(VueRouter)
@@ -45,9 +45,9 @@ const routes = [
     component: LogIn
   },
   {
-    path: '/OnboardingPage',
-    name: 'OnboardingPage',
-    component: OnboardingPage
+    path: '/Onboarding',
+    name: 'Onboarding',
+    component: Onboarding
   }
 
 ]
