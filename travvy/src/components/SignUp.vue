@@ -14,8 +14,10 @@
             <label>Password: </label>
             <input type=”type”  v-model="password" placeholder="Password" id="password" />
             <br>
-            <input type="checkbox" @click="showPassword">Show Password
-           
+            <!-- 
+            this was causing a ton of problems
+          <input type="checkbox" @click="showPassword">Show Password
+          --> 
             <!--<button @click=”showPassword”>btnText</button>-->
 
         </form>
