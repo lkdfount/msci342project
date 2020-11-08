@@ -8,8 +8,8 @@
     <label>Please select the gender you identify as: </label>
     <br>
     <br>
-    <div class="box">
-    <select>
+    <div class= "">
+    <select class="info">
         <option></option>
         <option>Male</option>
         <option>Female</option>
@@ -61,7 +61,7 @@ export default {
   }, 
   
   methods:{
-    async signup(){
+    async onboarding123(){
       console.log(this.name)
       console.log(this.email)
       console.log(this.password)
@@ -116,6 +116,44 @@ export default {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
   outline: none;
   border-radius: 10px; 
+
+}
+
+.button {
+  background-color: #FF5F00; /* Orange */
+  border: none;
+  color: white;
+  padding: 14px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 18px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -25px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 15px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 
 }
 
