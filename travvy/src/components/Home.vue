@@ -24,7 +24,7 @@
       <span>Selected:{{selected}}</span>
       </div>-->
 
-    <select v-model="city" id="Destination" name="Destination" class="destination">
+    <select v-model="city" id="Destination" name="Destination" class="destination input">
       <option value="Toronto">Toronto, Canada</option>
       <option value="Paris">Paris, France</option>
       <option value="London">London, England</option>
@@ -36,15 +36,15 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates" v-model="startDate">
+      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate">
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates" v-model="endDate">
+      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate">
 
 
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
-    <input type="text" id="groupSize" class="travellers" v-model="groupSize">
+    <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
     <br>
     <br>
     <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
@@ -193,6 +193,13 @@
   background-color: #C7EEA9;
   border-radius: 12px;
 }
+.input {
+  height:40px;
+  font-size:14pt;
+  padding: 2px 2px;
+
+}
+
 .dates{
   background-color: #C7EEA9;
   border-radius: 12px;

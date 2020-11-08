@@ -1,7 +1,7 @@
 
 <template>  
   <div class="Landing">
-    <img src="../images/map.jpg" alt="Picture of Map"/>
+    <img src="../images/map.jpg" alt="Picture of Map" class="landingimage" />
     <br>
     <br>
     <!-- Button to go to the log inpage --> 
@@ -31,17 +31,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.landingimage {
+  max-height: 500px;
+  height: 70%;
+  width: auto;
+}
 
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 14px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius: 12px;
+  border-radius: 18px;
 }
 
 .button span {
@@ -56,12 +61,12 @@ export default {
   position: absolute;
   opacity: 0;
   top: 0;
-  right: -20px;
+  right: -25px;
   transition: 0.5s;
 }
 
 .button:hover span {
-  padding-right: 25px;
+  padding-right: 15px;
 }
 
 .button:hover span:after {

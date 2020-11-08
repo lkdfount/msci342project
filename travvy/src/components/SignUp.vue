@@ -28,7 +28,8 @@
       
         <!-- will submit the form to register the user --> 
         <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
-        <button class="button" @click='signup' >Register</button>
+        <router-link> </router-link> 
+        <button class="button" @click="signup(); navigateTo({name:'Onboarding'});"><span>Register</span></button>
 
     </div>
 </template>
@@ -62,7 +63,16 @@
                 } catch (error) {
                     console.log(error)
                 }
+            }, 
+
+            async navigateTo(route) {
+
+            try {
+              this.$router.push(route)
+            } catch (error) {
+               console.log(error)
             }
+        }
             
      }
  }

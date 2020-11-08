@@ -4,7 +4,7 @@
     <!-- Have the logo appear on each page --> 
     <!-- Have the logo act as a button to take users back to the landing page --> 
       <router-link to="/">
-        <img src="./images/JPEGLogo.jpg" alt="Logo" style="width:500px;height:200px;"/>
+        <img src="./images/JPEGLogo.jpg" alt="Logo" class="navbarimage"/>
       </router-link>
     </div>
     <router-view/>
@@ -35,6 +35,11 @@
   color: #42b983;
 }
 
+.navbarimage {
+  max-height: 200px;
+  height: 70%;
+  width: auto;
+}
 .travvy{
   background-color: #B8D1FF;
   border: none;
