@@ -29,3 +29,13 @@ sequelize.sync().then(() => {
 })
 
 
+app.post('/signup',(req,res) =>{
+  res.send({
+    message: 'Successfully registered'
+  })
+})
+app.post('/login',(req,res) =>{
+  res.send({
+    message: 'Successful log in'
+  })
+})

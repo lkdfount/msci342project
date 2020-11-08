@@ -8,7 +8,9 @@ export default new Vuex.Store({
     state: {
         // Creates the recommended attractions and city variable where an array of recommended attractions will be stored
         recommendedAttractions: null, 
-        city: null
+        city: null,
+        //create the variable where the logged in user's email will be stored
+        userEmail: null
     },
     mutations: {
         // If user selects new locations, recommended attractions change
@@ -20,6 +22,10 @@ export default new Vuex.Store({
         },
         setSe(state,selectedAttraction){
             state.selectedAttraction = selectedAttraction
+        },
+        //when a user logs in, set the variable to their email
+        setUserEmail(state,userEmail){
+            state.userEmail = userEmail
         }
     }, 
     actions: {
@@ -32,6 +38,10 @@ export default new Vuex.Store({
         },
         setSelectedAttraction({commit}, selectedAttraction){
             commit('setSelectedAttraction', selectedAttraction)
+        },
+        //when a user logs in, set it to the array
+        setUserEmail({commit}, userEmail){
+            commit('setUserEmail', userEmail)
         }
     },
   

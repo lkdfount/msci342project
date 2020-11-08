@@ -18,7 +18,21 @@ module.exports = {
         
     })
     return user
-}
+    
+    },
+    //this is the login method
+    async login (email, password) {
+        //here we find a user who's email matches an email in the user database
+        const user = await Users.findOne({
+            where:{
+                email: email
+            }
+        })
+        //retun the user that was found
+        //if there is not a user that exists it will return null
+        return user
+    }
+    
 }
 
 
