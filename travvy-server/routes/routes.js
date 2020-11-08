@@ -32,5 +32,11 @@ module.exports = (app) => {
     .then(users => res.status(201).send(users))
     .catch(error => res.status(400).send(error))
 })
-
+  app.post('/login', (req, res) => {
+      console.log(req)
+      console.log(req.body.params.email)
+      AuthenticationController.login(req.body.params.email,req.body.params.password)
+        .then(users => res.status(201).send(users))
+        .catch(error => res.status(400).send(error))
+    })
 }
