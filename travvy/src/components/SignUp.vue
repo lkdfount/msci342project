@@ -12,7 +12,7 @@
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”type”  v-model="password1" placeholder="Password" id="password" />
+            <input type=”type”  v-model="password" placeholder="Password" id="password" />
             <br>
             <input type="checkbox" @click="showPassword">Show Password
            
@@ -26,7 +26,7 @@
       
         <!-- will submit the form to register the user --> 
         <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
-        <router-link @click='signup' :to="{name:'Home', params: {} }" tag="button" class="button"><span>Register</span></router-link>
+        <router-link @click='signup' to="/Onboarding" tag="button" class="button"><span>Register</span></router-link>
 
     </div>
 </template>
