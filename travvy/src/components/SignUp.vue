@@ -29,7 +29,7 @@
         <!-- will submit the form to register the user --> 
         <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
         <router-link> </router-link> 
-        <button class="button" @click="signup(); navigateTo({name:'Onboarding'});"><span>Register</span></button>
+        <button class="button" @click="signup(); navigateTo({name:'Onboarding'});"><span>Continue</span></button>
 
     </div>
 </template>
