@@ -4,15 +4,19 @@
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
             <label>Full Name: </label>
-            <input type="text" v-model="name" placeholder="name"/> 
+            <input type="text" v-model="name" placeholder="Full Name" id="name"/> 
             <br>
             <br>
             <label>Email: </label>
-            <input type="text" v-model="email" placeholder="email"/>
+            <input type="text" v-model="email" placeholder="Email" id="email"/>
             <br>
             <br> 
             <label>Password: </label>
-            <input type="text"  v-model="password" placeholder="password"/> 
+            <input type=”type”  v-model="password1" placeholder="Password" id="password" />
+            <br>
+            <input type="checkbox" @click="showPassword">Show Password
+           
+            <!--<button @click=”showPassword”>btnText</button>-->
 
         </form>
         <div v-html="error" />
@@ -21,7 +25,9 @@
         <!-- declares the component of user form --> 
       
         <!-- will submit the form to register the user --> 
-        <button class="button" @click='signup'> <span>Register</span></button>
+        <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
+        <router-link @click='signup' :to="{name:'Home', params: {} }" tag="button" class="button"><span>Register</span></router-link>
+
     </div>
 </template>
 
@@ -35,7 +41,7 @@
                 email: '',
                 name: '',
                 password: '',
-                error: null
+                error: null,
             }
         }, 
         methods:{
@@ -55,8 +61,10 @@
                     console.log(error)
                 }
             }
-        }
-    }
+            
+     }
+ }
+
 
 
 
