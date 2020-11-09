@@ -4,15 +4,15 @@
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
             <label>Full Name: </label>
-            <input type="text" v-model="name" placeholder="Full Name" id="name"/> 
+            <input type="text" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
             <label>Email: </label>
-            <input type="text" v-model="email" placeholder="Email" id="email"/>
+            <input type="text" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”type”  v-model="password" placeholder="Password" id="password" />
+            <input type=”password”  v-model="password" placeholder="Password" id="password" required/>
             <br>
             <!-- 
             this was causing a ton of problems
@@ -28,7 +28,8 @@
       
         <!-- will submit the form to register the user --> 
         <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
-        <button class="button" @click='signup' >Register</button>
+        <router-link> </router-link> 
+        <button class="button" @click="signup(); navigateTo({name:'Onboarding'});"><span>Continue</span></button>
 
     </div>
 </template>
@@ -62,6 +63,15 @@
                 } catch (error) {
                     console.log(error)
                 }
+            }, 
+
+            async navigateTo(route) {
+
+            try {
+              this.$router.push(route)
+            } catch (error) {
+               console.log(error)
+            }
             }
             
      }

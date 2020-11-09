@@ -4,13 +4,14 @@
     <!-- Have the logo appear on each page --> 
     <!-- Have the logo act as a button to take users back to the landing page --> 
       <router-link to="/">
-        <img src="./images/JPEGLogo.jpg" alt="Logo" style="width:250px;height:100px;"/>
+        <img src="./images/JPEGLogo.jpg" alt="Logo" class="navbarimage"/>
+
       </router-link>
     </div>
     <router-view/>
-    <dev class="footer">
+    <div class="footer">
       <p> © 2020 TRAVVY, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
-    </dev>
+    </div>
   </div>
 
 </template>
@@ -37,6 +38,11 @@
   color: #42b983;
 }
 
+.navbarimage {
+  max-height: 200px;
+  height: 70%;
+  width: auto;
+}
 .travvy{
   background-color: #B8D1FF;
   border: none;

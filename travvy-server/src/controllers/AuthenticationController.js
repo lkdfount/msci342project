@@ -31,8 +31,24 @@ module.exports = {
         //retun the user that was found
         //if there is not a user that exists it will return null
         return user
-    }
+    },
     
+    async onboarding (email, age, gender, instagram_username, preferred_activity_type) {
+        //here we find a user who's email matches an email in the user database
+        const user = await Users.update({
+            Age: age,
+            Gender: gender,
+            Instagram_Username: instagram_username,
+            Preferred_Activity_Type: preferred_activity_type,
+           } , {
+            where:{
+                email: email,
+            }
+        })
+        //retun the user that was found
+        //if there is not a user that exists it will return null
+        return user
+    }
 }
 
 

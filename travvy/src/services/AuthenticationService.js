@@ -32,5 +32,15 @@ export default {
         console.log(response)
         //return if it is a valid login or not
         return isValidLogin
+    },
+    async onboarding(email,age,gender,instagram_username,preferred_activity_type){
+        return axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})  
+        .then(function (response) {
+          console.log(response);
+        })        
+        .catch(function (error) {
+            console.log(error);
+        });
     }
+
 }
