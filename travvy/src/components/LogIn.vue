@@ -1,15 +1,16 @@
 
 <template>  
   <div class="LogIn">
+    <div class="container">
         <h2>Log In to TRAVVY</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
           <label>Email: </label>
-          <input type="text" v-model="email" id="email" required/> 
+          <input type="text" class="info" v-model="email" id="email" required/> 
           <br>
           <br>
           <label>Password: </label>
-          <input type="password" v-model="password" id="password" required/> 
+          <input type="password" class="info" v-model="password" id="password" required/> 
           <br>
           <!-- 
             this was causing a ton of problems
@@ -19,7 +20,7 @@
         <br>
         <br>
         <button class="button" @click="login"><span>Log In</span></button>
-        
+    </div> 
     </div>
 </template>
 
@@ -104,5 +105,10 @@
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.container {
+  padding: 20px 10px;
+  margin: 0 700px;
 }
 </style>

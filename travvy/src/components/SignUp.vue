@@ -1,18 +1,19 @@
 <template>
     <div class="SignUp">
+      <div class="container">
         <h2>Sign Up for TRAVVY</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
             <label>Full Name: </label>
-            <input type="text" v-model="name" placeholder="Full Name" id="name" required/> 
+            <input type="text" class="info" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
             <label>Email: </label>
-            <input type="text" v-model="email" placeholder="Email" id="email" required/>
+            <input type="text" class="info" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”password”  v-model="password" placeholder="Password" id="password" required/>
+            <input type=”password” class="info" v-model="password" placeholder="Password" id="password" required/>
             <br>
             <!-- 
             this was causing a ton of problems
@@ -30,7 +31,7 @@
         <!--<button class="button"  v-on:click="navigateTo({name:'Home'})"> <span></span></button>--> 
         <router-link> </router-link> 
         <button class="button" @click="signup(); navigateTo({name:'Onboarding'});"><span>Continue</span></button>
-
+    </div>
     </div>
 </template>
 
@@ -120,6 +121,12 @@
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+.container {
+  padding: 20px 10px;
+  margin: 0 700px;
+  
 }
 
 </style>
