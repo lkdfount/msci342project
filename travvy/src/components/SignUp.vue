@@ -13,7 +13,7 @@
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”password” class="info" v-model="password" placeholder="Password" id="password" required/>
+            <input type="password" class="info" v-model="password" placeholder="Password" id="password" required/>
             <br>
             <!-- 
             this was causing a ton of problems
