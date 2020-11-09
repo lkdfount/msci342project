@@ -301,4 +301,9 @@
  a {
    color: #42b983;
  }
+
+ .container {
+  padding: 20px 10px;
+  margin: 0 100px;
+}
  </style>

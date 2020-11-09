@@ -128,13 +128,13 @@
   border-radius: 15px; /* 15px rounded corners */
 }
 
-.box {
+.dropdown {
 position: absolute;
 padding: 0px 445px;
 
 }
 
-.box select {
+.dropwdown select {
 background-color: #89C4A0;
 color: white;
 padding: 4px;
@@ -157,5 +157,18 @@ border-radius: 10px;
   color: Black;
   font-size: 12px;
   text-align: center;
+}
+
+.info {
+ background-color: #89C4A0;
+  color: white;
+  padding: 4px;
+  width: 200px;
+  height: 18px;
+  border: none;
+  font-size: 14px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
 }
 </style>

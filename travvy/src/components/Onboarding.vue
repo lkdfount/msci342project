@@ -11,9 +11,9 @@
     <br>
     <br>
     <br>
-    <div class= "">
+    <div class= "dropwdown">
     <label>Please select the gender you identify as: </label>
-    <select class="info" v-model="gender">
+    <select class="" v-model="gender">
         <option></option>
         <option>Male</option>
         <option>Female</option>
@@ -28,15 +28,16 @@
     <br>
     <br>
     <br>
-    <label>Please select the type of activity you enjoy most: </label>
+   <!--  <label>Please select the type of activity you enjoy most: </label>
     <br>
     <br>
     <button class="nextActivity">Family</button>   <button class="nextActivity">Historical</button>   <button class="nextActivity">Active</button>  <button class="nextActivity">Nature</button>  <button class="nextActivity"> Entertainment</button> <button class="nextActivity">Food</button> 
     <br>
     <br>
-    <br>
-    <label>preferred_activity_type?: </label>
-    <select class="info" v-model="preferred_activity_type">
+    <br> --> 
+    <div class= "dropwdown">
+    <label>Please select the type of activity you enjoy most: </label>
+    <select class="" v-model="preferred_activity_type">
         <option></option>
         <option>Family</option>
         <option>Historical</option>
@@ -45,7 +46,7 @@
         <option>Entertainment</option>
         <option>Food</option>
     </select>
-    <br>
+     </div>
     <br>
     <br>
     <label>What is your dream vacation spot?: </label>
@@ -64,7 +65,7 @@
     <br>
     <!-- Button to go to the Home page --> 
     <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
-    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Get Started!</span></button>
+    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Start!</span></button>
 
     <br>
 
