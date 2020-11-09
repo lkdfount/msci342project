@@ -5,11 +5,11 @@
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
           <label>Email: </label>
-          <input type="text" v-model="email" id="email"/> 
+          <input type="text" v-model="email" id="email" required/> 
           <br>
           <br>
           <label>Password: </label>
-          <input type="password" v-model="password" id="password"/> 
+          <input type="password" v-model="password" id="password" required/> 
           <br>
           <!-- 
             this was causing a ton of problems

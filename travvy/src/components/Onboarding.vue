@@ -3,13 +3,17 @@
      <div class="container">
     
     <!-- Onboarding fields that the user must fill in in order to get personalized recommendations --> 
-    <h2>🎉 Welcome to Travvy, we'd love to learn more about you! 🎉</h2>
-    <p>Please fill in the following information in order to get a custom travel experience.</p>
-    <label>Please select the gender you identify as: </label>
+    <h1>🎉 Welcome to Travvy, we'd love to learn more about you! 🎉</h1>
+    <h3>Please fill in the following information in order to get a custom travel experience.</h3>
+    <br>
+    <label>Please input your email here: </label>
+    <input type="text" class="info" v-model="email">
+    <br>
     <br>
     <br>
     <div class= "">
-    <select class="info">
+    <label>Please select the gender you identify as: </label>
+    <select class="info" v-model="gender">
         <option></option>
         <option>Male</option>
         <option>Female</option>
@@ -17,19 +21,11 @@
         <option>Prefer not to disclose</option>
     </select>
     </div>
-
-    <br>
-    <br>
-    <label>email?: </label>
-    <input type="text" class="info" v-model="email">
-    <br>
-    <br>
-    <label>gender?: </label>
-    <input type="text" class="info" v-model="gender">
     <br>
     <br>
     <label>Please input your age: </label>
     <input type="text" class="info" v-model="age" > 
+    <br>
     <br>
     <br>
     <label>Please select the type of activity you enjoy most: </label>
@@ -39,9 +35,16 @@
     <br>
     <br>
     <br>
-    <br>
     <label>preferred_activity_type?: </label>
-    <input type="text" class="info" v-model="preferred_activity_type">
+    <select class="info" v-model="preferred_activity_type">
+        <option></option>
+        <option>Family</option>
+        <option>Historical</option>
+        <option>Active</option>
+        <option>Nature</option>
+        <option>Entertainment</option>
+        <option>Food</option>
+    </select>
     <br>
     <br>
     <br>
@@ -49,8 +52,10 @@
     <input type="text" class="info" > 
     <br>
     <br>
+    <br>
     <label>Please input your budget: </label>
     <input type="text" class="info">
+    <br>
     <br>
     <br>
     <label>Please include your Instagram handle: </label>
@@ -131,6 +136,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.Onboarding {
+  padding-bottom: 150px; 
+}
 
 .nextActivity{
   background-color: #89C4A0;

@@ -4,15 +4,15 @@
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
             <label>Full Name: </label>
-            <input type="text" v-model="name" placeholder="Full Name" id="name"/> 
+            <input type="text" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
             <label>Email: </label>
-            <input type="text" v-model="email" placeholder="Email" id="email"/>
+            <input type="text" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
             <label>Password: </label>
-            <input type=”type”  v-model="password" placeholder="Password" id="password" />
+            <input type=”password”  v-model="password" placeholder="Password" id="password" required/>
             <br>
             <!-- 
             this was causing a ton of problems
