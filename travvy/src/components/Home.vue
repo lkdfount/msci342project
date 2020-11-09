@@ -5,7 +5,7 @@
   <div class="Home">
     <div class="container">
     <!-- Profile button that will lead to the users profile page -->
-    <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile">
+    <router-link to="/Profile" tag="button" class="button" style="float: right;"><span>Profile</span></router-link>
     <br>
     <br>
     <br>
