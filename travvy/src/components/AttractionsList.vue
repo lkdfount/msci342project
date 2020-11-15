@@ -1,7 +1,9 @@
 <template>
   <div class="AttractionsList">
       <!-- this adds the profile button, in later sprints it will take the user to their profile page-->
-      <input type="button" value="Profile" v-on:click="reverseMessage" style="float: right;" class="profile">
+      <router-link to="/Profile" tag="button" class="button" style="float: right;"><span>Profile</span></router-link>
+            <br><br><br>
+      <button class="button" @click="login"><span>Log In</span></button>
 
       <!-- include the toronto heading, an image, and some info about Toronto -->
       <br><br><br>

@@ -7,6 +7,7 @@ import AttractionDetails from '../components/AttractionDetails.vue'
 import SignUp from '../components/SignUp.vue'
 import LogIn from '../components/LogIn.vue'
 import Onboarding from '../components/Onboarding.vue'
+import Profile from '../components/Profile.vue'
 
 // Initializes routes for frontend pages
 Vue.use(VueRouter)
@@ -43,6 +44,11 @@ const routes = [
     path: '/LogIn',
     name: 'LogIn',
     component: LogIn
+  },
+  {
+    path: '/Profile',
+    name: 'Profile',
+    component: Profile
   },
   {
     path: '/Onboarding',

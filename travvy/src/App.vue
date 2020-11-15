@@ -106,7 +106,7 @@
 
  .container {
   /* Add shadows to create the "card" effect */
-  background-color: #F0E4D8;
+  background-color: #FFD9BE;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 0 300px;
   transition: 0.3s;
@@ -160,8 +160,8 @@ border-radius: 10px;
 }
 
 .info {
- background-color: #89C4A0;
-  color: white;
+ background-color: #C7EEA9;
+  color: black;
   padding: 4px;
   width: 200px;
   height: 18px;

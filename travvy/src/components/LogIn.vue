@@ -2,14 +2,14 @@
 <template>  
   <div class="LogIn">
     <div class="container">
-        <h2>Log In to TRAVVY</h2>
+        <h2>Log In</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
-          <label>Email: </label>
+          <label><strong>Email: </strong></label>
           <input type="text" class="info" v-model="email" id="email" required/> 
           <br>
           <br>
-          <label>Password: </label>
+          <label><strong>Password: </strong></label>
           <input type="password" class="info" v-model="password" id="password" required/> 
           <br>
           <!-- 
