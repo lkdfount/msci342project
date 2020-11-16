@@ -4,19 +4,21 @@ import axios from 'axios'
 export default {
   // It makes post request to add the user information to the database
     async signup(email,name, password){
-       // var userExist = false
-        return axios.post('/signup', {params:email,name,password})  
+       var userExist = false
+        //return axios.post('/signup', {params:email,name,password})  
+        const response = await axios.post('/signup',{params:email,name,password})
+        
         .then(function (response) {
-            //userExist = (email['email'] === response.data['Email'])
-            console.log(response);
+            userExist = (email['email'] === response.data['Email'])
+            //console.log(response);
         })        
         .catch(function (error){
             //console.log(error);
 
             alert(error)
         });
-        //console.log(response)
-      //  return userExist
+        console.log(response)
+        return userExist
     },
     //post to compare the log in information to the database
     async login(email, password){
