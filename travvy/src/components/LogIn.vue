@@ -5,11 +5,11 @@
         <h2>Log In</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
-          <label><strong>Email: </strong></label>
+          <label><strong>Email: </strong></label><br><br>
           <input type="text" class="info" v-model="email" id="email" required/> 
           <br>
           <br>
-          <label><strong>Password: </strong></label>
+          <label><strong>Password: </strong></label><br><br>
           <input type="password" class="info" v-model="password" id="password" required/> 
           <br>
           <!-- 
@@ -108,7 +108,7 @@
 }
 
 .container {
-  padding: 20px 10px;
-  margin: 0 700px;
+  padding: 10px 10px;
+  margin: 0 800px;
 }
 </style>

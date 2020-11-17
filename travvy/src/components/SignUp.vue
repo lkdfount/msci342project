@@ -4,15 +4,15 @@
         <h2>Sign Up for TRAVVY</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
-            <label>Full Name: </label>
+            <label><strong> Name (required): </strong></label><br><br>
             <input type="text" class="info" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
-            <label>Email: </label>
+            <label><strong> Email (required): </strong></label><br><br>
             <input type="text" class="info" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
-            <label>Password: </label>
+            <label><strong> Password (required): </strong></label><br><br>
             <input type="password" class="info" v-model="password" placeholder="Password" id="password" required/>
             <br>
             <!-- 
@@ -124,8 +124,8 @@
 }
 
 .container {
-  padding: 20px 10px;
-  margin: 0 700px;
+  padding: 10px 10px;
+  margin: 0 800px;
   
 }
 
