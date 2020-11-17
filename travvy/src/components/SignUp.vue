@@ -31,7 +31,7 @@
         <br>
         <router-link> </router-link>
         <!-- this button will trigger multiple classes below to run, allowing the user to sign up if the info is correct -->
-        <button class="button" @click="signup(); checkForm(), navigateTo({name:'Onboarding'});"><span>Continue</span></button>
+        <button class="button" @click="signup(), checkForm()"><span>Continue</span></button>
     </div>
     </div>
 </template>
@@ -51,24 +51,33 @@
         }, 
         methods:{
     
-            // this method takes in the user information and passes it to the authentication page
+            // this method takes in the user information and passes it to the authentication page 
+            // ; checkForm(), navigateTo({name:'Onboarding'});
             async signup(){
                 console.log(this.name)
                 console.log(this.email)
                 console.log(this.password)
+                console.log(this.errors)
                 
                 
                 try {
-                const response = await AuthenticationService.signup({
-                  // this info inputted in the form is what is passed to the next page
-                    "email": this.email,
-                    "name": this.name,
-                    "password": this.password,
-                })
-                console.log(response)
-                
+                  const response = await AuthenticationService.signup({
+                    // this info inputted in the form is what is passed to the next page
+                      "email": this.email,
+                      "name": this.name,
+                      "password": this.password,
+                  })
+                  console.log(response)
+                  // this will add the user to the database and take them to the next page if the information is all inputted correctly
+                  if (response && this.checkForm(response)===true){
+                    this.$router.push("Onboarding")
+                  }else{
+                  //if the login is not valid, do nothing and tell the user it was wrong
+                    alert("The sign up is not valid. If you have no errors to correct - try a different email address as the one you used may already be in use.")
+                  }
+            
               }catch (error) {
-                    console.log(error)
+                    alert(error)
                    
                 }
             }, 
@@ -100,8 +109,10 @@
                 if(!this.errors.length){
                   return true;
                 }
+                
                // this will prevent the form from submitting if there are errors in the user input 
                x.preventDefault();
+            
 
             },
             // this method will ensure the email is formatted properly
@@ -110,15 +121,6 @@
               var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
               // returns boolean to see if the pattern exists in the string
               return re.test(email);
-            },
-           async navigateTo(route) {
-              try {
-                this.$router.push(route)
-             
-              } catch (error) {
-                console.log(error)
-                alert("This email already exists, please use a different email")
-              }
             }
             
      }
