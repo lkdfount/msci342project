@@ -87,37 +87,40 @@
           <!--handling of empty recommended attractions -->
           <h1> No reviews available </h1>
       </div>
-      <!-- include a map of Toronto, later this will be made responsive with the Google Maps APU -->
-      <h1>Map</h1>
-      <img src="../images/TorontoMap.jpg" alt="Map of Toronto" class="responsive"/>
+      <!-- include a map of Toronto, later this will be dynamic for each city -->
+      <h1>Map</h1> 
+      <div id="map">
+        <gmap-map v-bind:center="center" v-bind:zoom="7"
+        style="height: 425px">
+        </gmap-map>
+      </div>
       <br>
   </div>
 </template>
 
 <script>
-
-
  export default {
   name: 'AttractionsList',
   data() {
     return {
       value: {
         id: 0,
-      }
+      },
+      center:{lat: 43.6532, lng: -79.3832},
     }
   },
   methods: {
     async navigateTo(route) {
         this.$router.push(route)
-      }
+      },
+    
     //sendValueId() {
       //<!--  this.$root.$emit(value.id) -->
   //  }    
 
     }
   }
-   
-
+  
 </script>
 
 <style>
@@ -218,3 +221,17 @@
   color: #42b983;
 }
 </style>
+
+
+#map{
+  height:400px;
+  width:100%
+}
+var map = new google.maps.Map(document.getElementById('map'),options);
+async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBre0sAE_zK3rJcFYStwk9QhfrsJAKazUI&callback=initMap",
+      initMap(){
+          var options ={
+            zoom: 8,
+            center:{lat:42.3601,lng:-71.0589}
+          } 
+      }
