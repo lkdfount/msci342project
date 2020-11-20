@@ -80,44 +80,71 @@
       <h1>Traveller Tips</h1>
       <h3>Matt, 25 from Montreal</h3>
       <p>{{$store.state.recommendedAttractions[0].city}} felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>
-      <h3>Lisa, 28 from Winnepeg</h3>
+      <h3>Lisa, 28 from Winnipeg</h3>
       <p>I spent time at {{$store.state.recommendedAttractions[0].attraction_name}}, I'd totally recommend it. Great view and less people.</p>
       </div>
       <div v-else>
           <!--handling of empty recommended attractions -->
           <h1> No reviews available </h1>
       </div>
-      <!-- include a map of Toronto, later this will be made responsive with the Google Maps APU -->
-      <h1>Map</h1>
-      <img src="../images/TorontoMap.jpg" alt="Map of Toronto" class="responsive"/>
+      <!-- include a map of Toronto, later this will be dynamic for each city -->
+      <h1>Map</h1> 
+      <div id="map">
+        <div v-if="$store.state.city == 'Toronto'">
+        <gmap-map v-bind:center="{lat: 43.6532, lng: -79.3832}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else-if="$store.state.city == 'Paris'">
+        <gmap-map v-bind:center="{lat: 48.8566, lng: 2.3522}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else-if="$store.state.city == 'London'">
+        <gmap-map v-bind:center="{lat: 51.5074, lng: -0.1278}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else-if="$store.state.city == 'New York City'">
+        <gmap-map v-bind:center="{lat: 40.7128, lng: -74.0060}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else-if="$store.state.city == 'Rio de Janeiro'">
+        <gmap-map v-bind:center="{lat: -22.9068, lng: -43.1729}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else-if="$store.state.city == 'Rome'">
+        <gmap-map v-bind:center="{lat: 41.9028, lng: 12.4964}" v-bind:zoom="11" style="height: 425px">
+        </gmap-map>
+      </div>
+      <div v-else="">
+      </div>
+      </div>
       <br>
   </div>
 </template>
 
 <script>
-
-
  export default {
   name: 'AttractionsList',
   data() {
     return {
       value: {
         id: 0,
-      }
+      },
+      center:{
+        lat: 43.6532, lng: -79.3832},
     }
   },
   methods: {
     async navigateTo(route) {
         this.$router.push(route)
-      }
+      },
+    
     //sendValueId() {
       //<!--  this.$root.$emit(value.id) -->
   //  }    
 
     }
   }
-   
-
+  
 </script>
 
 <style>
@@ -218,3 +245,17 @@
   color: #42b983;
 }
 </style>
+
+
+#map{
+  height:400px;
+  width:100%
+}
+var map = new google.maps.Map(document.getElementById('map'),options);
+async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBre0sAE_zK3rJcFYStwk9QhfrsJAKazUI&callback=initMap",
+      initMap(){
+          var options ={
+            zoom: 8,
+            center:{lat:42.3601,lng:-71.0589}
+          } 
+      }
