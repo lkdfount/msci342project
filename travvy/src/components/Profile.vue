@@ -104,4 +104,18 @@ label {
 
 }
 
+.info{
+  background-color: #F4F4F9;
+  color: black;
+  padding: 4px;
+  width: 200px;
+  height: 25px;
+  border: none;
+  font-size: 14px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
+
+}
+
 </style>
