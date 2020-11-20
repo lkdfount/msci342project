@@ -40,7 +40,9 @@
       }
     }, 
     methods:{
+      //if a user wants to sign out
       async signout(){
+        //remove their email from the store
         this.$store.dispatch('setUserEmail', null)
         alert("Sign out successful")
         this.$router.push("/")
