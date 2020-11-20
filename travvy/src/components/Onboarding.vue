@@ -6,11 +6,14 @@
     <h1>🎉 Welcome to Travvy, we'd love to learn more about you! 🎉</h1>
     <h3>Please fill in the following information in order to get a custom travel experience.</h3>
     <br>
+    <br>
+
     <label>Please input your email here: </label>
     <input type="text" class="info" v-model="email">
     <br>
     <br>
     <br>
+
     <div class= "dropwdown">
     <label>Please select the gender you identify as: </label>
     <select class="" v-model="gender">
@@ -20,6 +23,7 @@
         <option>Genderqueer/non-binary</option>
         <option>Prefer not to disclose</option>
     </select>
+   
     </div>
     <br>
     <br>
@@ -36,7 +40,7 @@
     <br>
     <br> --> 
     <div class= "dropwdown">
-    <label>Please select the type of activity you enjoy most: </label>
+    <label>Please select your preferred activity type: </label>
     <select class="" v-model="preferred_activity_type">
         <option></option>
         <option>Family</option>
@@ -49,7 +53,7 @@
      </div>
     <br>
     <br>
-    <label>What is your dream vacation spot?: </label>
+    <label>Please enter your dream vacation spot: </label>
     <input type="text" class="info" > 
     <br>
     <br>
@@ -63,9 +67,10 @@
     <input type="text" class="info" v-model="instagram_username"> 
     <br>
     <br>
+
     <!-- Button to go to the Home page --> 
     <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
-    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Start!</span></button>
+    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Start</span></button>
 
     <br>
 
@@ -160,11 +165,11 @@ export default {
 }
 
 .info{
-  background-color: #89C4A0;
-  color: white;
+  background-color: #F4F4F9;
+  color: black;
   padding: 4px;
   width: 200px;
-  height: 18px;
+  height: 25px;
   border: none;
   font-size: 14px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -208,6 +213,17 @@ export default {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+
+}
+
+.container {
+  padding: 20px 10px;
+  margin: 0 400px;
+}
+
+label {
+width:300px;
+display: inline-block;
 
 }
 

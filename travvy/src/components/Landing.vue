@@ -16,6 +16,8 @@
     <router-link to="/Home" tag="button" class="button"><span>Enter Site</span></router-link>
     <br>
     <br>
+    <br>
+    <br>
 
   </div>
 </template>
