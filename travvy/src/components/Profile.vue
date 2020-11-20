@@ -3,6 +3,7 @@
         <h2>Profile</h2>
         <br>
         <br>
+        <!-- create the sign out button -->
         <button class="button" @click="signout"><span>Sign Out</span></button>
     </div>
 </template>
@@ -17,7 +18,9 @@
       }
     }, 
     methods:{
+      //if a user wants to sign out
       async signout(){
+        //remove their email from the store
         this.$store.dispatch('setUserEmail', null)
         alert("Sign out successful")
         this.$router.push("/")
