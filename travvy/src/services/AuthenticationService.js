@@ -43,13 +43,26 @@ export default {
         return isValidLogin
     },
     async onboarding(email,age,gender,instagram_username,preferred_activity_type){
-        return axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})  
+       
+       var checkEmail = false
+
+        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})
+
+
+           
         .then(function (response) {
-          console.log(response);
+
+            checkEmail = (email['email'] !== response.data['Email'])
+            console.log(checkEmail);
+            console.log(response);
         })        
+        
         .catch(function (error) {
             console.log(error);
         });
+        console.log(response);
+
+        return checkEmail
     },
     async getUser(email){
         //wait for a response containing the user
@@ -79,7 +92,6 @@ export default {
         console.log(response);
         //return the user
         return responseDict
-    },
-
+    }
 
 }
