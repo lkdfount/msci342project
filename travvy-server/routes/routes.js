@@ -1,6 +1,7 @@
 const RecommendController = require('../src/controllers/RecommendController.js')
 const CitySelectController = require('../src/controllers/CitySelectController.js')
 const AuthenticationController = require('../src/controllers/AuthenticationController.js')
+const UserTypeController = require('../src/controllers/UserTypeController.js')
 
 // Sets up endpoints for API
 module.exports = (app) => {
@@ -12,10 +13,11 @@ module.exports = (app) => {
     endDate = new Date(req.query.endDate)
     //endDate = endDate.setFullYear(endDate.getFullYear()-nonfilteredStartDate.getFullYear() > 0 ? 0 : 1)
 
-    RecommendController.recommend(req.query.city,groupSize,startDate,endDate)
+    RecommendController.recommend(req.query.city,groupSize,startDate,endDate,req.query.user)
       .then(attraction => res.status(200).send(attraction))
       .catch(error => res.status(500).send(error))
   }),
+
   app.get('/getlocation', (req, res) => {
     CitySelectController.getlocation()
       .then(locations => res.status(200).send(locations))
