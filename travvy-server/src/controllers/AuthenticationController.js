@@ -54,7 +54,7 @@ module.exports = {
         //here we find a user who's email,age,gender,instagram username and preferred activity type matches an data in the user database
         const user = await Users.findOne({
             where:{
-                email: email
+                email: email,
                 Age: age,
                 Gender: gender,
                 Instagram_Username: instagram_username,

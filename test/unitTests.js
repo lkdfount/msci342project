@@ -51,27 +51,27 @@ describe('Correct email and correct password log in test', function() {
     });
 
 
-
+//
 // Unit Tests for Onboarding Page
 const correctOnboardingEmail = "rniazi@uwaterloo.ca"
 const incorrectOnboardingEmail = "rushan@incorrect.ca"
 const acceptableAge = 20
 const unacceptableAge = 11
-const acceptableGender = Male
+const acceptableGender = "Male"
 const acceptableInstagramUsername = "rushan_niazi"
 const acceptableActivity = "Family"
 
 
 describe('Correct email, age, gender, instagram username, and preferred activity type within onboarding page', function() {
- it('Test should return true with correct data for all attributes', async function() {
+ it('Onboarding test should return true with all attribute data being correct', async function() {
        const response = await AuthenticationController.onboardingTest(correctOnboardingEmail,acceptableAge,acceptableGender,acceptableInstagramUsername,acceptableActivity)
-       assert.notEqual(response, null);
+       assert.equal(response, null);
         })
     });
 
 describe('Incorrect email and age, however correct gender, instagram username, and preferred activity type within onboarding page', function() {
- it('Test should return null with incorrect email and age for all attributes', async function() {
+ it('Onboarding test should return false since data for email and age are incorrect', async function() {
        const response = await AuthenticationController.onboardingTest(incorrectOnboardingEmail,unacceptableAge,acceptableGender,acceptableInstagramUsername,acceptableActivity)
-       assert.notEqual(response, null);
+       assert.equal(response, null);
         })
     });
