@@ -13,7 +13,6 @@
     <br>
     <br>
     <!-- Button to go to the home page --> 
-    <router-link to="/Home" tag="button" class="button"><span>Enter Site</span></router-link>
     <br>
     <br>
     <br>

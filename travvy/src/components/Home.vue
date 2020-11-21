@@ -134,16 +134,15 @@
     async navigateTo(route) {
 
       try {
-        //saves users city in the store
+        console.log(this.$store.state.userEmail)
+        //saves users city sin the store
         const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
+        
         // Saves response from recommend to the global variable in the store
         if (response && this.checkForm(response)===true){
             this.$store.dispatch('setCity', this.city)
             this.$store.dispatch('setRecommendedAttractions', response.data)
             this.$router.push(route)
-        }else{
-          //if the login is not valid, do nothing and tell the user it was wrong
-          alert("The sign up is not valid. If you have no errors to correct - try a different email address as the one you used may already be in use.")
         }
       } catch (error) {
          alert(error)
