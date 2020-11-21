@@ -20,7 +20,7 @@ module.exports = (app) => {
     CitySelectController.getlocation()
       .then(locations => res.status(200).send(locations))
       .catch(error => res.status(500).send(error))
-    })
+    }),
 
  
  app.post('/signup', (req, res) => {
@@ -29,18 +29,25 @@ module.exports = (app) => {
   AuthenticationController.signup(req.body.params.email, req.body.params.name,req.body.params.password)
     .then(users => res.status(201).send(users))
     .catch(error => res.status(400).send(error))
-})
+}),
   app.post('/login', (req, res) => {
       console.log(req)
       console.log(req.body.params.email)
       AuthenticationController.login(req.body.params.email,req.body.params.password)
         .then(users => res.status(201).send(users))
         .catch(error => res.status(400).send(error))
-    })
+    }),
   app.post('/onboarding', (req, res) => {
       console.log(req)
       console.log(req.body.params.email)
       AuthenticationController.onboarding(req.body.params.email,req.body.params.age,req.body.params.gender,req.body.params.instagram_username,req.body.params.preferred_activity_type)
+        .then(users => res.status(201).send(users))
+        .catch(error => res.status(400).send(error))
+    }),
+  app.get('/getUser', (req, res) => {
+      console.log(req)
+      console.log(req.query.email)
+      AuthenticationController.getUser(req.query.email)
         .then(users => res.status(201).send(users))
         .catch(error => res.status(400).send(error))
     })
