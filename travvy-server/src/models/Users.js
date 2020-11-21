@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     Users = sequelize.define('Users', {
       Email: {
         type: DataTypes.TEXT,
-        field: 'Email',
+        //field: 'Email',
         primaryKey: true
       },
       Name: DataTypes.TEXT,
@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       Gender: DataTypes.TEXT,
       Instagram_Username: DataTypes.TEXT,
       Preferred_Activity_Type: DataTypes.TEXT
-    }, {
+    }, 
+    {
       tableName: 'Users',
       timestamps: false
     }
