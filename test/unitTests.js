@@ -6,9 +6,12 @@ const city = "Toronto"
 const groupSize = 20
 const startDate = new Date("2020-11-05")
 const endDate = new Date("2021-01-05")
+const correctLogInEmail = "lkdfountain@uwaterloo.ca"
+const correctLogInPassword = "georgetown"
+const incorrectLogInEmail = "lucy@wrong.ca"
+const incorrectLogInPassword = "hellothisiswrong"
 const Users = require('../travvy-server/src/models').Users
 const name = "Test"
-const email = "testemail@outlook.com"
 const email = "testemail1@outlook.com"
 const password = "Helloworld"
 
@@ -19,12 +22,14 @@ describe('Reccommend Attractions Test', function() {
         })
     });
 
+// both tests with incorrect emails should return null users since no user is found
 describe('Incorrect email and password log in test', function() {
     it('Log in should return null with the wrong email and password', async function() {
+          const response = await AuthenticationController.login(incorrectLogInEmail,incorrectLogInPassword)
           assert.equal(response,null);
            })
        });
-   describe('Incorrect email and correct password log in test', function() {
+describe('Incorrect email and correct password log in test', function() {
     it('Log in should return null with the incorrect email and correct password', async function() {
           const response = await AuthenticationController.login(incorrectLogInEmail,correctLogInPassword)
           assert.equal(response,null);
@@ -39,9 +44,11 @@ describe('Correct email and incorrect password log in test', function() {
        assert.notEqual(response, null);
         })
     });
+describe('Correct email and correct password log in test', function() {
  it('Log in should return null with the correct email and incorrect password', async function() {
        const response = await AuthenticationController.login(correctLogInEmail,correctLogInPassword)
        assert.notEqual(response, null);
+        })
     });
 
 // This unit test is for the sign up page and authentication controller
