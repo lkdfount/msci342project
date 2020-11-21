@@ -11,6 +11,7 @@ const correctLogInPassword = "georgetown"
 const incorrectLogInEmail = "lucy@wrong.ca"
 const incorrectLogInPassword = "hellothisiswrong"
 
+// Unit Tests for Home Page
 describe('Recommend Attractions Test', function() {
  it('Recommend Attractions should return 4', async function() {
        const response = await RecommendController.recommend(city,groupSize,startDate,endDate)
@@ -18,6 +19,8 @@ describe('Recommend Attractions Test', function() {
         })
     });
 
+
+// Unit Tests for Log In Page
 // both tests with incorrect emails should return null users since no user is found
 describe('Incorrect email and password log in test', function() {
  it('Log in should return null with the wrong email and password', async function() {
@@ -43,6 +46,32 @@ describe('Correct email and incorrect password log in test', function() {
 describe('Correct email and correct password log in test', function() {
  it('Log in should return null with the correct email and incorrect password', async function() {
        const response = await AuthenticationController.login(correctLogInEmail,correctLogInPassword)
+       assert.notEqual(response, null);
+        })
+    });
+
+
+
+// Unit Tests for Onboarding Page
+const correctOnboardingEmail = "rniazi@uwaterloo.ca"
+const incorrectOnboardingEmail = "rushan@incorrect.ca"
+const acceptableAge = 20
+const unacceptableAge = 11
+const acceptableGender = Male
+const acceptableInstagramUsername = "rushan_niazi"
+const acceptableActivity = "Family"
+
+
+describe('Correct email, age, gender, instagram username, and preferred activity type within onboarding page', function() {
+ it('Test should return true with correct data for all attributes', async function() {
+       const response = await AuthenticationController.onboardingTest(correctOnboardingEmail,acceptableAge,acceptableGender,acceptableInstagramUsername,acceptableActivity)
+       assert.notEqual(response, null);
+        })
+    });
+
+describe('Incorrect email and age, however correct gender, instagram username, and preferred activity type within onboarding page', function() {
+ it('Test should return null with incorrect email and age for all attributes', async function() {
+       const response = await AuthenticationController.onboardingTest(incorrectOnboardingEmail,unacceptableAge,acceptableGender,acceptableInstagramUsername,acceptableActivity)
        assert.notEqual(response, null);
         })
     });
