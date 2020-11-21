@@ -106,7 +106,7 @@
 
  .container {
   /* Add shadows to create the "card" effect */
-  background-color: #FFD9BE;
+  background-color: #F0E4D8;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 0 300px;
   transition: 0.3s;
@@ -135,11 +135,11 @@ padding: 0px 445px;
 }
 
 .dropwdown select {
-background-color: #89C4A0;
-color: white;
+background-color: #F4F4F9;
+color: black;
 padding: 4px;
 width: 200px;
-height: 26px;
+height: 33px;
 border: none;
 font-size: 14px;
 box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -151,9 +151,11 @@ border-radius: 10px;
   position: fixed;
   left: 0;
   bottom: 0;
+  right: 0px;
+  margin-bottom: 0px;
   width: 100%;
-  height: 50px;
-  background-color: #FEC195;
+  height: 40px;
+  background-color: #eaf1f7;
   color: Black;
   font-size: 12px;
   text-align: center;

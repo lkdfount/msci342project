@@ -39,3 +39,8 @@ app.post('/login',(req,res) =>{
     message: 'Successful log in'
   })
 })
+app.get('/getUser',(req,res) =>{
+  res.send({
+    message: 'Got user'
+  })
+})

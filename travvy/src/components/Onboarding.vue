@@ -4,27 +4,39 @@
     
     <!-- Onboarding fields that the user must fill in in order to get personalized recommendations --> 
     <h1>🎉 Welcome to Travvy, we'd love to learn more about you! 🎉</h1>
+    
+  <form>
     <h3>Please fill in the following information in order to get a custom travel experience.</h3>
     <br>
-    <label>Please input your email here: </label>
-    <input type="text" class="info" v-model="email">
+    <p v-if="errors.length">
+    <b class="red">Please correct the following error(s):</b>
+    <!-- this will bind all the errors together after the form is completed and return them to the user-->
+      <u1 class="red">
+        <li v-bind="error in errors"> {{ errors }}</li>
+      </u1>
+    </p>
+    <br>
+    <label><strong>Please verify your email here (required): </strong></label>
+    <input type="text" class="info" v-model="email" placeholder="Input Email here" required>
     <br>
     <br>
     <br>
+
     <div class= "dropwdown">
-    <label>Please select the gender you identify as: </label>
-    <select class="" v-model="gender">
+    <label><strong>Please select the gender you identify as (required): </strong></label>
+    <select class="" v-model="gender" >
         <option></option>
         <option>Male</option>
         <option>Female</option>
         <option>Genderqueer/non-binary</option>
         <option>Prefer not to disclose</option>
     </select>
+   
     </div>
     <br>
     <br>
-    <label>Please input your age: </label>
-    <input type="text" class="info" v-model="age" > 
+    <label><strong>Please input your age (required): </strong></label>
+    <input type="text" class="info" v-model="age" placeholder="Input Age here"> 
     <br>
     <br>
     <br>
@@ -36,7 +48,7 @@
     <br>
     <br> --> 
     <div class= "dropwdown">
-    <label>Please select the type of activity you enjoy most: </label>
+    <label><strong>Please select your preferred activity type (required) </strong></label>
     <select class="" v-model="preferred_activity_type">
         <option></option>
         <option>Family</option>
@@ -49,23 +61,26 @@
      </div>
     <br>
     <br>
-    <label>What is your dream vacation spot?: </label>
-    <input type="text" class="info" > 
+    <label><strong>Please enter your dream vacation spot: </strong></label>
+    <input type="text" class="info" placeholder="Input Dream Vacation here"> 
     <br>
     <br>
     <br>
-    <label>Please input your budget: </label>
-    <input type="text" class="info">
+    <label><strong>Please input your budget: </strong></label>
+    <input type="text" class="info" placeholder="Input Budget here">
     <br>
     <br>
     <br>
-    <label>Please include your Instagram handle: </label>
-    <input type="text" class="info" v-model="instagram_username"> 
+    <label><strong>Please include your Instagram handle: </strong></label>
+    <input type="text" class="info" v-model="instagram_username" placeholder="Input Instagram Handle here"> 
     <br>
     <br>
+  </form>
+  <div v-html="error" />
+
     <!-- Button to go to the Home page --> 
     <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
-    <button class="button" @click="onboarding(); navigateTo({name:'Home'});"><span>Start!</span></button>
+    <button class="button" @click="onboarding() , checkForm()"><span><strong>Start!</strong></span></button>
 
     <br>
 
@@ -91,7 +106,8 @@ export default {
                 gender: '',
                 instagram_username: '',
                 preferred_activity_type: '',
-                error: null,
+                errors: '',
+                error: null
             }
 
   },
@@ -102,6 +118,8 @@ export default {
       console.log(this.gender)
       console.log(this.instagram_username)
       console.log(this.preferred_activity_type)
+      console.log(this.errors)
+
 
       try {
         const response = await AuthenticationService.onboarding({
@@ -110,9 +128,16 @@ export default {
           "gender": this.gender,
           "instagram_username": this.instagram_username,
           "preferred_activity_type": this.preferred_activity_type,
-
           })
         console.log(response);
+        if (response && this.checkForm(response)===true){
+          this.$router.push("Home")
+        } else {
+        //if the login is not valid, do nothing and tell the user it was wrong
+          alert("The sign up is not valid. If you have no errors to correct - try a different email address as the one you used may already be in use.")
+        }
+
+
       } catch (error) {
         console.log(error)
         }
@@ -125,6 +150,53 @@ export default {
             } catch (error) {
                console.log(error)
             }
+      },
+
+      checkForm: function(x){
+              // an array with the current errors and what will be returned to the user
+              this.errors = [];
+
+                // if an email is not entered, the site will tell the user a email is required
+                if(!this.email){
+                  this.errors.push("Email is a required field");
+                // if an email is entered, it will be checked using the function validEmail to ensure it is the proper format
+                } else if(!this.validEmail(this.email)){
+                  this.errors.push("A valid email address is required");
+                } 
+                // if a gender is not selected, the site will instruct the user that gender field is required
+                if(!this.gender){
+                  this.errors.push("Gender is a required field");
+                }
+                // if an age is not inputted, the site will instruct the user that age field is required
+                if(!this.age){
+                  this.errors.push("Age is a required required field");
+                } else if(this.age < 13) {
+                  // the user must be over 13 to sign up for an account
+                  this.errors.push("The minimum age to create an account is 13 years of age");
+                }
+                if(!this.preferred_activity_type){
+                  this.preferred_activity_type.push("Preferred Activity Type is a required field");
+                }
+               
+
+           
+
+                // if there are no errors, the method will return ture
+                if(!this.errors.length){
+                  return true;
+                }
+                
+               // this will prevent the form from submitting if there are errors in the user input 
+               x.preventDefault();
+            
+
+            },
+            // this method will ensure the email is formatted properly
+            validEmail: function(email){
+              // a regular expression patttern used to search text
+              var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              // returns boolean to see if the pattern exists in the string
+              return re.test(email);
             }
    
 
@@ -160,11 +232,11 @@ export default {
 }
 
 .info{
-  background-color: #89C4A0;
-  color: white;
+  background-color: #F4F4F9;
+  color: black;
   padding: 4px;
   width: 200px;
-  height: 18px;
+  height: 25px;
   border: none;
   font-size: 14px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
@@ -182,6 +254,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
   border-radius: 18px;
 }
 
@@ -208,6 +281,27 @@ export default {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+
+}
+
+.container {
+  padding: 20px 10px;
+  margin: 0 400px;
+}
+
+.red {
+  color: red;
+
+}
+
+label {
+width:400px;
+display: inline-block;
+text-align: left;
+
+
+
+
 
 }
 

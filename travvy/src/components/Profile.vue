@@ -1,50 +1,75 @@
 <template>  
   <div class="Profile">
      <div class="container">
-        <h2>Profile Information</h2>
-    <label>Email: </label>
-    <input type="text" class="info" v-model="email">
-    <br>
-    <br>
-     <label>Gender: </label>
-    <input type="text" select class="info" v-model="gender">
-    <br>
-    <br>
-    <label>Age: </label>
-    <input type="text" class="info" v-model="age" > 
-    <br>
-    <br>
-    <label>Preferred activity: </label>
-    <input type="text" class="info" v-model="preferred_activity_type"> 
-    <br>
-    <br>
-    <label>Instagram handle: </label>
-    <input type="text" class="info" v-model="instagram_username"> 
-    <br>
-    <br>
-    <ul>
-      <li><a href="#">Edit profile</a></li>
-    </ul>
+        <h2> Hello {{  getUser().Name }}{{ this.$store.state.name}},</h2>
+        <h2> Here is your profile information: </h2>
+        <br>
+        <label>Email: </label>
+        <input type="text" class="info" v-model="email" :placeholder="[[ this.$store.state.userEmail ]]">
+        <br>
+        <br>
+        <label>Gender: </label>
+        <input type="text" select class="info" v-model="gender" :placeholder="[[ this.$store.state.gender ]]">
+        <br>
+        <br>
+        <label>Age: </label>
+        <input type="text" class="info" v-model="age" :placeholder="[[ this.$store.state.age ]]"> 
+        <br>
+        <br>
+        <label>Preferred activity: </label>
+        <input type="text" class="info" v-model="preferred_activity_type" :placeholder="[[ this.$store.state.activity ]]"> 
+        <br>
+        <br>
+        <label>Instagram handle: </label>
+        <input type="text" class="info" v-model="instagram_username" :placeholder="[[ this.$store.state.instagram ]]"> 
+        <br>
+        <br>
+        <ul>
+          <li><a href="#">Edit profile</a></li>
+        </ul>
         <button class="button" @click="signout"><span>Sign Out</span></button>
-    </div>
+        <br>
+        <br>
+        <!-- Button to go to the home page --> 
+        <router-link to="/Home" tag="button" class="button"><span>Return Home</span></router-link>
+      </div>
     </div>
 </template>
 
 <script>
   //import from the AuthenticationService file
+  import AuthenticationService from '../services/AuthenticationService.js'
 
   export default {
     data(){
       return {
-        
+        email: '',
+        gender: '',
+        age: '',
+        preferred_activity_type: '',
+        instagram_username: '',
+        error: null
       }
     }, 
     methods:{
+      //if a user wants to sign out
       async signout(){
+        //remove their email from the store
         this.$store.dispatch('setUserEmail', null)
         alert("Sign out successful")
         this.$router.push("/")
       },
+      async getUser() {
+        const user = await AuthenticationService.getUser({
+            "email": this.$store.state.userEmail
+          })
+        this.$store.dispatch('setAge', user.Age)
+        this.$store.dispatch('setGender', user.Gender)
+        this.$store.dispatch('setInstagram', user.Instagram_Username)
+        this.$store.dispatch('setActivity', user.Preferred_Activity_Type)
+        this.$store.dispatch('setName', user.Name)
+
+      }
     }
   }
 </script>
@@ -99,6 +124,20 @@
 label {
   width: 150px;
   display: inline-block;
+
+}
+
+.info{
+  background-color: #F4F4F9;
+  color: black;
+  padding: 4px;
+  width: 200px;
+  height: 25px;
+  border: none;
+  font-size: 14px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
 
 }
 
