@@ -70,6 +70,8 @@
                   console.log(response)
                   // this will add the user to the database and take them to the next page if the information is all inputted correctly
                   if (response && this.checkForm(response)===true){
+                    //store the email in the store so they are logged in
+                    this.$store.dispatch('setUserEmail', this.email)
                     this.$router.push("Onboarding")
                   }else{
                   //if the login is not valid, do nothing and tell the user it was wrong

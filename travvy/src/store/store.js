@@ -10,7 +10,13 @@ export default new Vuex.Store({
         recommendedAttractions: null, 
         city: null,
         //create the variable where the logged in user's email will be stored
-        userEmail: null
+        userEmail: null,
+        //create the variables where the user's profile information will be stored
+        age: null,
+        gender: null,
+        instagram: null,
+        name: null,
+        activity: null
     },
     mutations: {
         // If user selects new locations, recommended attractions change
@@ -26,6 +32,21 @@ export default new Vuex.Store({
         //when a user logs in, set the variable to their email
         setUserEmail(state,userEmail){
             state.userEmail = userEmail
+        },
+        setAge(state,age){
+            state.age = age
+        },
+        setGender(state,gender){
+            state.gender = gender
+        },
+        setInstagram(state,instagram){
+            state.instagram = instagram
+        },
+        setName(state,name){
+            state.name = name
+        },
+        setActivity(state,activity){
+            state.activity = activity
         }
     }, 
     actions: {
@@ -42,6 +63,21 @@ export default new Vuex.Store({
         //when a user logs in, set it to the array
         setUserEmail({commit}, userEmail){
             commit('setUserEmail', userEmail)
+        },
+        setAge({commit}, age){
+            commit('setAge', age)
+        },
+        setGender({commit}, gender){
+            commit('setGender', gender)
+        },
+        setInstagram({commit},instagram){
+            commit('setInstagram', instagram)
+        },
+        setName({commit},name){
+            commit('setName', name)
+        },
+        setActivity({commit},activity){
+            commit('setActivity', activity)
         }
     },
   

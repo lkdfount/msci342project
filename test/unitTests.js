@@ -46,7 +46,7 @@ const incorrectLogInEmail = "lucy@wrong.ca"
 const incorrectLogInPassword = "hellothisiswrong"
 
 // both tests with incorrect emails should return null users since no user is found
-describe('Incorrect email and password log in test', function() {
+describe('Incorrect email and incorrect password log in test', function() {
     it('Log in should return null with the wrong email and password', async function() {
           const response = await AuthenticationController.login(incorrectLogInEmail,incorrectLogInPassword)
           assert.equal(response,null);
@@ -58,30 +58,17 @@ describe('Incorrect email and correct password log in test', function() {
           assert.equal(response,null);
            })
        });
-describe('Incorrect email and incorrect password log in test', function() {
- it('Log in should return null with the wrong email and password', async function() {
-       const response = await AuthenticationController.login(incorrectLogInEmail,incorrectLogInPassword)
-       assert.equal(response,null);
-        })
-    });
-describe('Incorrect email and correct password log in test', function() {
- it('Log in should return null with the incorrect email and correct password', async function() {
-       const response = await AuthenticationController.login(incorrectLogInEmail,correctLogInPassword)
-       assert.equal(response,null);
-        })
-    });
-
 
 // both tests with correct emails should return a not null user, even if the password is incorrect
 // the password is checked in the AuthenticationService.js file
 describe('Correct email and incorrect password log in test', function() {
- it('Log in should return null with the correct email and incorrect password', async function() {
+ it('Log in should not return null with the correct email and incorrect password', async function() {
        const response = await AuthenticationController.login(correctLogInEmail,incorrectLogInPassword)
        assert.notEqual(response, null);
         })
     });
 describe('Correct email and correct password log in test', function() {
- it('Log in should return null with the correct email and incorrect password', async function() {
+ it('Log in should not return null with the correct email and incorrect password', async function() {
        const response = await AuthenticationController.login(correctLogInEmail,correctLogInPassword)
        assert.notEqual(response, null);
         })
@@ -102,8 +89,22 @@ describe('Recommend Attractions Test', function() {
         })
     });
 
+//test the getUser function
+describe('Correct email get user test', function() {
+ it('Get user should not return null with the a correct email', async function() {
+       const response = await AuthenticationController.getUser(correctLogInEmail)
+       assert.notEqual(response, null);
+        })
 
+    });
+//test the getUser function
+describe('Correct email get user test', function() {
+ it('Get user should return null with the an incorrect email', async function() {
+       const response = await AuthenticationController.getUser(incorrectLogInEmail)
+       assert.equal(response, null);
+        })
 
+    });
 
 // Unit Tests for Onboarding Page
 const correctOnboardingEmail = "rniazi@uwaterloo.ca"
