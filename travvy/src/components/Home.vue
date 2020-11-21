@@ -124,10 +124,11 @@
       try {
         //saves users city in the store
         this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":'dyampolsky@uwaterloo.ca'})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         this.$router.push(route)
+        console.log(this.$store.state.recommendedAttractions)
       } catch (error) {
          console.log(error)
       }

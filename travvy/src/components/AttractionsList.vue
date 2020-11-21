@@ -42,7 +42,7 @@
       <div v-if="$store.state.recommendedAttractions.length > 0">
       <br>
       <h3>Description</h3>
-      <p>{{$store.state.city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}, {{$store.state.recommendedAttractions[1].attraction_name}}, and {{$store.state.recommendedAttractions[2].attraction_name}}.</p>
+      <p>{{$store.state.city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}.</p>
       <h3>COVID-19</h3>
       <p>Active cases: 2684</p>
       <p>Trend: Numbers increasing</p>
