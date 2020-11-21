@@ -10,13 +10,15 @@ const correctLogInEmail = "lkdfountain@uwaterloo.ca"
 const correctLogInPassword = "georgetown"
 const incorrectLogInEmail = "lucy@wrong.ca"
 const incorrectLogInPassword = "hellothisiswrong"
+
 const Users = require('../travvy-server/src/models').Users
 const name = "Test"
 const email = "testemail1@outlook.com"
 const password = "Helloworld"
 
-describe('Reccommend Attractions Test', function() {
- it('Reccomend Attractions should return 4', async function() {
+
+describe('Recommend Attractions Test', function() {
+ it('Recommend Attractions should return 4', async function() {
        const response = await RecommendController.recommend(city,groupSize,startDate,endDate)
        assert.equal(response.length,4);
         })
@@ -24,6 +26,7 @@ describe('Reccommend Attractions Test', function() {
 
 // both tests with incorrect emails should return null users since no user is found
 describe('Incorrect email and password log in test', function() {
+
     it('Log in should return null with the wrong email and password', async function() {
           const response = await AuthenticationController.login(incorrectLogInEmail,incorrectLogInPassword)
           assert.equal(response,null);
@@ -35,6 +38,19 @@ describe('Incorrect email and correct password log in test', function() {
           assert.equal(response,null);
            })
        });
+
+ it('Log in should return null with the wrong email and password', async function() {
+       const response = await AuthenticationController.login(incorrectLogInEmail,incorrectLogInPassword)
+       assert.equal(response,null);
+        })
+    });
+describe('Incorrect email and correct password log in test', function() {
+ it('Log in should return null with the incorrect email and correct password', async function() {
+       const response = await AuthenticationController.login(incorrectLogInEmail,correctLogInPassword)
+       assert.equal(response,null);
+        })
+    });
+
 
 // both tests with correct emails should return a not null user, even if the password is incorrect
 // the password is checked in the AuthenticationService.js file
@@ -49,6 +65,7 @@ describe('Correct email and correct password log in test', function() {
        const response = await AuthenticationController.login(correctLogInEmail,correctLogInPassword)
        assert.notEqual(response, null);
         })
+
     });
 
 // This unit test is for the sign up page and authentication controller
@@ -74,3 +91,5 @@ describe('Sign up test', function(){
         assert.equal(response.length,user.length);
     })
 });
+    });
+
