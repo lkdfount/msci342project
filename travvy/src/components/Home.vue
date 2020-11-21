@@ -5,11 +5,12 @@
   <div class="Home">
     <div class="container">
     <!-- Profile button that will lead to the users profile page -->
-    <router-link to="/Profile" tag="button" class="button" style="float: right;"><span>Profile</span></router-link>
+    <router-link to="/Profile" tag="button" class="profile" style="float: right;"><span>Profile</span></router-link>
     <br>
     <br>
     <br>
     <br>
+    <h2> Book your next trip!</h2>
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in -->
@@ -34,13 +35,18 @@
       <option value="Rome">Rome, Italy</option>
 
     </select>
+    <br>
+    <br>
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
       <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate">
+    <br>
+    <br>
     <label for="Dates">     Select Return Date:</label>
       <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate">
-
+    <br>
+    <br>
 
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
@@ -56,8 +62,7 @@
 
     <p>{{ uploadDocs }}</p>
     <!-- data binding documents, corresponding data object below -->
-    <b>Upload Travel Documents Below:</b>
-    <br>
+    <h2>Upload Travel Documents</h2>
     <p>{{ uploadFiles}}</p>
     <!-- data binding upload files message, corresponding data object below -->
     
@@ -68,13 +73,20 @@
   </div>
 
 
-    <br><br>
+    <br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
     <h2>Find your next travel destination</h2>
 
-    <button v-on:click="reverseMessage" class="nextDestination">Toronto</button>   <button v-on:click="reverseMessage" class="nextDestination">New York City</button>   <button v-on:click="reverseMessage" class="nextDestination">Rome</button>   <button v-on:click="reverseMessage" class="nextDestination"> Rio De Janeiro</button>
+    <button v-on:click="reverseMessage" class="nextDestination">Toronto<br><br><img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/></button>
+    <button v-on:click="reverseMessage" class="nextDestination">New York City<br><br><img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/></button>
+    <button v-on:click="reverseMessage" class="nextDestination">Rome<br><br><img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/></button>
+    <button v-on:click="reverseMessage" class="nextDestination">Rio De Janeiro<br><br><img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/></button>
+    <button v-on:click="reverseMessage" class="nextDestination">Paris<br><br><img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/></button>
+    <button v-on:click="reverseMessage" class="nextDestination">London<br><br><img src="../images/london.jpg" alt="Picture of London" class ="cityimage" /></button>
+
     <!-- gives users the options to explore attractions at other destinations -->
+   <br><br><br>
    </div>
  </div>
  </template>
@@ -167,6 +179,7 @@
 
  <!-- Add "scoped" attribute to limit CSS to this component only -->
  <!-- scoped defines how different classes should appear on the webpage -->
+ 
  <style scoped>
 .travvy{
   background-color: #B8D1FF;
@@ -220,7 +233,7 @@
 .search {
   display: inline-block;
   border-radius: 4px;
-  background-color: #FF5F00;
+  background-color: #4CAF50;
   border: none;
   color: #FFFFFF;
   text-align: center;
@@ -230,6 +243,25 @@
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+}
+
+.profile {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #FF5F00;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 22px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.profile:hover {
+  background-color: #ed7485;
 }
 
 .search span {
@@ -256,8 +288,18 @@
   opacity: 1;
   right: 0;
 }
+.cityimage{
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  padding: 0px;
+  width: 80%;
+}
 
-.selectFiles{
+.cityimage:hover{
+  background-color: #ed7485;
+}
+
+.selectFilesold{
   background-color: #f40338;
   border: none;
   color: white;
@@ -272,7 +314,7 @@
 .selectFiles:hover {
   background-color: #ed7485;
 }
-.nextDestination{
+.nextDestinationold{
   background-color: #5745e4;
   border: none;
   color: white;
@@ -283,9 +325,23 @@
   font-size: 16px;
   border-radius: 24px;
 }
+.nextDestination{
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #FF5F00;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 22px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
 
 .nextDestination:hover {
-  background-color: #9290df;
+  background-color: #ed7485;
 }
  h3 {
    margin: 40px 0 0;
