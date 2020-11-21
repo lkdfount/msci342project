@@ -20,7 +20,7 @@ export default new Vuex.Store({
         setCity(state,city){
             state.city = city
         },
-        setSe(state,selectedAttraction){
+        setSelectedAttraction(state,selectedAttraction){
             state.selectedAttraction = selectedAttraction
         },
         //when a user logs in, set the variable to their email

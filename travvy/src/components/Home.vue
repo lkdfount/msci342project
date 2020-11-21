@@ -10,6 +10,18 @@
     <br>
     <br>
     <br>
+    <form>
+  
+        <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
+    <p v-if="errors.length" class="error">
+      <b>Please input the following required fields:</b>
+          <!-- this will bind all the errors together after the form is completed and return them to the user-->
+      <b class="error"  v-for="(value,index) in errors" :key="index" >
+        {{value}}
+        <span v-if="index != Object.keys(errors).length - 1">, </span>
+  
+      </b>
+    </p>
     <!-- data binding destination, corresponding data object below -->
     <label for="Destination">Select a Destination:</label>
     <!-- select destinations to find attractions in -->
@@ -25,7 +37,7 @@
       <span>Selected:{{selected}}</span>
       </div>-->
 
-    <select v-model="city" id="Destination" name="Destination" class="destination input">
+    <select v-model="city" id="Destination" name="Destination" class="destination input" required>
       <option value="Toronto">Toronto, Canada</option>
       <option value="Paris">Paris, France</option>
       <option value="London">London, England</option>
@@ -37,18 +49,19 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate">
+      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate" required>
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate">
-
+      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate" required>
+ 
 
     <!-- data binding travellers, corresponding data object below -->
     <label for="Travellers">     Number of Travellers:</label>
     <!-- user selects number of travellers in their party -->
-    <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
+    <input type="text" id="groupSize" class="travellers input" v-model="groupSize" required>
+    </form>
     <br>
     <br>
-    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+    <center><button v-on:click="checkForm(),navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
 
 
     <!-- the search will use the parameters from above to search through the database and return results -->
@@ -111,9 +124,8 @@
        groupSize: '',
        startDate: '',
        endDate: '',
-       error:null,
+       errors: '',       
        file: null
-
      }
    },
 
@@ -123,20 +135,55 @@
 
       try {
         //saves users city in the store
-        this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
         // Saves response from recommend to the global variable in the store
-        this.$store.dispatch('setRecommendedAttractions', response.data)
-        this.$router.push(route)
+        if (response && this.checkForm(response)===true){
+            this.$store.dispatch('setCity', this.city)
+            this.$store.dispatch('setRecommendedAttractions', response.data)
+            this.$router.push(route)
+        }else{
+          //if the login is not valid, do nothing and tell the user it was wrong
+          alert("The sign up is not valid. If you have no errors to correct - try a different email address as the one you used may already be in use.")
+        }
       } catch (error) {
-         console.log(error)
+         alert(error)
       }
         },
 
-    reverseMessage: function () {
+    checkForm: function(x){
+      // an array with the current errors and what will be returned to the user
+      this.errors = [];
+
+      // if a city is not entered, the site will tell the user a city is required
+        if(!this.city){
+          this.errors.push("City");
+        }
+
+        // if a start date is not entered, the site will tell the user a start date is required
+        if(!this.startDate){
+          this.errors.push("Start date");
+        } 
+        // if an end date is not entered, the site will tell the user a end date is required
+        if(!this.endDate){
+          this.errors.push("End date");
+        } 
+        // if the group size is not entered, the site will tell the user the group size is required 
+        if(!this.groupSize){
+          this.errors.push("Group size");
+        }
+        // if there are no errors, the method will return ture
+        if(!this.errors.length){
+          return true;
+        }
+        
+        // this will prevent the form from submitting if there are errors in the user input 
+        x.preventDefault();
+    
+
+    },    
+  reverseMessage: function () {
       this.message = this.message.split('').reverse().join('')
   },
-  
   //This method gets all the locations (id,city,country) from the Location table
     async displayLocations() {
       const response = await LocationsService.getlocation()
@@ -203,7 +250,10 @@
   padding: 2px 2px;
 
 }
-
+.error {
+  color: #FF0000;
+  font-size:14pt;
+}
 .dates{
   background-color: #C7EEA9;
   border-radius: 12px;
