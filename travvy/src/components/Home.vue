@@ -48,8 +48,9 @@
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
     <br>
     <br>
-    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
 
+    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+  
 
     <!-- the search will use the parameters from above to search through the database and return results -->
     <br><br>

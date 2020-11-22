@@ -14,15 +14,13 @@ module.exports = {
         model: Activity,
         as: 'Activity'
         })
-    console.log(activity_ids)
+ 
     const activity_ids_parsed = []
 
     for (i = 0; i < activity_ids.length; i++) {
       activity_ids_parsed.push(activity_ids[i].dataValues.activity_id);
     } 
     
-    console.log(activity_ids_parsed)
-
     Attractions.hasMany(Attraction_type, {foreignKey: 'attraction_id'})
     Attraction_type.belongsTo(Attractions, {foreignKey: 'attraction_id'})
 
@@ -48,7 +46,6 @@ module.exports = {
         as: 'Users_type',
         where: {Email: user} 
         })
-      console.log(activity_ids )
       if(activity_ids.length == 0){
 
         Attractions.hasMany(Attraction_type, {foreignKey: 'attraction_id'})
@@ -74,9 +71,7 @@ module.exports = {
         for (i = 0; i < activity_ids.length; i++) {
           activity_ids_parsed.push(activity_ids[i].dataValues.activity_id);
         } 
-        
-        console.log(activity_ids_parsed)
-    
+            
         Attractions.hasMany(Attraction_type, {foreignKey: 'attraction_id'})
         Attraction_type.belongsTo(Attractions, {foreignKey: 'attraction_id'})
     
