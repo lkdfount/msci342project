@@ -37,7 +37,7 @@ export default {
   font-size: 12px;
 
 }
-.selectFiles{
+.selectFilesold{
   background-color: #f40338;
   border: none;
   color: white;
@@ -47,6 +47,20 @@ export default {
   display: inline-block;
   font-size: 14px;
   border-radius: 12px;
+}
+.selectFiles{
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #FF5F00;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px 22px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 }
 .selectFiles:hover {
   background-color: #ed7485;
