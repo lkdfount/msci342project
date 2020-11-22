@@ -43,13 +43,55 @@ export default {
         return isValidLogin
     },
     async onboarding(email,age,gender,instagram_username,preferred_activity_type){
-        return axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})  
+       
+       var checkEmail = false
+
+        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})
+
+
+           
+        .then(function (response) {
+
+            checkEmail = (email['email'] !== response.data['Email'])
+            console.log(checkEmail);
+            console.log(response);
+        })        
+        
+        .catch(function (error) {
+            console.log(error);
+        });
+        console.log(response);
+
+        return checkEmail
+    },
+    async getUser(email){
+        //wait for a response containing the user
+        var responseDict = {
+            Age: "",
+            Email: "",
+            Gender: "",
+            Instagram_Username: "",
+            Name: "",
+            Password: "",
+            Preferred_Activity_Type: ""
+        }
+        const response = await axios.get('/getUser', {params:email})  
         .then(function (response) {
           console.log(response);
+          responseDict.Age = response.data['Age']
+          responseDict.Email = response.data['Email']
+          responseDict.Gender = response.data['Gender']
+          responseDict.Instagram_Username = response.data['Instagram_Username']
+          responseDict.Name = response.data['Name']
+          responseDict.Password = response.data['Password']
+          responseDict.Preferred_Activity_Type = response.data['Preferred_Activity_Type']
         })        
         .catch(function (error) {
             console.log(error);
         });
+        console.log(response);
+        //return the user
+        return responseDict
     }
 
 }
