@@ -124,7 +124,7 @@
       try {
         //saves users city in the store
         this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":'dyampolsky@uwaterloo.ca'})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         this.$router.push(route)
