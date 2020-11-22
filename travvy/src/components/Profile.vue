@@ -4,29 +4,31 @@
         <h2> Hello {{  getUser().Name }}{{ this.$store.state.name}},</h2>
         <h2> Here is your profile information: </h2>
         <br>
-        <label>Email: </label>
+        <label><strong>Email: </strong></label>
         <input type="text" class="info" v-model="email" :placeholder="[[ this.$store.state.userEmail ]]">
         <br>
         <br>
-        <label>Gender: </label>
+        <label><strong>Gender: </strong></label>
         <input type="text" select class="info" v-model="gender" :placeholder="[[ this.$store.state.gender ]]">
         <br>
         <br>
-        <label>Age: </label>
+        <label><strong>Age: </strong></label>
         <input type="text" class="info" v-model="age" :placeholder="[[ this.$store.state.age ]]"> 
         <br>
         <br>
-        <label>Preferred activity: </label>
+        <label><strong>Preferred Activity Type: </strong></label>
         <input type="text" class="info" v-model="preferred_activity_type" :placeholder="[[ this.$store.state.activity ]]"> 
         <br>
         <br>
-        <label>Instagram handle: </label>
+        <label><strong>Instagram Username: </strong></label>
         <input type="text" class="info" v-model="instagram_username" :placeholder="[[ this.$store.state.instagram ]]"> 
         <br>
         <br>
-        <ul>
-          <li><a href="#">Edit profile</a></li>
-        </ul>
+
+        <button class="button" ><span>Update User Profile</span></button>
+        <br>
+        <br>
+
         <button class="button" @click="signout"><span>Sign Out</span></button>
         <br>
         <br>
@@ -85,11 +87,13 @@
   text-align: center;
   font-size: 22px;
   padding: 12px 22px;
-  width: 150px;
+  width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
 }
+
+
 
 .button span {
   cursor: pointer;
@@ -122,8 +126,10 @@
 }
 
 label {
-  width: 150px;
+  width: 200px;
   display: inline-block;
+  text-align: left;
+
 
 }
 
