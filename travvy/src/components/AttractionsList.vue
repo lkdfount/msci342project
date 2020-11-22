@@ -43,13 +43,11 @@
       <br>
       <h3>Description</h3>
       <p>{{$store.state.city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}, {{$store.state.recommendedAttractions[1].attraction_name}}, and {{$store.state.recommendedAttractions[2].attraction_name}}.</p>
-      <h3>COVID-19</h3>
-      <p>Active cases: 2684</p>
-      <p>Trend: Numbers increasing</p>
-      <h3>Safety Guidelines</h3>
-      <p>{{$store.state.city}} is in phase 2</p>
-      <p>Max gathering of people indoors: 10</p>
-      <p>Masks: required</p>
+      <h3>Live COVID-19 Information</h3>
+      <p>Active Cases: {{$store.state.covidInfo.active}}</p>
+      <p>Today's Cases: {{$store.state.covidInfo.todayCases}}</p>
+      <p>Total Cases: {{$store.state.covidInfo.cases}}</p>
+      <p>Total Deaths: {{$store.state.covidInfo.deaths}}</p>
       <br>
       </div>
       <div v-else>
