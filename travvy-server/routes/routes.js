@@ -1,7 +1,6 @@
 const RecommendController = require('../src/controllers/RecommendController.js')
 const CitySelectController = require('../src/controllers/CitySelectController.js')
 const AuthenticationController = require('../src/controllers/AuthenticationController.js')
-const UserTypeController = require('../src/controllers/UserTypeController.js')
 
 // Sets up endpoints for API
 module.exports = (app) => {
