@@ -55,8 +55,9 @@
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
     <br>
     <br>
-    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
 
+    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+  
 
     <!-- the search will use the parameters from above to search through the database and return results -->
     <br><br>
@@ -138,7 +139,7 @@
       try {
         //saves users city in the store
         this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         //call covid19 API based on country 
