@@ -25,7 +25,7 @@
         <br>
         <br>
 
-        <button class="button" ><span>Update User Profile</span></button>
+        <button class="button" @click="updateUserProfile()"><span>Update User Profile</span></button>
         <br>
         <br>
 
@@ -71,7 +71,44 @@
         this.$store.dispatch('setActivity', user.Preferred_Activity_Type)
         this.$store.dispatch('setName', user.Name)
 
-      }
+      },
+      async updateUserProfile(){
+        console.log(this.email)
+        console.log(this.age)
+        console.log(this.gender)
+        console.log(this.instagram_username)
+        console.log(this.preferred_activity_type)
+        console.log(this.errors)
+
+
+      try {
+        const response = await AuthenticationService.onboarding({
+          "email": this.email,
+          "age": this.age,
+          "gender": this.gender,
+          "instagram_username": this.instagram_username,
+          "preferred_activity_type": this.preferred_activity_type,
+          })
+        console.log(response);
+        if (response===true){
+          alert("You have successfully updated your profile settings!")
+          this.$router.push("Home")
+        } else {
+        //if the login is not valid, do nothing and tell the user it was wrong
+          alert("The sign up is not valid. If you have no errors to correct - try a different email address as the one you used may already be in use.")
+        }
+
+
+
+      } catch (error) {
+        console.log(error)
+        }
+    },
+
+
+
+
+
     }
   }
 </script>

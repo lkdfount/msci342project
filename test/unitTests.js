@@ -131,4 +131,18 @@ describe('Onboarding Test for Incorrect email and age, however correct gender, i
     });
 
 
- 
+// Unit Tests for Profile Page
+const correctProfileEmail = "rniazi@uwaterloo.ca"
+const incorrectProfileEmail = "rushan@incorrect.ca"
+const acceptableProfileAge = 30
+const unacceptableProfileAge = 11
+const acceptableProfileGender = "Male"
+const acceptableProfileInstagramUsername = "rushan_niazi"
+const acceptableProfileActivity = "Family"
+
+describe('Profile Test for Correct email, age, gender, instagram username, and preferred activity type to test the update profile settings feature', function() {
+ it('Profile test should return true if all of the fields are updated correctly', async function() {
+       const response = await AuthenticationController.onboarding(correctProfileEmail,acceptableProfileAge,acceptableProfileGender,acceptableProfileInstagramUsername,acceptableProfileActivity)
+       assert.notEqual(response, null);
+        })
+    });
