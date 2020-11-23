@@ -70,8 +70,7 @@
     
     <!-- allows users to upload travel documents from computer -->
   <div>
-    <p>Drop files here or  <select-file v-model="file"></select-file> </p>
-    <p v-if="file">{{file.name}}</p>
+    <select-file></select-file>
   </div>
 
 

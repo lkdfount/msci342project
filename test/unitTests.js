@@ -162,3 +162,7 @@ describe('Profile Test for Correct email, age, gender, instagram username, and p
        assert.notEqual(response, null);
         })
     });
+
+
+// Unit Tests for File Upload Feature
+
