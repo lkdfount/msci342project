@@ -97,6 +97,7 @@
  <script>
  import SelectFile from './SelectFile.vue'
  import AttractionsService from '../services/AttractionsService.js'
+ import CovidService from '../services/CovidService.js'
  import LocationsService from '../services/LocationsService.js'
  export default {
    name: 'Home',
@@ -140,6 +141,15 @@
         const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
+        //call covid19 API based on country 
+        if(this.$store.state.recommendedAttractions.length > 0){
+          const covidInfo = await CovidService.getCovidInfo({"country":this.$store.state.recommendedAttractions[0].country})
+          console.log(covidInfo)
+          this.$store.dispatch('setCovidInfo', covidInfo.data)  
+        }
+        
+        //save the covid info in store 
+
         this.$router.push(route)
       } catch (error) {
          console.log(error)

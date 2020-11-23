@@ -16,7 +16,8 @@ export default new Vuex.Store({
         gender: null,
         instagram: null,
         name: null,
-        activity: null
+        activity: null,
+        covidInfo: null, 
     },
     mutations: {
         // If user selects new locations, recommended attractions change
@@ -47,6 +48,9 @@ export default new Vuex.Store({
         },
         setActivity(state,activity){
             state.activity = activity
+        }, 
+        setCovidInfo(state,covidInfo){
+            state.covidInfo = covidInfo
         }
     }, 
     actions: {
@@ -78,6 +82,9 @@ export default new Vuex.Store({
         },
         setActivity({commit},activity){
             commit('setActivity', activity)
+        }, 
+        setCovidInfo({commit},covidInfo){
+            commit('setCovidInfo', covidInfo)
         }
     },
   
