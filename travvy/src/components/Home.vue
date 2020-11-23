@@ -40,11 +40,12 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate">
+
+      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="startDate">
     <br>
     <br>
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate">
+      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="endDate">
     <br>
     <br>
 
