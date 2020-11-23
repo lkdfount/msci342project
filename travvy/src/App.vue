@@ -148,16 +148,16 @@ border-radius: 10px;
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   right: 0px;
-  margin-bottom: 0px;
+  margin-top: 200px;
   width: 100%;
   height: 40px;
   background-color: #eaf1f7;
   color: Black;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
 }
 

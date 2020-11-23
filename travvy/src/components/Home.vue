@@ -40,11 +40,12 @@
     <!-- data binding dates, corresponding data object below -->
     <label for="Dates">     Select Departure Date:</label>
     <!-- user selects dates they are travelling in -->
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="startDate">
+
+      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="startDate">
     <br>
     <br>
     <label for="Dates">     Select Return Date:</label>
-      <input type="Date" min="2020-11-09" max="2022-12-31" class="dates input" v-model="endDate">
+      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="endDate">
     <br>
     <br>
 
@@ -54,8 +55,9 @@
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
     <br>
     <br>
-    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
 
+    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+  
 
     <!-- the search will use the parameters from above to search through the database and return results -->
     <br><br>
@@ -96,6 +98,7 @@
  <script>
  import SelectFile from './SelectFile.vue'
  import AttractionsService from '../services/AttractionsService.js'
+ import CovidService from '../services/CovidService.js'
  import LocationsService from '../services/LocationsService.js'
  export default {
    name: 'Home',
@@ -136,9 +139,18 @@
       try {
         //saves users city in the store
         this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
+        //call covid19 API based on country 
+        if(this.$store.state.recommendedAttractions.length > 0){
+          const covidInfo = await CovidService.getCovidInfo({"country":this.$store.state.recommendedAttractions[0].country})
+          console.log(covidInfo)
+          this.$store.dispatch('setCovidInfo', covidInfo.data)  
+        }
+        
+        //save the covid info in store 
+
         this.$router.push(route)
       } catch (error) {
          console.log(error)

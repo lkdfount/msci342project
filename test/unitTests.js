@@ -78,17 +78,33 @@ describe('Correct email and correct password log in test', function() {
 // Unit Tests for Home Page
 const assert = require('assert');
 const city = "Toronto"
+const city2 = "Paris"
 const groupSize = 20
 const startDate = new Date("2020-11-05")
 const endDate = new Date("2021-01-05")
+const userEmailWithPreferences = 'dyampolsky@uwaterloo.ca'
+const userEmailWithoutPreferences = 'lucytest@test.ca'
 
-describe('Recommend Attractions Test', function() {
- it('Recommend Attractions should return 4', async function() {
+describe('Recommend Attractions No User Info Test', function() {
+ it('Recommend Attractions No User Info Test should return 4', async function() {
        const response = await RecommendController.recommend(city,groupSize,startDate,endDate)
        assert.equal(response.length,4);
         })
     });
 
+describe('Recommend Attractions User with Preferences Test', function() {
+        it('Recommend Attractions User with Preferences should return 1', async function() {
+              const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithPreferences)
+              assert.equal(response.length,1);
+        })
+    });
+
+describe('Recommend Attractions User without Preferences Test', function() {
+        it('Recommend Attractions User without Preferences should return 6', async function() {
+              const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithoutPreferences)
+              assert.equal(response.length,6);
+        })
+    });
 //test the getUser function
 describe('Correct email get user test', function() {
  it('Get user should not return null with the a correct email', async function() {

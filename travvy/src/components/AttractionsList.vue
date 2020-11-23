@@ -1,14 +1,14 @@
 <template>
   <div class="AttractionsList">
       <!-- this adds the profile button, in later sprints it will take the user to their profile page-->
-      <router-link to="/Profile" tag="button" class="button" style="float: right;"><span>Profile</span></router-link>
+      <router-link to="/Profile" tag="button" class="profile" style="float: right;"><span>Profile</span></router-link>
+       <!-- let the user go back to the home page and change the info they gave -->
+      <router-link to="/Home" tag="button" class="change" style="float: left;"><span>Home</span></router-link>
             <br><br><br>
-      <button class="button" @click="login"><span>Log In</span></button>
+      <!--button class="button" @click="login"><span>Log In</span></button-->
 
-      <!-- include the toronto heading, an image, and some info about Toronto -->
-      <br><br><br>
       <!-- Generates location heading based on first recommended attraction -->
-      
+
       <div v-if="$store.state.recommendedAttractions.length > 0">
             <h1>{{$store.state.city}}, {{$store.state.recommendedAttractions[0].country}}</h1>
       </div>
@@ -41,16 +41,16 @@
 
       <div v-if="$store.state.recommendedAttractions.length > 0">
       <br>
+      <hr size="3" width="60%" color="#E7EDF7">  
       <h3>Description</h3>
-      <p>{{$store.state.city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}, {{$store.state.recommendedAttractions[1].attraction_name}}, and {{$store.state.recommendedAttractions[2].attraction_name}}.</p>
-      <h3>COVID-19</h3>
-      <p>Active cases: 2684</p>
-      <p>Trend: Numbers increasing</p>
-      <h3>Safety Guidelines</h3>
-      <p>{{$store.state.city}} is in phase 2</p>
-      <p>Max gathering of people indoors: 10</p>
-      <p>Masks: required</p>
+      <p>{{$store.state.city}} is the largest city in {{$store.state.recommendedAttractions[0].country}}, and is home to attractions such as the {{$store.state.recommendedAttractions[0].attraction_name}}.</p>
+      <h3>Live COVID-19 Information</h3>
+      <p>Active Cases: {{$store.state.covidInfo.active}}</p>
+      <p>Today's Cases: {{$store.state.covidInfo.todayCases}}</p>
+      <p>Total Cases: {{$store.state.covidInfo.cases}}</p>
+      <p>Total Deaths: {{$store.state.covidInfo.deaths}}</p>
       <br>
+      <hr size="3" width="60%" color="#E7EDF7">  
       </div>
       <div v-else>
         <h1> No Attractions Information Available </h1>
@@ -59,11 +59,10 @@
       <!-- in later sprints this list of attractions will be pulled from the database -->
       <div v-if="$store.state.recommendedAttractions.length > 0">
       <h1>Personalized attractions, based on your preferences</h1>
-      <!-- let the user go back to the home page and change the info they gave -->
-      <router-link to="/Home" tag="button" class="button"><span>Change Preferences</span></router-link>
-      <br><br>
+  
       <!-- generates dynamic buttons based on the recommended attractions -->
       <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" :key="value.id" >
+        <br>
           <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
           <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
           <router-link :to="{name:'AttractionDetails', params: {id: 0} }" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>
@@ -76,18 +75,26 @@
 
       <!-- give some information collected from other travellers who have been to Toronto -->
       <!-- in later sprints, they will be pulled from the database -->
+      <br>
+      <hr size="3" width="60%" color="#E7EDF7">  
+      <br>
+      <br>
       <div v-if="$store.state.recommendedAttractions.length > 0">
       <h1>Traveller Tips</h1>
-      <h3>Matt, 25 from Montreal</h3>
+      <h3>Matt, 25 from Montreal, ⭐ ⭐ ⭐</h3>
       <p>{{$store.state.recommendedAttractions[0].city}} felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>
-      <h3>Lisa, 28 from Winnipeg</h3>
+      <h3>Lisa, 28 from Winnipeg, ⭐ ⭐ ⭐ ⭐</h3>
       <p>I spent time at {{$store.state.recommendedAttractions[0].attraction_name}}, I'd totally recommend it. Great view and less people.</p>
       </div>
       <div v-else>
           <!--handling of empty recommended attractions -->
           <h1> No reviews available </h1>
-      </div>
+       </div>
       <!-- include a map of Toronto, later this will be dynamic for each city -->
+      <br>
+      <br>
+      <br>
+      <hr size="3" width="60%" color="#E7EDF7">  
       <h1>Map</h1> 
       <div id="map">
         <div v-if="$store.state.city == 'Toronto'">
@@ -150,35 +157,23 @@
 <style>
 /* include the styling for the profile button, keeps it consistant through the website*/
 .profile{
-  background-color: #FF5F00;
+  background-color: #FF5F00; 
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 22px;
   border-radius: 12px;
 }
-/* include the styling for the change preferences button*/
-.button {
-  background-color: #FF5F00; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border-radius: 12px;
-}
-.button span {
+.profile span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-.button span:after {
+.profile span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -186,31 +181,31 @@
   right: -20px;
   transition: 0.5s;
 }
-.button:hover span {
+.profile:hover span {
   padding-right: 25px;
 }
-.button:hover span:after {
+.profile:hover span:after {
   opacity: 1;
   right: 0;
 }
 /* include the styling for the button group list of attractions*/
 .btn-group button {
-  background-color: #4CAF50;
+  background-color: #C7EEA9;
   border: none;
-  color: white;
+  color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 12px;
-  width: 50%;
+  width: 20%;
   margin: auto;
   display: block;
   justify-content: center;
 }
 /* make the botton group show which one the mouse is hovering on */
 .btn-group button:hover {
-  background-color: #3e8e41;
+  background-color: #a9eeae;
 }
 /* make the map image responsive to the size of the window */
 .responsive {
@@ -244,6 +239,43 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.change {
+  background-color: #FF5F00; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.change span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.change span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+.change:hover span {
+  padding-left: 25px;
+}
+
+.change:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
 </style>
 
 
