@@ -5,18 +5,20 @@
         <h2>Log In</h2>
         <form>
         <!-- this form takes the sign up input from users - binds to the user form --> 
-          <label><strong>Email: </strong></label><br><br>
+          <label><strong>Email*: </strong></label><br><br>
           <input type="text" class="info" v-model="email" id="email" required/> 
           <br>
           <br>
-          <label><strong>Password: </strong></label><br><br>
+          <label><strong>Password*: </strong></label><br><br>
           <input type="password" class="info" v-model="password" id="password" required/> 
           <br>
+
           <!-- 
             this was causing a ton of problems
           <input type="checkbox" @click="showPassword">Show Password
           --> 
         </form>
+        <p >*Required Field</p>
         <br>
         <br>
         <button class="button" @click="login"><span>Log In</span></button>
@@ -40,22 +42,36 @@
       //the login method, this is what runs when the log in button is pushed
       async login(){
         try {
-          //call the login method from AuthenticationService
-          //email and password are parameters
-          const isLoggedIn = await AuthenticationService.login({
-            "email": this.email,
-            "password": this.password
-          })
-          console.log(isLoggedIn)
-          //if the login is valid
-          if (isLoggedIn){
-            //store the user's email
-            this.$store.dispatch('setUserEmail', this.email)
-            //go to the home page
-            this.$router.push("Home")
-          }else{
-            //if the login is not valid, do nothing and tell the user it was wrong
-            alert("The log in information was incorrect, please try again")
+          //create a regex function for valid email
+          var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          //test the email
+          const validEmail= re.test(this.email);
+          //test if the email is entered and valid
+          if(this.email=="" || validEmail==false){
+            alert("Please enter a valid email")
+          }
+          //test if the password is entered
+          else if(this.password==""){
+            alert("Please enter a password, password is a required field")
+          }
+          else{
+            //call the login method from AuthenticationService
+            //email and password are parameters
+            const isLoggedIn = await AuthenticationService.login({
+              "email": this.email,
+              "password": this.password
+            })
+            console.log(isLoggedIn)
+            //if the login is valid
+            if (isLoggedIn){
+              //store the user's email
+              this.$store.dispatch('setUserEmail', this.email)
+              //go to the home page
+              this.$router.push("Home")
+            }else{
+              //if the login is not valid, do nothing and tell the user it was wrong
+              alert("The log in information was incorrect, please try again")
+            }
           }
         } catch (error) {
             alert(error)
