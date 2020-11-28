@@ -79,12 +79,12 @@
     <!-- data binding destination suggestions corresponding data object below -->
     <h2>Find your next travel destination</h2>
 
-    <button v-on:click="reverseMessage" class="nextDestination">Toronto<br><br><img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/></button>
-    <button v-on:click="reverseMessage" class="nextDestination">New York City<br><br><img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/></button>
-    <button v-on:click="reverseMessage" class="nextDestination">Rome<br><br><img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/></button>
-    <button v-on:click="reverseMessage" class="nextDestination">Rio De Janeiro<br><br><img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/></button>
-    <button v-on:click="reverseMessage" class="nextDestination">Paris<br><br><img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/></button>
-    <button v-on:click="reverseMessage" class="nextDestination">London<br><br><img src="../images/london.jpg" alt="Picture of London" class ="cityimage" /></button>
+    <button v-on:click="nextDest('Toronto')" class="nextDestination">Toronto<br><br><img src="../images/toronto2.jpg" alt="Picture of Toronto" class ="cityimage"/></button>
+    <button v-on:click="nextDest('New York City')" class="nextDestination">New York City<br><br><img src="../images/newyorkcity2.jpg" alt="Picture of New York City" class ="cityimage"/></button>
+    <button v-on:click="nextDest('Rome')" class="nextDestination">Rome<br><br><img src="../images/rome2.jpg" alt="Picture of Rome" class ="cityimage"/></button>
+    <button v-on:click="nextDest('Rio de Janeiro')" class="nextDestination">Rio De Janeiro<br><br><img src="../images/rio2.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/></button>
+    <button v-on:click="nextDest('Paris')" class="nextDestination">Paris<br><br><img src="../images/paris2.jpg" alt="Picture of Paris" class ="cityimage"/></button>
+    <button v-on:click="nextDest('London')" class="nextDestination">London<br><br><img src="../images/london2.jpeg" alt="Picture of London" class ="cityimage" /></button>
 
     <!-- gives users the options to explore attractions at other destinations -->
    <br><br><br>
@@ -154,37 +154,21 @@
       } catch (error) {
          console.log(error)
       }
-        },
-
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
-  },
-  
-  //This method gets all the locations (id,city,country) from the Location table
+    },
+    async nextDest(destination) {
+      //if the nextDestination button is selected, populate the drop down value with the city
+      let element = document.getElementById("Destination");
+      element.value = destination;
+    },
+    //This method gets all the locations (id,city,country) from the Location table
     async displayLocations() {
       const response = await LocationsService.getlocation()
       console.log(response)
+    }
+
   }
 
 }
-
-}
-
-// var selector = new Vue({
-//   el: '#selector',
-//   data: {
-//     selected: '',
-//     cities:{
-//     "1": "Toronto, Canada",
-//     "2": "Paris, France",
-//     "3": "London, England",
-//     "4": "New York City, United States",
-//     "5": "Rio de Janeiro, Brazil",
-//     "6": "Rome, Italy"
-//     }
-//   }
-// })
-
 
  </script>
 
