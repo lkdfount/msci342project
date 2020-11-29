@@ -8,20 +8,22 @@
         <p v-if="errors.length">
           <b>Please correct the following error(s):</b>
           <!-- this will bind all the errors together after the form is completed and return them to the user-->
-          <u1>
-            <li v-bind="error in errors"> {{ errors }}</li>
+          <u1 id="checkForm" class="red"> 
+            <br>
+            <li v-for="error in errors" :key="error"> {{ error }}</li>
+            <!-- v-bind="error in errors"-->
           </u1>
         </p>
         <!-- the user input is taken here -->
-            <label><strong> Name (required): </strong></label><br><br>
+            <label><strong> Name (*): </strong></label><br><br>
             <input type="text" class="info" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
-            <label><strong> Email (required): </strong></label><br><br>
+            <label><strong> Email (*): </strong></label><br><br>
             <input type="text" class="info" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
-            <label><strong> Password (required, min. 6 characters): </strong></label><br><br>
+            <label><strong> Password (* min. 6 characters): </strong></label><br><br>
             <input type="password" class="info" v-model="password" placeholder="Password" id="password" required/>
             <br>
 
@@ -177,4 +179,8 @@
   
 }
 
+.red {
+  color: red;
+
+}
 </style>
