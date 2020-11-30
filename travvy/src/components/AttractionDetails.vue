@@ -1,7 +1,9 @@
 <template>
   <div>
     <!-- Button to go to go back to the AttractionsList page -->
-    <router-link to="/AttractionList" tag="button" class="back"><span>Back</span></router-link>
+    
+    <button class="back" @click="$router.go(-1)">Back</button>
+  
     
     <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
     <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
