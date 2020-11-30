@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     max_number_guest: DataTypes.TEXT,
     ticket_price: DataTypes.TEXT,
     mask_required: DataTypes.TEXT,
-    covid_safety_measures: DataTypes.TEXT
+    covid_safety_measures: DataTypes.TEXT,
+    lat:DataTypes.DOUBLE,
+    long:DataTypes.DOUBLE
   }, {
     tableName: 'Attractions',
     timestamps: false

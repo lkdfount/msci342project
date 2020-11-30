@@ -85,7 +85,26 @@
       <h1>Map</h1> 
       <div id="map">
         <div v-if="$store.state.city == 'Toronto'">
-        <gmap-map v-bind:center="{lat: 43.6532, lng: -79.3832}" v-bind:zoom="11" style="height: 425px">
+        <gmap-map v-bind:center="{lat: 43.6532, lng: -79.3832}"
+          v-bind:zoom="11"
+          style="margin:45px; height: 425px;">
+          <!--<GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:$value.lat,lng:$value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />-->
+          <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:43.6532,lng:-79.3832}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
+        <br>
         </gmap-map>
       </div>
       <div v-else-if="$store.state.city == 'Paris'">
@@ -111,9 +130,6 @@
       <div v-else="">
       </div>
       </div>
-      <br>
-      <br>
-      <br>
       <hr size="3" width="60%" color="#E7EDF7"> 
 
 <!-- all reviews taken from TripAdvisor-->
@@ -194,17 +210,20 @@
       },
       center:{
         lat: 43.6532, lng: -79.3832},
+      markers:[
+        {
+          position:{lat:43.6532,lng:-79.3832}
+        },
+        {
+          position:{lat:43.6512,lng:-79.3432}
+        },
+        ],
     }
   },
   methods: {
     async navigateTo(route) {
         this.$router.push(route)
       },
-    
-    //sendValueId() {
-      //<!--  this.$root.$emit(value.id) -->
-  //  }    
-
     }
   }
   
