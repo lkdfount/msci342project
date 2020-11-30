@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     location_id: DataTypes.INTEGER,
     city: DataTypes.TEXT,
     country: DataTypes.TEXT,
+    lat: DataTypes.DOUBLE,
+    long: DataTypes.DOUBLE,
     email_address: DataTypes.TEXT,
     phone_number: DataTypes.TEXT,
     street_address: DataTypes.TEXT,
@@ -19,8 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     ticket_price: DataTypes.TEXT,
     mask_required: DataTypes.TEXT,
     covid_safety_measures: DataTypes.TEXT,
-    lat:DataTypes.DOUBLE,
-    long:DataTypes.DOUBLE
   }, {
     tableName: 'Attractions',
     timestamps: false

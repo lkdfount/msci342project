@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     city: DataTypes.TEXT,
     country: DataTypes.TEXT,
+    lat: DataTypes.DOUBLE,
+    long: DataTypes.DOUBLE
   }, {
     tableName: 'Location',
     timestamps: false

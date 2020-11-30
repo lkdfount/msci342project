@@ -88,18 +88,10 @@
         <gmap-map v-bind:center="{lat: 43.6532, lng: -79.3832}"
           v-bind:zoom="11"
           style="margin:45px; height: 425px;">
-          <!--<GmapMarker
-            v-for="value in $store.state.recommendedAttractions" 
-            :key="value.id"
-            :position= "{lat:$value.lat,lng:$value.long}"
-            :clickable="true"
-            :draggable="false"
-            @click="center=m.position"
-          />-->
           <GmapMarker
             v-for="value in $store.state.recommendedAttractions" 
             :key="value.id"
-            :position= "{lat:43.6532,lng:-79.3832}"
+            :position= "{lat:value.lat,lng:value.long}"
             :clickable="true"
             :draggable="false"
             @click="center=m.position"
@@ -109,22 +101,62 @@
       </div>
       <div v-else-if="$store.state.city == 'Paris'">
         <gmap-map v-bind:center="{lat: 48.8566, lng: 2.3522}" v-bind:zoom="11" style="height: 425px">
+        <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:value.lat,lng:value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
         </gmap-map>
       </div>
       <div v-else-if="$store.state.city == 'London'">
         <gmap-map v-bind:center="{lat: 51.5074, lng: -0.1278}" v-bind:zoom="11" style="height: 425px">
+        <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:value.lat,lng:value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
         </gmap-map>
       </div>
       <div v-else-if="$store.state.city == 'New York City'">
         <gmap-map v-bind:center="{lat: 40.7128, lng: -74.0060}" v-bind:zoom="11" style="height: 425px">
+        <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:value.lat,lng:value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
         </gmap-map>
       </div>
       <div v-else-if="$store.state.city == 'Rio de Janeiro'">
         <gmap-map v-bind:center="{lat: -22.9068, lng: -43.1729}" v-bind:zoom="11" style="height: 425px">
+        <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:value.lat,lng:value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
         </gmap-map>
       </div>
       <div v-else-if="$store.state.city == 'Rome'">
         <gmap-map v-bind:center="{lat: 41.9028, lng: 12.4964}" v-bind:zoom="11" style="height: 725px">
+        <GmapMarker
+            v-for="value in $store.state.recommendedAttractions" 
+            :key="value.id"
+            :position= "{lat:value.lat,lng:value.long}"
+            :clickable="true"
+            :draggable="false"
+            @click="center=m.position"
+          />
         </gmap-map>
       </div>
       <div v-else="">

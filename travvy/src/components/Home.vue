@@ -145,7 +145,9 @@
         if(this.$store.state.recommendedAttractions.length > 0){
           const covidInfo = await CovidService.getCovidInfo({"country":this.$store.state.recommendedAttractions[0].country})
           console.log(covidInfo)
-          this.$store.dispatch('setCovidInfo', covidInfo.data)  
+          this.$store.dispatch('setCovidInfo', covidInfo.data) 
+          console.log(this.$store.state.recommendedAttractions)
+ 
         }
         
         //save the covid info in store 
