@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       Age: DataTypes.INTEGER,
       Gender: DataTypes.TEXT,
       Instagram_Username: DataTypes.TEXT,
-      Preferred_Activity_Type: DataTypes.TEXT
+      Preferred_Activity_Type: DataTypes.TEXT,
+      activity_id: DataTypes.TEXT
     }, 
     {
       tableName: 'Users',

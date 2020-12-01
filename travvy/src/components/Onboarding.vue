@@ -80,7 +80,7 @@
 
     <!-- Button to go to the Home page --> 
     <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
-    <button class="button" @click="onboarding() , checkForm()"><span><strong>Start!</strong></span></button>
+    <button class="button" @click=" onboarding(), checkForm()"><span><strong>Start!</strong></span></button>
 
     <br>
 
@@ -119,7 +119,19 @@ export default {
       console.log(this.instagram_username)
       console.log(this.preferred_activity_type)
       console.log(this.errors)
-
+         if(this.preferred_activity_type == "Active"){
+            this.activity_id = 111
+        } else if (this.preferred_activity_type == "Food"){
+            this.activity_id = 112
+        }else if (this.preferred_activity_type == "Entertainment"){
+           this.activity_id = 113
+        } else if (this.preferred_activity_type == "Historical"){
+            this.activity_id = 114
+        } else if (this.preferred_activity_type == "Family"){
+            this.activity_id = 115
+        } else if (this.preferred_activity_type == "Nature"){
+            this.activity_id = 116
+        }
 
       try {
         const response = await AuthenticationService.onboarding({
@@ -128,6 +140,7 @@ export default {
           "gender": this.gender,
           "instagram_username": this.instagram_username,
           "preferred_activity_type": this.preferred_activity_type,
+          "activity_id": this.activity_id,
           })
         console.log(response);
         if (response && this.checkForm(response)===true){
@@ -142,6 +155,32 @@ export default {
         console.log(error)
         }
     },
+     
+    // async addUserType(){
+    //   console.log(this.email)
+    //   //console.log(this.preferred_activity_type)
+      
+      
+    //   //console.log(this.preferred_activity_type)
+    //   console.log(this.errors)
+    //    try {
+
+    //      // if this. prefered act type == fam, act id = 116 ... 
+
+    //     const response = await AuthenticationService.addUserType({
+    //       "Email": this.email,
+    //       "activity_id": 116
+          
+    //       })
+    //     console.log(response);
+       
+
+    //   } catch (error) {
+    //     console.log(error)
+    //     }
+     
+
+    // },
 
       async navigateTo(route) {
 

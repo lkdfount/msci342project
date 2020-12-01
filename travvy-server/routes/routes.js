@@ -41,7 +41,7 @@ module.exports = (app) => {
   app.post('/onboarding', (req, res) => {
       console.log(req)
       console.log(req.body.params.email)
-      AuthenticationController.onboarding(req.body.params.email,req.body.params.age,req.body.params.gender,req.body.params.instagram_username,req.body.params.preferred_activity_type)
+      AuthenticationController.onboarding(req.body.params.email,req.body.params.age,req.body.params.gender,req.body.params.instagram_username,req.body.params.preferred_activity_type, req.body.params.activity_id)
         .then(users => res.status(201).send(users))
         .catch(error => res.status(400).send(error))
     }),
@@ -52,5 +52,12 @@ module.exports = (app) => {
         .then(users => res.status(201).send(users))
         .catch(error => res.status(400).send(error))
     })
+  // app.post('/addUserType', (req, res) => {
+  //     console.log(req)
+  //     console.log(req.query.email)
+  //     AuthenticationController.addUserType(req.query.email, req.query.activity_id)
+  //       .then(users => res.status(201).send(users))
+  //       .catch(error => res.status(400).send(error))
+  //   })
 
 }

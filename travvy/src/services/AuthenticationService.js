@@ -42,11 +42,11 @@ export default {
         //return if it is a valid login or not
         return isValidLogin
     },
-    async onboarding(email,age,gender,instagram_username,preferred_activity_type){
+    async onboarding(email,age,gender,instagram_username,preferred_activity_type, activity_id){
        
        var checkEmail = false
 
-        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})
+        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type, activity_id})
 
 
            
@@ -73,7 +73,8 @@ export default {
             Instagram_Username: "",
             Name: "",
             Password: "",
-            Preferred_Activity_Type: ""
+            Preferred_Activity_Type: "",
+            activity_id: ""
         }
         const response = await axios.get('/getUser', {params:email})  
         .then(function (response) {
@@ -85,6 +86,7 @@ export default {
           responseDict.Name = response.data['Name']
           responseDict.Password = response.data['Password']
           responseDict.Preferred_Activity_Type = response.data['Preferred_Activity_Type']
+          responseDict.activity_id = response.data['activity_id']
         })        
         .catch(function (error) {
             console.log(error);
@@ -93,5 +95,25 @@ export default {
         //return the user
         return responseDict
     }
+    // async addUserType(email,activity_id){
+    //     // to begin, set that the user does not exist
+    //    var userExist = false
+    //    // create the post request to the database using info from sign up
+    //     const response = await axios.post('/addUserType',{params:email,activity_id})
+        
+    //     .then(function (response) {
+    //         // the user exists in the database if the emails match
+    //         userExist = (email['email'] === response.data['Email'])
+    //         console.log(userExist);
+    //         console.log(response);
+    //     })        
+    //     .catch(function (error){
+
+    //         alert(error)
+    //     });
+    //     console.log(response);
+    //     // return if the user exists or not
+    //     return userExist
+    // },
 
 }
