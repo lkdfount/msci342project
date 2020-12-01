@@ -50,20 +50,7 @@ module.exports = {
     },
 
     async onboarding (email, age, gender, instagram_username, preferred_activity_type, activity_id) {
-        //here we find a user who's email matches an email in the user database
-        // if(this.preferred_activity_type == "Active"){
-        //     this.activity_id = 111
-        // } else if (this.preferred_activity_type == "Food"){
-        //     this.activity_id = 112
-        // }else if (this.preferred_activity_type == "Entertainment"){
-        //    this.activity_id = 113
-        // } else if (this.preferred_activity_type == "Historical"){
-        //     this.activity_id = 114
-        // } else if (this.preferred_activity_type == "Family"){
-        //     this.activity_id = 115
-        // } else if (this.preferred_activity_type == "Nature"){
-        //     this.activity_id = 116
-        // }
+     
         const user = await Users.update({
             Age: age,
             Gender: gender,
@@ -79,25 +66,7 @@ module.exports = {
         //if there is not a user that exists it will return null
         return user
     },
-    // async addUserType(email,activity_id) {
-    //     Users.belongsToMany(Activity, {through: User_type});
-    //     Activity.belongsToMany(Users, {through: User_type});
-    //     user.addActivity(activity)
-    //     // Users.hasMany(User_type, {foreignKey: 'Email'})
-    //     // User_type.belongsTo(Users, {foreignKey: 'Email'})
-    //     // Activity.hasMany(User_type, {foreignKey: 'activity_id'})
-    //     // User_type.belongsTo(Activity, {foreignKey: 'activity_id'})
-
-    //     const user = await User_type.create({
-    //         Email: email, 
-    //         activity_id: activity_id
-            
-    //     })
-    //     console.log(email);
-    //     console.log(activity_id);
-    //     return user
-        
-    //     },
+    
     //this method returns a user
     async getUser (email) {
         //here we find a user who's email matches an email in the user database

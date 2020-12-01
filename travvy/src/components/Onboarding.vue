@@ -119,6 +119,8 @@ export default {
       console.log(this.instagram_username)
       console.log(this.preferred_activity_type)
       console.log(this.errors)
+      // sets the activity id based on the activity type
+      // recommends attractions based on activity id
          if(this.preferred_activity_type == "Active"){
             this.activity_id = 111
         } else if (this.preferred_activity_type == "Food"){

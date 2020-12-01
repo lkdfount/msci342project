@@ -52,12 +52,5 @@ module.exports = (app) => {
         .then(users => res.status(201).send(users))
         .catch(error => res.status(400).send(error))
     })
-  // app.post('/addUserType', (req, res) => {
-  //     console.log(req)
-  //     console.log(req.query.email)
-  //     AuthenticationController.addUserType(req.query.email, req.query.activity_id)
-  //       .then(users => res.status(201).send(users))
-  //       .catch(error => res.status(400).send(error))
-  //   })
 
 }

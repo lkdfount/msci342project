@@ -95,25 +95,5 @@ export default {
         //return the user
         return responseDict
     }
-    // async addUserType(email,activity_id){
-    //     // to begin, set that the user does not exist
-    //    var userExist = false
-    //    // create the post request to the database using info from sign up
-    //     const response = await axios.post('/addUserType',{params:email,activity_id})
-        
-    //     .then(function (response) {
-    //         // the user exists in the database if the emails match
-    //         userExist = (email['email'] === response.data['Email'])
-    //         console.log(userExist);
-    //         console.log(response);
-    //     })        
-    //     .catch(function (error){
-
-    //         alert(error)
-    //     });
-    //     console.log(response);
-    //     // return if the user exists or not
-    //     return userExist
-    // },
-
+    
 }
