@@ -166,3 +166,40 @@ describe('Profile Test for Correct email, age, gender, instagram username, and p
 
 // Unit Tests for File Upload Feature
 
+
+//Unit Tests for Map Markers
+
+const city3 = "Toronto"
+const city4 = "Rome"
+const groupSize3 = 12
+const groupSize4 = 50
+const startDate3 = new Date("2020-11-30")
+const endDate3 = new Date("2020-12-02")
+
+describe('Test number of attractions returned: Toronto with group size 12',function(){
+    it('Recommended Attractions should return 4', async function(){
+        const response = await RecommendController.recommend(city3,groupSize3,startDate3,endDate3)
+        assert.equal(response.length,4);
+    })
+});
+
+describe('Test number of attractions returned: Toronto with group size 50',function(){
+    it('Recommended Attractions should return 4', async function(){
+        const response = await RecommendController.recommend(city3,groupSize4,startDate3,endDate3)
+        assert.equal(response.length,4);
+    })
+});
+
+describe('Test number of attractions returned: Rome with group size 12',function(){
+    it('Recommended Attractions should return 7', async function(){
+        const response = await RecommendController.recommend(city4,groupSize3,startDate3,endDate3)
+        assert.equal(response.length,7);
+    })
+});
+
+describe('Test number of attractions returned: Rome with group size 12',function(){
+    it('Recommended Attractions should return 2', async function(){
+        const response = await RecommendController.recommend(city4,groupSize4,startDate3,endDate3)
+        assert.equal(response.length,2);
+    })
+});
