@@ -2,6 +2,8 @@
     <div class="SignUp">
       <div class="container">
         <h2>Sign Up for TRAVVY</h2>
+        <p> * = required field</p>
+        <br>
         <!-- this form takes the sign up input from users - binds to the user form -->
         <form>
         <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
