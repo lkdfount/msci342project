@@ -2,6 +2,8 @@
     <div class="SignUp">
       <div class="container">
         <h2>Sign Up for TRAVVY</h2>
+        
+        <br>
         <!-- this form takes the sign up input from users - binds to the user form -->
         <form>
         <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
@@ -15,19 +17,20 @@
           </u1>
         </p>
         <!-- the user input is taken here -->
-            <label><strong> Name (*): </strong></label><br><br>
+            <label><strong> Name*: </strong></label><br><br>
             <input type="text" class="info" v-model="name" placeholder="Full Name" id="name" required/> 
             <br>
             <br>
-            <label><strong> Email (*): </strong></label><br><br>
+            <label><strong> Email*: </strong></label><br><br>
             <input type="text" class="info" v-model="email" placeholder="Email" id="email" required/>
             <br>
             <br> 
-            <label><strong> Password (* min. 6 characters): </strong></label><br><br>
+            <label><strong> Password * min. 6 characters: </strong></label><br><br>
             <input type="password" class="info" v-model="password" placeholder="Password" id="password" required/>
             <br>
 
         </form>
+        <p> * Required Field</p>
         <div v-html="error" />
         <br>
         <br>
