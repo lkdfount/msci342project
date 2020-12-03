@@ -12,7 +12,7 @@ module.exports = (app) => {
     endDate = new Date(req.query.endDate)
     //endDate = endDate.setFullYear(endDate.getFullYear()-nonfilteredStartDate.getFullYear() > 0 ? 0 : 1)
 
-    RecommendController.recommend(req.query.city,groupSize,startDate,endDate,req.query.user)
+    RecommendController.recommend(req.query.city,groupSize,startDate,endDate,req.query.user,req.query.preference)
       .then(attraction => res.status(200).send(attraction))
       .catch(error => res.status(500).send(error))
   }),

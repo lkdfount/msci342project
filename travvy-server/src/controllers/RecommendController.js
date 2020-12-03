@@ -7,8 +7,8 @@ const Activity =  require('../models').Activity
 
 // This is the logic for queriying database for attraction information for the desired city
 module.exports = {
-  async recommend (city, groupSize, startDate, endDate,user) {   
-    if(user == null){
+  async recommend (city, groupSize, startDate, endDate,user,preferences) {   
+    if(user == null || preferences == 'Yes'){
       activity_ids = await Activity.findAll({
         attributes: ['activity_id'],
         model: Activity,

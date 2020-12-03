@@ -55,6 +55,14 @@
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
     <br>
     <br>
+     <!-- if a user is signed in give them the option of not using their preferences -->
+    <div v-if="$store.state.userEmail != null">
+    <label for="checkbox">     Would you like your preferences ignored?:</label>
+    <input type="checkbox" id="checkbox" value="Yes" v-model="preference_consent">
+    <span> {{ preference_consent[0] }}</span>
+    </div>
+    <br>
+    <br>
 
     <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
   
@@ -126,7 +134,8 @@
        startDate: '',
        endDate: '',
        error:null,
-       file: null
+       file: null,
+       preference_consent:[]
 
      }
    },
@@ -138,7 +147,8 @@
       try {
         //saves users city in the store
         this.$store.dispatch('setCity', this.city)
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
+        console.log(this.preference_consent[0])
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail, "preference":this.preference_consent[0]})
         // Saves response from recommend to the global variable in the store
         this.$store.dispatch('setRecommendedAttractions', response.data)
         //call covid19 API based on country 
