@@ -217,3 +217,39 @@ describe('Recommend Attractions to User Based on Activity Preferences (ACTIVIY I
           assert.equal(response.length,2);
     })
 })
+
+// Unit Tests for Signup after Adding Activity ID
+// This unit test ensures that a user can still sign up and the authentication controller is running properly after adding activity_id to users table
+const name1 = "Test1"
+const email1 = "testemail11@outlook.com"
+const password1 = "Helloworld1"
+
+describe('Sign up test', function(){
+    it('Signup should place users in database and return the same length as user WITH ACT ID', async function(){
+        // this will pass the information collected in signup to the authentication controller 
+        const response = await AuthenticationController.signup(email1,name1,password1)
+        // a user is found given the constants and parameters for users
+        const user = await Users.findOne({
+            where:{
+                Email:email1,
+                Name: name1,
+                Password: password1,
+                Age: null,
+                Gender: null,
+                Instagram_Username: null,
+                Preferred_Activity_Type: null,
+                activity_id: null
+            }
+        })
+
+        // the length of the user returned in authentication controller should be the same as the length of the user returned from the users file
+        // if the length of these are the same, the signup function is working properly
+        assert.equal(response.length,user.length);
+
+        const deleteUser = await Users.destroy({
+            where:{
+                Email:email1,
+            }
+        })
+    })
+});
