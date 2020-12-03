@@ -216,3 +216,17 @@ describe('Test number of attractions returned: Rome with group size 12',function
         assert.equal(response.length,2);
     })
 });
+
+// Unit Tests for Recommend Attractions based on preferred activity type
+
+const city5 = "Toronto"
+const groupSize5 = 2
+const startDate4 = new Date("2020-12-3")
+const endDate4 = new Date("2020-12-5")
+const userEmailEm = 'emily@outlook.com'
+describe('Recommend Attractions to User Based on Activity Preferences (ACTIVIY ID) Test', function() {
+    it('Recommend Attractions User with Preferences should return 2', async function() {
+          const response = await RecommendController.recommend(city5,groupSize5,startDate4,endDate4,userEmailEm)
+          assert.equal(response.length,2);
+    })
+})

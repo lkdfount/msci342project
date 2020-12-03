@@ -1,6 +1,8 @@
+//const User_type = require('../models/User_type').Users_type
 
 
 const Users = require('../models').Users
+//const Activity = require('../models').Activity
 
 // This is the logic for adding users to the database
 // The format is set to match the Users table on MySQL
@@ -14,7 +16,8 @@ module.exports = {
         Age: null,
         Gender: null,
         Instagram_Username: null,
-        Preferred_Activity_Type: null
+        Preferred_Activity_Type: null,
+        activity_id: null
         
     })
     return user
@@ -46,13 +49,14 @@ module.exports = {
         return user
     },
 
-    async onboarding (email, age, gender, instagram_username, preferred_activity_type) {
-        //here we find a user who's email matches an email in the user database
+    async onboarding (email, age, gender, instagram_username, preferred_activity_type, activity_id) {
+     
         const user = await Users.update({
             Age: age,
             Gender: gender,
             Instagram_Username: instagram_username,
             Preferred_Activity_Type: preferred_activity_type,
+            activity_id: activity_id,
            } , {
             where:{
                 email: email,
@@ -62,6 +66,7 @@ module.exports = {
         //if there is not a user that exists it will return null
         return user
     },
+    
     //this method returns a user
     async getUser (email) {
         //here we find a user who's email matches an email in the user database

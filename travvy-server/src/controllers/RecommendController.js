@@ -2,8 +2,9 @@
 const Attractions = require('../models').Attractions
 const { Op } = require("sequelize");
 const Attraction_type = require('../models').Attraction_type
-const Users_type = require('../models').Users_type
+//const Users_type = require('../models').Users_type
 const Activity =  require('../models').Activity
+const Users = require('../models').Users
 
 // This is the logic for queriying database for attraction information for the desired city
 module.exports = {
@@ -40,10 +41,10 @@ module.exports = {
     return attractions
     }
     else{
-      const activity_ids = await Users_type.findAll({
+      const activity_ids = await Users.findAll({
         attributes: ['activity_id'],
-        model: Users_type,
-        as: 'Users_type',
+        model: Users,
+        as: 'Users',
         where: {Email: user} 
         })
       if(activity_ids.length == 0){

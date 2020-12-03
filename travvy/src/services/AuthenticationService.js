@@ -42,11 +42,11 @@ export default {
         //return if it is a valid login or not
         return isValidLogin
     },
-    async onboarding(email,age,gender,instagram_username,preferred_activity_type){
+    async onboarding(email,age,gender,instagram_username,preferred_activity_type, activity_id){
        
        var checkEmail = false
 
-        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type})
+        const response = await axios.post('/onboarding', {params:email,age,gender,instagram_username,preferred_activity_type, activity_id})
 
 
            
@@ -73,7 +73,8 @@ export default {
             Instagram_Username: "",
             Name: "",
             Password: "",
-            Preferred_Activity_Type: ""
+            Preferred_Activity_Type: "",
+            activity_id: ""
         }
         const response = await axios.get('/getUser', {params:email})  
         .then(function (response) {
@@ -85,6 +86,7 @@ export default {
           responseDict.Name = response.data['Name']
           responseDict.Password = response.data['Password']
           responseDict.Preferred_Activity_Type = response.data['Preferred_Activity_Type']
+          responseDict.activity_id = response.data['activity_id']
         })        
         .catch(function (error) {
             console.log(error);
@@ -93,5 +95,5 @@ export default {
         //return the user
         return responseDict
     }
-
+    
 }
