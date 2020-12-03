@@ -112,7 +112,7 @@ describe('Recommend Attractions User without Preferences Test', function() {
               assert.equal(response.length,6);
         })
     });
-describe('Recommend Attractions User without Preferences Test', function() {
+describe('Recommend Attractions User without Preferences no Recomendations Test', function() {
     it('Recommend Attractions User without Preferences should return 6', async function() {
             const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithoutPreferences,preferenceConsentYes)
             assert.equal(response.length,6);
