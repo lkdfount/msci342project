@@ -12,7 +12,18 @@
     <br>
     <h2> Book your next trip!</h2>
     <!-- data binding destination, corresponding data object below -->
-    <label for="Destination">Select a Destination:</label>
+    <form>
+    <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
+    <p v-if="errors.length" class="error">
+      <b>Please following information is missing:</b>
+      <!-- this will bind all the errors together after the form is completed and return them to the user-->
+      <u1 id="checkForm" class="red"> 
+        <br>
+        <li v-for="error in errors" :key="error"> {{ error }}</li>
+        <!-- v-bind="error in errors"-->
+      </u1>
+    </p>
+    <label for="Destination">Select a Destination*:</label>
     <!-- select destinations to find attractions in -->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
     <div id="selector">
@@ -38,25 +49,29 @@
     <br>
     <br>
     <!-- data binding dates, corresponding data object below -->
-    <label for="Dates">     Select Departure Date:</label>
+    <label for="Dates">     Select Departure Date*:</label>
     <!-- user selects dates they are travelling in -->
 
       <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="startDate">
     <br>
     <br>
-    <label for="Dates">     Select Return Date:</label>
+    <label for="Dates">     Select Return Date*:</label>
       <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="endDate">
     <br>
     <br>
 
     <!-- data binding travellers, corresponding data object below -->
-    <label for="Travellers">     Number of Travellers:</label>
+    <label for="Travellers">     Number of Travellers*:</label>
     <!-- user selects number of travellers in their party -->
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
+
+    </form>
+    <p> * Required Field </p>
+    <div v-html="error" />
     <br>
     <br>
 
-    <center><button v-on:click="navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+    <center><button v-on:click="checkForm(), navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
   
 
     <!-- the search will use the parameters from above to search through the database and return results -->
@@ -125,7 +140,7 @@
        groupSize: '',
        startDate: '',
        endDate: '',
-       error:null,
+       errors:'',
        file: null
 
      }
@@ -133,30 +148,58 @@
 
   methods: {
     // This sends a request, when the search button, is clicked to recommend to retrieve recommended attractions based on location and reroutes to the attractions list page
-    async navigateTo(route) {
-
+    async navigateTo(route) {            
       try {
-        //saves users city in the store
-        this.$store.dispatch('setCity', this.city)
         const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
-        // Saves response from recommend to the global variable in the store
-        this.$store.dispatch('setRecommendedAttractions', response.data)
-        //call covid19 API based on country 
-        if(this.$store.state.recommendedAttractions.length > 0){
-          const covidInfo = await CovidService.getCovidInfo({"country":this.$store.state.recommendedAttractions[0].country})
-          console.log(covidInfo)
-          this.$store.dispatch('setCovidInfo', covidInfo.data) 
-          console.log(this.$store.state.recommendedAttractions)
- 
-        }
         
-        //save the covid info in store 
+        if (response && this.checkForm(response)===true){
+          //saves users city in the store
+          this.$store.dispatch('setCity', this.city)
+          // Saves response from recommend to the global variable in the store
+          this.$store.dispatch('setRecommendedAttractions', response.data)
+          if(this.$store.state.recommendedAttractions.length > 0){
+            //call covid19 API based on country
+            const covidInfo = await CovidService.getCovidInfo({"country":this.$store.state.recommendedAttractions[0].country})
+            this.$store.dispatch('setCovidInfo', covidInfo.data)   
+          }
+          this.$router.push(route)
+        }else{
+          //if the login is not valid, do nothing and tell the user it was wrong
+          alert("Something went wrong...")
+        }
 
-        this.$router.push(route)
+
       } catch (error) {
          console.log(error)
       }
     },
+    
+    checkForm: function(x){
+              // an array with the current errors and what will be returned to the user
+              this.errors = [];
+              // if a city is not entered, the site will tell the user a city is required
+              if(!this.city){
+                this.errors.push("City");
+              }
+              // if a start date is not entered, the site will tell the user a start date is required
+              if (!this.startDate){
+                this.errors.push("Start Date");
+              }
+              // if a group size is not entered, the site will tell the user a group size is required
+              if (!this.groupSize){
+                this.errors.push("Group size");
+              }
+              if(!this.endDate){
+                this.errors.push("End Date");
+              }
+              // if there are no errors, the method will return ture
+              if(!this.errors.length){
+                 return true;
+              } 
+               // this will prevent the form from submitting if there are errors in the user input 
+               x.preventDefault();
+    },
+
     async nextDest(destination) {
       //if the nextDestination button is selected, populate the drop down value with the city
       let element = document.getElementById("Destination");
@@ -188,6 +231,9 @@
   display: inline-block;
   font-size: 40px;
   border-radius: 12px;
+}
+.error{
+  color: red;
 }
 .profile{
   background-color: #FF5F00;
