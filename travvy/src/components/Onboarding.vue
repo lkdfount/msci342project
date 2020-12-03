@@ -16,14 +16,14 @@
       </u1>
     </p>
     <br>
-    <label><strong>Please verify your email here (required): </strong></label>
+    <label><strong>Please verify your email here: * </strong></label>
     <input type="text" class="info" v-model="email" placeholder="Input Email here" required>
     <br>
     <br>
     <br>
 
     <div class= "dropwdown">
-    <label><strong>Please select the gender you identify as (required): </strong></label>
+    <label><strong>Please select the gender you identify as: * </strong></label>
     <select class="" v-model="gender" >
         <option></option>
         <option>Male</option>
@@ -35,7 +35,7 @@
     </div>
     <br>
     <br>
-    <label><strong>Please input your age (required): </strong></label>
+    <label><strong>Please input your age: * </strong></label>
     <input type="text" class="info" v-model="age" placeholder="Input Age here"> 
     <br>
     <br>
@@ -48,7 +48,7 @@
     <br>
     <br> --> 
     <div class= "dropwdown">
-    <label><strong>Please select your preferred activity type (required) </strong></label>
+    <label><strong>Please select your preferred activity type: * </strong></label>
     <select class="" v-model="preferred_activity_type">
         <option></option>
         <option>Family</option>
@@ -71,11 +71,13 @@
     <br>
     <br>
     <br>
-    <label><strong>Please include your Instagram handle: </strong></label>
+    <label><strong>Please include your Instagram handle: * </strong></label>
     <input type="text" class="info" v-model="instagram_username" placeholder="Input Instagram Handle here"> 
     <br>
     <br>
   </form>
+  <p>* Required Field</p>
+
   <div v-html="error" />
 
     <!-- Button to go to the Home page --> 
