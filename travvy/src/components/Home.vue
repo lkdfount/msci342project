@@ -15,7 +15,7 @@
     <form>
     <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
     <p v-if="errors.length" class="error">
-      <b>Please following information is missing:</b>
+      <b>Please enter the following missing information:</b>
       <!-- this will bind all the errors together after the form is completed and return them to the user-->
       <u1 id="checkForm" class="red"> 
         <br>
