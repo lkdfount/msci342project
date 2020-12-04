@@ -70,6 +70,14 @@
     <div v-html="error" />
     <br>
     <br>
+     <!-- if a user is signed in give them the option of not using their preferences -->
+    <div v-if="$store.state.userEmail != null">
+    <label for="checkbox">     Would you like your preferences ignored?:</label>
+    <input type="checkbox" id="checkbox" value="Yes" v-model="preference_consent">
+    <span> {{ preference_consent[0] }}</span>
+    </div>
+    <br>
+    <br>
 
     <center><button v-on:click="checkForm(), navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
   
@@ -141,8 +149,8 @@
        startDate: '',
        endDate: '',
        errors:'',
-       file: null
-
+       file: null,
+       preference_consent:[]
      }
    },
 
@@ -150,7 +158,7 @@
     // This sends a request, when the search button, is clicked to recommend to retrieve recommended attractions based on location and reroutes to the attractions list page
     async navigateTo(route) {            
       try {
-        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail})
+        const response = await AttractionsService.recommend({"city": this.city, "groupSize": this.groupSize, "startDate": this.startDate, "endDate": this.endDate, "user":this.$store.state.userEmail, "preference":this.preference_consent[0]})
         
         if (response && this.checkForm(response)===true){
           //saves users city in the store

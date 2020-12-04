@@ -84,6 +84,7 @@ const startDate = new Date("2020-11-05")
 const endDate = new Date("2021-01-05")
 const userEmailWithPreferences = 'dyampolsky@uwaterloo.ca'
 const userEmailWithoutPreferences = 'lucytest@test.ca'
+const preferenceConsentYes = 'Yes'
 
 describe('Recommend Attractions No User Info Test', function() {
  it('Recommend Attractions No User Info Test should return 4', async function() {
@@ -98,6 +99,12 @@ describe('Recommend Attractions User with Preferences Test', function() {
               assert.equal(response.length,1);
         })
     });
+describe('Recommend Attractions User with Preferences no Recomendations Test', function() {
+    it('Recommend Attractions User with Preferences should return 1', async function() {
+            const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithPreferences,preferenceConsentYes)
+            assert.equal(response.length,6);
+    })
+});
 
 describe('Recommend Attractions User without Preferences Test', function() {
         it('Recommend Attractions User without Preferences should return 6', async function() {
@@ -105,6 +112,12 @@ describe('Recommend Attractions User without Preferences Test', function() {
               assert.equal(response.length,6);
         })
     });
+describe('Recommend Attractions User without Preferences no Recomendations Test', function() {
+    it('Recommend Attractions User without Preferences should return 6', async function() {
+            const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithoutPreferences,preferenceConsentYes)
+            assert.equal(response.length,6);
+    })
+});
 //test the getUser function
 describe('Correct email get user test', function() {
  it('Get user should not return null with the a correct email', async function() {
