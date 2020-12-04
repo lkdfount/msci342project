@@ -143,7 +143,7 @@ const unacceptableAge = 11
 const acceptableGender = "Male"
 const acceptableInstagramUsername = "rushan_niazi"
 const acceptableActivity = "Family"
-
+const acceptableActivityId = 115
 
 describe('Onboarding Test for Correct email, age, gender, instagram username, and preferred activity type', function() {
  it('Onboarding test should return true with all attribute data being correct', async function() {
