@@ -6,7 +6,26 @@
   
     
     <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
-    <img src="../images/toronto.jpg" alt="Picture of Toronto"/>
+     <div v-if="$store.state.city == 'Toronto'">
+        <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Paris'">
+        <img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'London'">
+        <img src="../images/london.jpg" alt="Picture of London" class ="cityimage" />
+      </div>
+      <div v-else-if="$store.state.city == 'New York City'">
+        <img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Rio de Janeiro'">
+        <img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Rome'">
+        <img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/>
+      </div>
+      <div v-else="">
+      </div>
     <br>
     <h1>Description</h1>
     <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
@@ -84,12 +103,7 @@ export default {
   cursor: pointer;
   margin: 5px;
   margin-left: -1690px;
-  background: linear-gradient(
-      to bottom,
-        rgba(255,95,0) 8%,
-        rgba(254,193,149) 56%,
-        rgba(240,228,216) 82%,
-        rgba(255,242,225) 100%)
+  background: #FF5F00; 
 }
 .back span {
   cursor: pointer;
