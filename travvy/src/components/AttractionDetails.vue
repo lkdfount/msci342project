@@ -5,25 +5,38 @@
       <!-- Button to go to go back to the AttractionsList page -->
       
       <button class="change" style="float:left;" @click="$router.go(-1)">Back</button>
-    
-      <br>
-      <br>
-      <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
-      <hr size="3" width="90%" color="#A9A9A9"> 
-      <br>
-      <img src="../images/toronto.jpg" alt="Picture of Toronto" width=60%/>
-      <br>
-      <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
-      <hr size="3" width="90%" color="#A9A9A9"> 
-      <h4>Address: <span>{{$store.state.recommendedAttractions[id].street_address}}</span> </h4>
-      <h4>Email: {{$store.state.recommendedAttractions[id].email_address}}</h4>
-      <h4>Phone Number: {{$store.state.recommendedAttractions[id].phone_number}}</h4>
-      <h4>Ticket Pricing: {{$store.state.recommendedAttractions[id].ticket_price}}</h4>
-      <h4>Maximum Group Size: {{$store.state.recommendedAttractions[id].max_number_guest}}</h4>
-      <h4>Are masks required: {{$store.state.recommendedAttractions[id].mask_required}}</h4>
-      <h4>COVID-19 Safety Measures: {{$store.state.recommendedAttractions[id].covid_safety_measures}}</h4>
-      <br>
-    </div>
+        <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
+     <div v-if="$store.state.city == 'Toronto'">
+        <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Paris'">
+        <img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'London'">
+        <img src="../images/london.jpg" alt="Picture of London" class ="cityimage" />
+      </div>
+      <div v-else-if="$store.state.city == 'New York City'">
+        <img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Rio de Janeiro'">
+        <img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
+      </div>
+      <div v-else-if="$store.state.city == 'Rome'">
+        <img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/>
+      </div>
+      <div v-else="">
+      </div>
+    <br>
+    <h1>Description</h1>
+    <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
+    <h2>Address: <span>{{$store.state.recommendedAttractions[id].street_address}}</span> </h2>
+    <h3>Email: {{$store.state.recommendedAttractions[id].email_address}}</h3>
+    <h3>Phone Number: {{$store.state.recommendedAttractions[id].phone_number}}</h3>
+    <h3>Ticket Pricing: {{$store.state.recommendedAttractions[id].ticket_price}}</h3>
+    <h3>Maximum Group Size: {{$store.state.recommendedAttractions[id].max_number_guest}}</h3>
+    <h3>Are masks required: {{$store.state.recommendedAttractions[id].mask_required}}</h3>
+    <h3>COVID-19 Safety Measures: {{$store.state.recommendedAttractions[id].covid_safety_measures}}</h3>
+    <br>
   </div>
 </template>
 
@@ -110,12 +123,7 @@ h1{
   cursor: pointer;
   margin: 5px;
   margin-left: -1690px;
-  background: linear-gradient(
-      to bottom,
-        rgba(255,95,0) 8%,
-        rgba(254,193,149) 56%,
-        rgba(240,228,216) 82%,
-        rgba(255,242,225) 100%)
+  background: #FF5F00; 
 }
 .back span {
   cursor: pointer;
