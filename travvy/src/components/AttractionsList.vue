@@ -81,7 +81,6 @@
       <hr size="3" width="60%" color="#E7EDF7">  
 
 <!-- include a map of for each city -->
-
       <h1>Map</h1> 
       <div id="map">
         <div v-if="$store.state.city == 'Toronto'">
@@ -163,9 +162,9 @@
       </div>
       </div>
       <hr size="3" width="60%" color="#E7EDF7"> 
-
 <!-- all reviews taken from TripAdvisor-->
 <!-- the reviews of each city will dynamically display based on the chosen destination -->
+<div class="container">
       <h1>Traveller Tips</h1>
       <div v-if="$store.state.city == 'Toronto'">
         <h3>Rosie, from Scotland: ⭐⭐⭐⭐⭐</h3>
@@ -220,6 +219,7 @@
         <!--handling of empty recommended attractions -->
           <h1> No reviews available </h1>
       </div>
+       </div>
 
       <!--<div v-if="$store.state.recommendedAttractions.length > 0">
       <p>{{$store.state.recommendedAttractions[0].city}} felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>
@@ -294,6 +294,10 @@
 .profile:hover span:after {
   opacity: 1;
   right: 0;
+}
+.profile:hover {
+  background-color: #ed7485;
+  cursor: pointer
 }
 /* include the styling for the button group list of attractions*/
 .btn-group button {
@@ -381,6 +385,11 @@
 .change:hover span:after {
   opacity: 1;
   left: 0;
+}
+
+.change:hover {
+  background-color: #ed7485;
+  cursor: pointer
 }
 
 </style>

@@ -25,7 +25,7 @@
         <br>
         <br>
 
-        <button class="button" @click="updateUserProfile()"><span>Update User Profile</span></button>
+        <button class="button" @click="updateUserProfile()"><span>Update Profile</span></button>
         <br>
         <br>
 
@@ -33,7 +33,7 @@
         <br>
         <br>
         <!-- Button to go to the home page --> 
-        <router-link to="/Home" tag="button" class="button"><span>Return Home</span></router-link>
+        <router-link to="/Home" tag="button" class="back" style="float: left;"><span>Return Home</span></router-link>
       </div>
     </div>
 </template>
@@ -206,6 +206,45 @@ label {
   outline: none;
   border-radius: 10px; 
 
+}
+
+.back{
+  background-color: #FF5F00; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 4px;
+  position: absolute;
+  top:310px;
+  left: 640px;
+}
+
+.back span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.back span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+.back:hover span {
+  padding-left: 25px;
+}
+
+.back:hover span:after {
+  opacity: 1;
+  left: 0;
 }
 
 </style>
