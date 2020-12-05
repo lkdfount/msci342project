@@ -17,7 +17,8 @@ export default new Vuex.Store({
         instagram: null,
         name: null,
         activity: null,
-        covidInfo: null, 
+        covidInfo: null,
+        attractionDetailsId: null, 
     },
     mutations: {
         // If user selects new locations, recommended attractions change
@@ -51,7 +52,11 @@ export default new Vuex.Store({
         }, 
         setCovidInfo(state,covidInfo){
             state.covidInfo = covidInfo
-        }
+        },
+        setAttractionDetailsId(state,attractionDetailsId){
+            state.attractionDetailsId = attractionDetailsId
+        },
+         
     }, 
     actions: {
         // If the user selects a location, recommended attractions is set to the recommended attractions array
@@ -85,7 +90,11 @@ export default new Vuex.Store({
         }, 
         setCovidInfo({commit},covidInfo){
             commit('setCovidInfo', covidInfo)
-        }
+        },
+        setAttractionDetailsId({commit},attractionDetailsId){
+            commit('setAttractionDetailsId', attractionDetailsId)
+        },
+
     },
   
         

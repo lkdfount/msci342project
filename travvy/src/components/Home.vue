@@ -156,7 +156,7 @@
        age: '',
        preferred_activity_type: '',
        instagram_username: '',
-       preference_consent:[]
+       preference_consent:[],
        errors:'',
 
 
