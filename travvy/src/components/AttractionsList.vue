@@ -61,7 +61,7 @@
       <h1>Personalized attractions, based on your preferences</h1>
   
       <!-- generates dynamic buttons based on the recommended attractions -->
-      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" :key="value.id" >
+      <div class="btn-group" v-for="value in $store.state.recommendedAttractions" :key="value.id" >
         <br>
           <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
           <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
@@ -81,7 +81,6 @@
       <hr size="3" width="60%" color="#E7EDF7">  
 
 <!-- include a map of for each city -->
-
       <h1>Map</h1> 
       <div id="map">
         <div v-if="$store.state.city == 'Toronto'">
@@ -169,7 +168,7 @@
       <h1>Traveller Tips</h1>
       <div v-if="$store.state.city == 'Toronto'">
         <h3>Rosie, from Scotland: ⭐⭐⭐⭐⭐</h3>
-        <p>Toronto is a beautiful, vibrant city in Canada. It has wonderful architec ture, amazing culture and fantastic restaurants and night life</p>
+        <p>Toronto is a beautiful, vibrant city in Canada. It has wonderful architecture, amazing culture and fantastic restaurants and night life</p>
         <h3>Siber, from Minneapolis, Minnesota: ⭐⭐⭐⭐</h3>
         <p>One of my favorite cities. So much to see and do. If you go get a sausage from the street vendor, it's the best you'll ever have. Don't miss Long Street, the longest street in the world. Easy to get around using the subway.</p>
         <h3>John, from Australia: ⭐⭐⭐</h3>

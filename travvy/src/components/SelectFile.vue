@@ -14,7 +14,7 @@
     <div v-if="imageData!=null">
       <img class="preview" :src="picture">
       <br>
-      <button class="selectFiles" @click="onUpload"><span>Upload File</span></button>
+      <button class="selectFiles" @click="onUpload(), metaData()"><span>Upload File</span></button>
     </div>
 
   </label>
@@ -51,8 +51,16 @@ export default {
     },
 
     onUpload() {
+      var metadata = {
+        cacheControl: 'public,max-age=300',
+        contentType: 'image/jpeg',
+        customMetadata: {
+          'document_type': 'Travel Document',
+          'email': this.$store.state.userEmail  
+        }
+      };
       this.picture=null;
-      const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
+      const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData,metadata);
       storageRef.on(`state_changed`,snapshot=>{
         this.uploadValue=(snapshot.bytesTransferred/snapshot.totalBytes)*100; 
       }, error=>{console.log(error.message)},
@@ -62,9 +70,14 @@ export default {
         });
       });
 
-    }
+    },
   }
 }
+
+
+
+
+
 </script>
 
 <style scoped>

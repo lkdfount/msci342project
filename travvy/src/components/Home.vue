@@ -9,7 +9,6 @@
     <br>
     <br>
     <br>
-    <br>
     <h2> Book your next trip!</h2>
     <!-- data binding destination, corresponding data object below -->
     <form>
@@ -122,6 +121,8 @@
  import AttractionsService from '../services/AttractionsService.js'
  import CovidService from '../services/CovidService.js'
  import LocationsService from '../services/LocationsService.js'
+ import AuthenticationService from '../services/AuthenticationService.js'
+
  export default {
    name: 'Home',
    components: {
@@ -148,9 +149,17 @@
        groupSize: '',
        startDate: '',
        endDate: '',
-       errors:'',
+       error:null,
        file: null,
+       email: '',
+       gender: '',
+       age: '',
+       preferred_activity_type: '',
+       instagram_username: '',
        preference_consent:[]
+       errors:'',
+
+
      }
    },
 
@@ -219,7 +228,18 @@
       console.log(response)
     }
 
-  }
+   },
+      async getUser() {
+        const user = await AuthenticationService.getUser({
+            "email": this.$store.state.userEmail
+          })
+        this.$store.dispatch('setAge', user.Age)
+        this.$store.dispatch('setGender', user.Gender)
+        this.$store.dispatch('setInstagram', user.Instagram_Username)
+        this.$store.dispatch('setActivity', user.Preferred_Activity_Type)
+        this.$store.dispatch('setName', user.Name)
+
+      },
 
 }
 
