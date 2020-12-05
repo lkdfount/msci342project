@@ -19,22 +19,22 @@
 
       <!-- the images of each city will dynamically display based on the chosen destination -->
       <div v-if="$store.state.city == 'Toronto'">
-        <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
+        <img src="../images/toronto3.jpg" alt="Picture of Toronto" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Paris'">
-        <img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/>
+        <img src="../images/paris3.jpg" alt="Picture of Paris" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'London'">
-        <img src="../images/london.jpg" alt="Picture of London" class ="cityimage" />
+        <img src="../images/london3.jpg" alt="Picture of London" class ="cityimage" />
       </div>
       <div v-else-if="$store.state.city == 'New York City'">
-        <img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/>
+        <img src="../images/newyorkcity3.jpg" alt="Picture of New York City" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Rio de Janeiro'">
-        <img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
+        <img src="../images/rio3.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Rome'">
-        <img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/>
+        <img src="../images/rome3.jpg" alt="Picture of Rome" class ="cityimage"/>
       </div>
       <div v-else="">
       </div>
@@ -400,17 +400,3 @@
 }
 
 </style>
-
-
-#map{
-  height:400px;
-  width:100%
-}
-var map = new google.maps.Map(document.getElementById('map'),options);
-async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBre0sAE_zK3rJcFYStwk9QhfrsJAKazUI&callback=initMap",
-      initMap(){
-          var options ={
-            zoom: 8,
-            center:{lat:42.3601,lng:-71.0589}
-          } 
-      }
