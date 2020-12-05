@@ -84,6 +84,7 @@ const startDate = new Date("2020-11-05")
 const endDate = new Date("2021-01-05")
 const userEmailWithPreferences = 'dyampolsky@uwaterloo.ca'
 const userEmailWithoutPreferences = 'lucytest@test.ca'
+const preferenceConsentYes = 'Yes'
 
 describe('Recommend Attractions No User Info Test', function() {
  it('Recommend Attractions No User Info Test should return 4', async function() {
@@ -98,6 +99,12 @@ describe('Recommend Attractions User with Preferences Test', function() {
               assert.equal(response.length,1);
         })
     });
+describe('Recommend Attractions User with Preferences no Recomendations Test', function() {
+    it('Recommend Attractions User with Preferences should return 1', async function() {
+            const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithPreferences,preferenceConsentYes)
+            assert.equal(response.length,6);
+    })
+});
 
 describe('Recommend Attractions User without Preferences Test', function() {
         it('Recommend Attractions User without Preferences should return 6', async function() {
@@ -105,6 +112,12 @@ describe('Recommend Attractions User without Preferences Test', function() {
               assert.equal(response.length,6);
         })
     });
+describe('Recommend Attractions User without Preferences no Recomendations Test', function() {
+    it('Recommend Attractions User without Preferences should return 6', async function() {
+            const response = await RecommendController.recommend(city2,groupSize,startDate,endDate,userEmailWithoutPreferences,preferenceConsentYes)
+            assert.equal(response.length,6);
+    })
+});
 //test the getUser function
 describe('Correct email get user test', function() {
  it('Get user should not return null with the a correct email', async function() {
@@ -130,7 +143,7 @@ const unacceptableAge = 11
 const acceptableGender = "Male"
 const acceptableInstagramUsername = "rushan_niazi"
 const acceptableActivity = "Family"
-
+const acceptableActivityId = 115
 
 describe('Onboarding Test for Correct email, age, gender, instagram username, and preferred activity type', function() {
  it('Onboarding test should return true with all attribute data being correct', async function() {
@@ -217,3 +230,39 @@ describe('Recommend Attractions to User Based on Activity Preferences (ACTIVIY I
           assert.equal(response.length,2);
     })
 })
+
+// Unit Tests for Signup after Adding Activity ID
+// This unit test ensures that a user can still sign up and the authentication controller is running properly after adding activity_id to users table
+const name1 = "Test1"
+const email1 = "testemail11@outlook.com"
+const password1 = "Helloworld1"
+
+describe('Sign up test', function(){
+    it('Signup should place users in database and return the same length as user WITH ACT ID', async function(){
+        // this will pass the information collected in signup to the authentication controller 
+        const response = await AuthenticationController.signup(email1,name1,password1)
+        // a user is found given the constants and parameters for users
+        const user = await Users.findOne({
+            where:{
+                Email:email1,
+                Name: name1,
+                Password: password1,
+                Age: null,
+                Gender: null,
+                Instagram_Username: null,
+                Preferred_Activity_Type: null,
+                activity_id: null
+            }
+        })
+
+        // the length of the user returned in authentication controller should be the same as the length of the user returned from the users file
+        // if the length of these are the same, the signup function is working properly
+        assert.equal(response.length,user.length);
+
+        const deleteUser = await Users.destroy({
+            where:{
+                Email:email1,
+            }
+        })
+    })
+});

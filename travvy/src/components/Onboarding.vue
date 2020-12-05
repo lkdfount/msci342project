@@ -81,7 +81,6 @@
   <div v-html="error" />
 
     <!-- Button to go to the Home page --> 
-    <!--<router-link to="/Home" tag="button" class="button" @click='onboarding'><span>Get Started!</span></router-link> -->
     <button class="button" @click=" onboarding(), checkForm()"><span><strong>Start!</strong></span></button>
 
     <br>
@@ -159,32 +158,6 @@ export default {
         console.log(error)
         }
     },
-     
-    // async addUserType(){
-    //   console.log(this.email)
-    //   //console.log(this.preferred_activity_type)
-      
-      
-    //   //console.log(this.preferred_activity_type)
-    //   console.log(this.errors)
-    //    try {
-
-    //      // if this. prefered act type == fam, act id = 116 ... 
-
-    //     const response = await AuthenticationService.addUserType({
-    //       "Email": this.email,
-    //       "activity_id": 116
-          
-    //       })
-    //     console.log(response);
-       
-
-    //   } catch (error) {
-    //     console.log(error)
-    //     }
-     
-
-    // },
 
       async navigateTo(route) {
 
