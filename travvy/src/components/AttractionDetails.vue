@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!-- Button to go to go back to the AttractionsList page -->
+    <div class="container">
     
-    <button class="back" @click="$router.go(-1)">Back</button>
-  
-    
-    <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
+      <!-- Button to go to go back to the AttractionsList page -->
+      
+      <button class="change" style="float:left;" @click="$router.go(-1)">Back</button>
+        <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
      <div v-if="$store.state.city == 'Toronto'">
         <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
       </div>
@@ -67,7 +67,27 @@ export default {
   
 </script>
 
-<style>
+<style scoped>
+.travvy{
+  background-color: #B8D1FF;
+  border: none;
+  color: #FF5F00;
+  padding: 50px 50px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  border-radius: 150px;
+}
+.container {
+  padding: 20px 10px;
+  margin: 0 100px;
+}
+
+h1{
+  font-weight:bold
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -131,6 +151,45 @@ export default {
 .span {
     font-size: 15px;
 
+}
+.change {
+  background-color: #FF5F00; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.change span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.change span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+.change:hover span {
+  padding-left: 25px;
+}
+
+.change:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+.change:hover {
+  background-color: #ed7485;
+  cursor: pointer
 }
 
 </style>

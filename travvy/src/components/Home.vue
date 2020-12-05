@@ -9,7 +9,6 @@
     <br>
     <br>
     <br>
-    <br>
     <h2> Book your next trip!</h2>
     <!-- data binding destination, corresponding data object below -->
     <form>
@@ -52,11 +51,11 @@
     <label for="Dates">     Select Departure Date*:</label>
     <!-- user selects dates they are travelling in -->
 
-      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="startDate">
+      <input type="Date" min="2020-12-07" max="2022-12-31" class="dates input" v-model="startDate">
     <br>
     <br>
     <label for="Dates">     Select Return Date*:</label>
-      <input type="Date" min="2020-11-23" max="2022-12-31" class="dates input" v-model="endDate">
+      <input type="Date" min="2020-12-07" max="2022-12-31" class="dates input" v-model="endDate">
     <br>
     <br>
 
@@ -122,6 +121,8 @@
  import AttractionsService from '../services/AttractionsService.js'
  import CovidService from '../services/CovidService.js'
  import LocationsService from '../services/LocationsService.js'
+ import AuthenticationService from '../services/AuthenticationService.js'
+
  export default {
    name: 'Home',
    components: {
@@ -148,9 +149,17 @@
        groupSize: '',
        startDate: '',
        endDate: '',
-       errors:'',
+       error:null,
        file: null,
+       email: '',
+       gender: '',
+       age: '',
+       preferred_activity_type: '',
+       instagram_username: '',
        preference_consent:[]
+       errors:'',
+
+
      }
    },
 
@@ -219,7 +228,18 @@
       console.log(response)
     }
 
-  }
+   },
+      async getUser() {
+        const user = await AuthenticationService.getUser({
+            "email": this.$store.state.userEmail
+          })
+        this.$store.dispatch('setAge', user.Age)
+        this.$store.dispatch('setGender', user.Gender)
+        this.$store.dispatch('setInstagram', user.Instagram_Username)
+        this.$store.dispatch('setActivity', user.Preferred_Activity_Type)
+        this.$store.dispatch('setName', user.Name)
+
+      },
 
 }
 
@@ -255,30 +275,46 @@
   border-radius: 12px;
 }
 .destination{
-  background-color: #C7EEA9;
-  border-radius: 12px;
-  width: 200px;
-  height: 25px;
+ background-color: #F4F4F9;
+  color: black;
+  padding: 4px;
+  border: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
 }
 .input {
   height:40px;
-  width: 200px;
-  font-size:14pt;
+  width: 250px;
+  font-size:13pt;
   padding: 2px 2px;
 
 }
 
 .dates{
-  background-color: #C7EEA9;
-  border-radius: 12px;
-  width: 200px;
-  height: 25px;
+  background-color: #F4F4F9;
+  color: black;
+  padding: 4px;
+  width: 250px;
+  height: 35px;
+  border: none;
+  font-size: 19px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
 }
 .travellers{
-  background-color: #C7EEA9;
   border-radius: 12px;
-  width: 200px;
-  height: 18px;
+  width: 250px;
+  height: 35px;
+  background-color: #F4F4F9;
+  font-size: 17px;
+  color: black;
+  padding: 4px;
+  border: none;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  outline: none;
+  border-radius: 10px; 
 }
 
 .search {

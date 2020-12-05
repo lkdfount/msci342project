@@ -3,6 +3,7 @@
      <div class="container">
         <h2> Hello {{  getUser().Name }}{{ this.$store.state.name}},</h2>
         <h2> Here is your profile information: </h2>
+        <p>Please fill in all fields with updated information before updating user profile</p>
         <br>
         <label><strong>Email: </strong></label>
         <input type="text" class="info" v-model="email" :placeholder="[[ this.$store.state.userEmail ]]">
@@ -28,12 +29,18 @@
         <button class="button" @click="updateUserProfile()"><span>Update User Profile</span></button>
         <br>
         <br>
-
+        
         <button class="button" @click="signout"><span>Sign Out</span></button>
         <br>
         <br>
         <!-- Button to go to the home page --> 
         <router-link to="/Home" tag="button" class="button"><span>Return Home</span></router-link>
+        <br>
+        <br>
+        <button class="button"><span><a class="documents" href="https://firebasestorage.googleapis.com/v0/b/msci342project.appspot.com/o/test-ticket.png?alt=media&token=d730e012-57ca-4dd4-a870-a18002fbacbf" target="_blank">View Travel Documents</a></span></button>
+     
+
+
       </div>
     </div>
 </template>
@@ -190,10 +197,11 @@ label {
   width: 200px;
   display: inline-block;
   text-align: left;
-
-
 }
 
+.documents {
+  color: #FFFFFF;
+}
 .info{
   background-color: #F4F4F9;
   color: black;
