@@ -28,12 +28,18 @@
         <button class="button" @click="updateUserProfile()"><span>Update User Profile</span></button>
         <br>
         <br>
-
+        
         <button class="button" @click="signout"><span>Sign Out</span></button>
         <br>
         <br>
         <!-- Button to go to the home page --> 
         <router-link to="/Home" tag="button" class="button"><span>Return Home</span></router-link>
+        <br>
+        <br>
+        <button class="button"><span><a class="documents" href="https://firebasestorage.googleapis.com/v0/b/msci342project.appspot.com/o/test-boarding-pass.png?alt=media&token=ffaa3543-4c15-49ce-96af-877a1f122253" target="_blank">View Travel Documents</a></span></button>
+     
+
+
       </div>
     </div>
 </template>
@@ -166,10 +172,11 @@ label {
   width: 200px;
   display: inline-block;
   text-align: left;
-
-
 }
 
+.documents {
+  color: #FFFFFF;
+}
 .info{
   background-color: #F4F4F9;
   color: black;
