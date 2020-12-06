@@ -65,7 +65,7 @@
         <br>
           <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
           <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
-          <router-link :to="{name:'AttractionDetails', params: {id: 0} }" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>
+          <router-link v-model="attractionDetailsId" :to="{name:'AttractionDetails', params: {id: 0} }" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>
       </div>
       </div>
       <div v-else>
@@ -249,12 +249,29 @@
           position:{lat:43.6512,lng:-79.3432}
         },
         ],
+
+      attractionDetailsId: '',
     }
   },
   methods: {
-    async navigateTo(route) {
+    async navigateTo1(route) {
         this.$router.push(route)
       },
+
+    async navigateTo(route) {
+
+      try {
+        //saves users city in the store
+        this.$store.dispatch('setAttractionDetailsId', this.attractionDetailsId)
+        //console.log(attractionDetailsId)
+        console.log(this.$store.state.attractionDetailsId)
+
+    
+        this.$router.push(route)
+      } catch (error) {
+         console.log(error)
+      }
+    } 
     }
   }
   
