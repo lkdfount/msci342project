@@ -1,6 +1,7 @@
 
 <template>  
   <div class="Landing">
+    <v-container class="home-container">
     <img src="../images/map.jpg" alt="Picture of Map" class="landingimage" />
     <br>
     <br>
@@ -19,7 +20,7 @@
     <br>
     <br>
     <br>
-
+  </v-container>
   </div>
 </template>
 
@@ -34,14 +35,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.landingimage {
-  max-height: 500px;
-  height: 70%;
-  width: auto;
-}
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50;
   border: none;
   color: white;
   padding: 14px 32px;
@@ -50,6 +46,7 @@ export default {
   display: inline-block;
   font-size: 16px;
   border-radius: 18px;
+  height: 50px;
 }
 
 .button span {
@@ -94,8 +91,8 @@ a {
 }
 
 img {
-  max-width: 40%;
-  max-height: 40%;
+  max-width: 30%;
+  max-height: 30%;
 
   height: auto;
 }

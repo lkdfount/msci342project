@@ -9,7 +9,8 @@
     <br>
     <br>
     <br>
-    <h2> Book your next trip!</h2>
+    <br>
+    <div class="threeD"> Book your next trip! </div>
     <!-- data binding destination, corresponding data object below -->
     <form>
     <!-- this paragraph will only appear if there are any errors added to the errors array in the script below --> 
@@ -78,7 +79,7 @@
     <br>
     <br>
 
-    <center><button v-on:click="checkForm(), navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
+    <center><button v-on:click="checkForm(), navigateTo({name:'AttractionsList'})" class="search"><span> Search </span></button></center>
   
 
     <!-- the search will use the parameters from above to search through the database and return results -->
@@ -95,11 +96,10 @@
     <select-file></select-file>
   </div>
 
-
     <br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
-    <h2>Find your next travel destination</h2>
+    <h1>Find your next travel destination</h1>
 
     <button v-on:click="nextDest('Toronto')" class="nextDestination">Toronto<br><br><img src="../images/toronto2.jpg" alt="Picture of Toronto" class ="cityimage"/></button>
     <button v-on:click="nextDest('New York City')" class="nextDestination">New York City<br><br><img src="../images/newyorkcity2.jpg" alt="Picture of New York City" class ="cityimage"/></button>
@@ -449,4 +449,30 @@
   padding: 20px 10px;
   margin: 0 100px;
 }
+
+.threeD{
+  color: #FF5F00;
+  white-space: nowrap;
+  position: absolute;
+  top: 28%;
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+  font-size:2em;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  transition: 0.3s;
+  text-shadow: 1px 1px 0 #fec195, 1px 2px 0 #fec195, 1px 3px 0 #fec195, 1px 4px 0 #fec195,
+    1px 5px 0 #fec195, 1px 6px 0 #fec195, 1px 7px 0 #fec195, 1px 8px 0 #fec195,
+    5px 13px 15px white;
+}
+
+.threeD:hover {
+  transition: 0.3s;
+  transform: scale(1.1)translate(-50%, -50%);
+  text-shadow: 1px -1px 0 #fec195, 1px -2px 0 #fec195, 1px -3px 0 #fec195,
+    1px -4px 0 #fec195, 1px -5px 0 #fec195, 1px -6px 0 #fec195, 1px -7px 0 #fec195,
+    1px -8px 0 #fec195, 5px -13px 15px white, 5px -13px 25px #fec195;
+}
+
+
  </style>
