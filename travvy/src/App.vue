@@ -8,7 +8,14 @@
 
       </router-link>
     </div>
+    <transition
+    mode="out-in"
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
+    
+    >
     <router-view/>
+    </transition>
     <div class="footer">
       <p> © 2020 TRAVVY, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
     </div>
@@ -148,7 +155,7 @@ border-radius: 10px;
 }
 
 .footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
   right: 0px;

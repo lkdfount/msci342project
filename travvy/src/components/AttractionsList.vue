@@ -162,9 +162,9 @@
       </div>
       </div>
       <hr size="3" width="60%" color="#E7EDF7"> 
-
 <!-- all reviews taken from TripAdvisor-->
 <!-- the reviews of each city will dynamically display based on the chosen destination -->
+      
       <h1>Traveller Tips</h1>
       <div v-if="$store.state.city == 'Toronto'">
         <h3>Rosie, from Scotland: ⭐⭐⭐⭐⭐</h3>
@@ -311,6 +311,10 @@
   opacity: 1;
   right: 0;
 }
+.profile:hover {
+  background-color: #ed7485;
+  cursor: pointer
+}
 /* include the styling for the button group list of attractions*/
 .btn-group button {
   background-color: #C7EEA9;
@@ -397,6 +401,11 @@
 .change:hover span:after {
   opacity: 1;
   left: 0;
+}
+
+.change:hover {
+  background-color: #ed7485;
+  cursor: pointer
 }
 
 </style>

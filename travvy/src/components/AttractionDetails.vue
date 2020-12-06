@@ -127,45 +127,7 @@ h1{
   color: #42b983;
 }
 
-.back {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #FEC195;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 22px;
-  padding: 12px 22px;
-  width: 150px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  margin-left: -1690px;
-  background: #FF5F00; 
-}
-.back span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
 
-.back span:after {
-  content: '\00ab';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: -20px;
-  transition: 0.5s;
-}
-.back:hover span {
-  padding-left: 25px;
-}
-
-.back:hover span:after {
-  opacity: 1;
-  left: 0;
-}
 .span {
     font-size: 15px;
 
