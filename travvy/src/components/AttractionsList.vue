@@ -19,22 +19,22 @@
 
       <!-- the images of each city will dynamically display based on the chosen destination -->
       <div v-if="$store.state.city == 'Toronto'">
-        <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
+        <img src="../images/toronto3.jpg" alt="Picture of Toronto" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Paris'">
-        <img src="../images/paris.jpg" alt="Picture of Paris" class ="cityimage"/>
+        <img src="../images/paris3.jpg" alt="Picture of Paris" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'London'">
-        <img src="../images/london.jpg" alt="Picture of London" class ="cityimage" />
+        <img src="../images/london3.jpg" alt="Picture of London" class ="cityimage" />
       </div>
       <div v-else-if="$store.state.city == 'New York City'">
-        <img src="../images/newyorkcity.jpg" alt="Picture of New York City" class ="cityimage"/>
+        <img src="../images/newyorkcity3.jpg" alt="Picture of New York City" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Rio de Janeiro'">
-        <img src="../images/rio.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
+        <img src="../images/rio3.jpg" alt="Picture of Rio de Janeiro" class ="cityimage"/>
       </div>
       <div v-else-if="$store.state.city == 'Rome'">
-        <img src="../images/rome.jpg" alt="Picture of Rome" class ="cityimage"/>
+        <img src="../images/rome3.jpg" alt="Picture of Rome" class ="cityimage"/>
       </div>
       <div v-else="">
       </div>
@@ -61,7 +61,7 @@
       <h1>Personalized attractions, based on your preferences</h1>
   
       <!-- generates dynamic buttons based on the recommended attractions -->
-      <div class="btn-group"  v-for="value in $store.state.recommendedAttractions" :key="value.id" >
+      <div class="btn-group" v-for="value in $store.state.recommendedAttractions" :key="value.id" >
         <br>
           <!--<button v-on:click="navigateTo({name:`/AttractionDetails/${value.id}`})" tag="button" class="button"><span>{{ value.attraction_name }}</span></button>-->
           <!--<router-link :to="`/AttractionDetails/${value.id}`" tag="button" class="button"><span>{{ value.attraction_name }} </span></router-link>-->
@@ -168,7 +168,7 @@
       <h1>Traveller Tips</h1>
       <div v-if="$store.state.city == 'Toronto'">
         <h3>Rosie, from Scotland: ⭐⭐⭐⭐⭐</h3>
-        <p>Toronto is a beautiful, vibrant city in Canada. It has wonderful architec ture, amazing culture and fantastic restaurants and night life</p>
+        <p>Toronto is a beautiful, vibrant city in Canada. It has wonderful architecture, amazing culture and fantastic restaurants and night life</p>
         <h3>Siber, from Minneapolis, Minnesota: ⭐⭐⭐⭐</h3>
         <p>One of my favorite cities. So much to see and do. If you go get a sausage from the street vendor, it's the best you'll ever have. Don't miss Long Street, the longest street in the world. Easy to get around using the subway.</p>
         <h3>John, from Australia: ⭐⭐⭐</h3>
