@@ -8,7 +8,7 @@
     <router-link to="/Profile" tag="button" class="profile" style="float: right;"><span>Profile</span></router-link>
     <br>
     <br>
-    <br>
+    <h1 class="title">Welcome to TRAVVY!</h1>
     <h2> Book your next trip!</h2>
     <!-- data binding destination, corresponding data object below -->
     <form>
@@ -22,7 +22,7 @@
         <!-- v-bind="error in errors"-->
       </u1>
     </p>
-    <label for="Destination">Select a Destination*:</label>
+    <label for="Destination"><strong>Select a Destination*:</strong></label>
     <!-- select destinations to find attractions in -->
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
     <div id="selector">
@@ -48,35 +48,36 @@
     <br>
     <br>
     <!-- data binding dates, corresponding data object below -->
-    <label for="Dates">     Select Departure Date*:</label>
+    <label for="Dates"><strong>     Select Departure Date*:</strong></label>
     <!-- user selects dates they are travelling in -->
 
       <input type="Date" min="2020-12-07" max="2022-12-31" class="dates input" v-model="startDate">
     <br>
     <br>
-    <label for="Dates">     Select Return Date*:</label>
+    <label for="Dates"><strong>     Select Return Date*:</strong></label>
       <input type="Date" min="2020-12-07" max="2022-12-31" class="dates input" v-model="endDate">
     <br>
     <br>
 
     <!-- data binding travellers, corresponding data object below -->
-    <label for="Travellers">     Number of Travellers*:</label>
+    <label for="Travellers"><strong>     Number of Travellers*:</strong></label>
     <!-- user selects number of travellers in their party -->
     <input type="text" id="groupSize" class="travellers input" v-model="groupSize">
 
     </form>
-    <p> * Required Field </p>
+    <p> <strong>* Required Field </strong></p>
     <div v-html="error" />
-    <br>
-    <br>
+
      <!-- if a user is signed in give them the option of not using their preferences -->
     <div v-if="$store.state.userEmail != null">
-    <label for="checkbox">     Would you like your preferences ignored?:</label>
-    <input type="checkbox" id="checkbox" value="Yes" v-model="preference_consent">
+    <label for="checkbox"><strong>     Would you like your preferences ignored?:</strong></label>
+    <input class="checkbox" type="checkbox" id="checkbox" value="Yes" v-model="preference_consent">
     <span> {{ preference_consent[0] }}</span>
+    <br>
+    <br>
+
     </div>
-    <br>
-    <br>
+
 
     <center><button v-on:click="checkForm(), navigateTo({name:'AttractionsList'})" class="search"><span>Search </span></button></center>
   
@@ -449,4 +450,16 @@
   padding: 20px 10px;
   margin: 0 100px;
 }
+
+.checkbox {
+  height: 30px;
+ } 
+
+ .title {
+  color: #fb8a00;
+  font-size: 36px;
+
+
+ }
  </style>
+

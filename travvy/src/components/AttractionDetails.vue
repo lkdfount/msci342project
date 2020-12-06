@@ -1,11 +1,10 @@
 <template>
-  <div>
     <div class="container">
     
       <!-- Button to go to go back to the AttractionsList page -->
       
       <button class="change" style="float:left;" @click="$router.go(-1)">Back</button>
-        <h1>{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
+     <h1 style="float:center;">{{$store.state.recommendedAttractions[id].attraction_name}} </h1>
      <div v-if="$store.state.city == 'Toronto'">
         <img src="../images/toronto.jpg" alt="Picture of Toronto" class ="cityimage"/>
       </div>
@@ -28,7 +27,26 @@
       </div>
     <br>
     <h1>Description</h1>
-    <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
+     <div v-if="$store.state.city == 'Toronto'">
+        <p>The CN Tower is a 553.3 m-high concrete communications and observation tower located in Downtown Toronto, Ontario, Canada.</p>
+      </div>
+      <div v-else-if="$store.state.city == 'Paris'">
+        <p>The Eiffel Tower is 1,063 feet (324 meters) tall, including the antenna at the top. Without the antenna, it is 984 feet (300 m).</p>
+      </div>
+      <div v-else-if="$store.state.city == 'London'">
+        <p>Buckingham Palace is the Queen's official and main royal London home. It has been the official London residence of Britain's monarchy since 1837.</p>
+      </div>
+      <div v-else-if="$store.state.city == 'New York City'">
+        <p>Central Park is home to more than 18,000 trees, including one of the country's largest and last remaining stands of American elms, along the Mall and Fifth Avenue.</p>
+      </div>
+      <div v-else-if="$store.state.city == 'Rio de Janeiro'">
+        <p>Christ the Redeemer is the largest art deco statue in the world. It is 98 feet tall (not including the 26 foot pedestal), and the arms stretch to 92 feet wide.</p>
+      </div>
+      <div v-else-if="$store.state.city == 'Rome'">
+        <p>The Colosseum in Rome, Italy, is a large amphitheater that hosted events like gladiatorial games. It was built during the reign of the Flavian emperors as a gift to the Roman people.</p>
+      </div>
+      <div v-else="">
+      </div>
     <h2>Address: <span>{{$store.state.recommendedAttractions[id].street_address}}</span> </h2>
     <h3>Email: {{$store.state.recommendedAttractions[id].email_address}}</h3>
     <h3>Phone Number: {{$store.state.recommendedAttractions[id].phone_number}}</h3>
