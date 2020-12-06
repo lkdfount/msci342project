@@ -164,7 +164,7 @@
       <hr size="3" width="60%" color="#E7EDF7"> 
 <!-- all reviews taken from TripAdvisor-->
 <!-- the reviews of each city will dynamically display based on the chosen destination -->
-<div class="container">
+      
       <h1>Traveller Tips</h1>
       <div v-if="$store.state.city == 'Toronto'">
         <h3>Rosie, from Scotland: ⭐⭐⭐⭐⭐</h3>
@@ -219,7 +219,6 @@
         <!--handling of empty recommended attractions -->
           <h1> No reviews available </h1>
       </div>
-       </div>
 
       <!--<div v-if="$store.state.recommendedAttractions.length > 0">
       <p>{{$store.state.recommendedAttractions[0].city}} felt pretty safe but if you are worried about COVID it may not be the best time to go, it is tough to get around without being around a lot of people.</p>

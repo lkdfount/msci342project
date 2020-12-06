@@ -5,6 +5,7 @@ import {sync} from 'vuex-router-sync'
 import store from './store/store.js'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import firebase from 'firebase'
+import 'animate.css';
 
 Vue.use(VueGoogleMaps, {
   load:{

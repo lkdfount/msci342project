@@ -96,7 +96,6 @@
     <select-file></select-file>
   </div>
 
-
     <br>
     <p> {{ nextDestination }}</p>
     <!-- data binding destination suggestions corresponding data object below -->
@@ -419,9 +418,9 @@
   white-space: nowrap;
   position: absolute;
   top: 28%;
-  left: 52%;
+  left: 50.5%;
   transform: translate(-50%, -50%);
-  font-size: 2em;
+  font-size:2em;
   font-family: sans-serif;
   letter-spacing: 0.1em;
   transition: 0.3s;
@@ -437,4 +436,6 @@
     1px -4px 0 #fec195, 1px -5px 0 #fec195, 1px -6px 0 #fec195, 1px -7px 0 #fec195,
     1px -8px 0 #fec195, 5px -13px 15px white, 5px -13px 25px #fec195;
 }
+
+
  </style>
