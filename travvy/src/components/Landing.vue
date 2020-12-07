@@ -13,8 +13,6 @@
     <router-link to="/SignUp" tag="button" class="button"><span>Sign Up</span></router-link>
     <br>
     <br>
-    <!-- Will need to remove button to go to the home page to force users to log in--> 
-    <router-link to="/Home" tag="button" class="button"><span>Enter Site</span></router-link>
 
     <br>
     <br>
